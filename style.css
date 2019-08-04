@@ -81,7 +81,35 @@ padding-bottom: 35px;
   background-color: #343434;
   position:relative;
   padding-top:10%;
-  padding-bottom:25%;
+  padding-bottom:17.5%;
+}
+
+.section-2{
+  background-color: #66717E;
+}
+
+.navbar{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  bottom: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
 }
 
 .footer-link{
@@ -110,7 +138,7 @@ padding-bottom: 35px;
   margin-top: 75px;
 }
 
-.profile{
+.about-us{
   width: 35%;
   margin:auto;
 }
@@ -123,7 +151,7 @@ padding-bottom: 35px;
   font-family: 'Montserrat', sans-serif;
 }
 
-.skill-row{
+.price-row{
   width: 50%;
   margin:100px auto;
   text-align: left;
@@ -164,4 +192,8 @@ padding-bottom: 35px;
   background-image: -o-linear-gradient(top, #66bfbf, #66bfbf);
   background-image: linear-gradient(to bottom, #66bfbf, #66bfbf);
   text-decoration: none;
+}
+
+.contact-details{
+  color:#F2F4F3;
 }
