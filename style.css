@@ -165,29 +165,62 @@ padding-bottom: 35px;
   top:10%;
 }
 
+.title{
+  font-family: 'Montserrat', sans-serif;
+
+}
+
 .now-showing{
+  background-image: url(https://images.unsplash.com/photo-1532621623813-d37d9cd1d992?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);
+  background-size: cover;
+}
+
+.grid{
   display: grid;
-  grid-template-columns: 600px 600px;
+  grid-template-columns: repeat(auto-fit, 600px);
   grid-template-rows: repeat(2, 350px);
   grid-gap: 100px;
-  grid-auto-rows: 500px;
   justify-content: center;
   align-items: stretch;
   align-content: center;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
+  padding: 30px 30px 30px 30px;
+  overflow: auto;
+}
+
+.movie-title{
+  color: #E6B31E;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:bolder;
+  position: left;
 
 }
 .movie{
   border-style:solid;
-  border-color:black;
+  border-color:#343434;
   border-width:1px;
-
+  background-color:#343434;
+  opacity:0.8;
+  border-radius: 25px;
+  max-height:350px;
+  max-width:600px;
+  resize: both;
 }
 
 .poster{
   width:200px;
   length:400px;
+  float: left;
+  margin: 30px 5px 30px 30px;
+}
 
+.description{
+  color:#E6B31E;
+  font-size: 17px;
+  font-weight: 400px;
+  font-family: 'Meriweather', sans-serif;
+  line-height: 2.3;
 }
 
 
