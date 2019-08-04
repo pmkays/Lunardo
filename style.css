@@ -165,6 +165,31 @@ padding-bottom: 35px;
   top:10%;
 }
 
+.now-showing{
+  display: grid;
+  grid-template-columns: 600px 600px;
+  grid-template-rows: repeat(2, 350px);
+  grid-gap: 100px;
+  grid-auto-rows: 500px;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  grid-auto-flow: column;
+
+}
+.movie{
+  border-style:solid;
+  border-color:black;
+  border-width:1px;
+
+}
+
+.poster{
+  width:200px;
+  length:400px;
+
+}
+
 
 .butn {
   background: #66bfbf;
