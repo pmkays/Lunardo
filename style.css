@@ -1,12 +1,14 @@
-html {
+body, html  {
+  margin: 0;
+  text-align: center;
+  font-family: 'Merriweather', sans-serif;
+  background-color:#F2F4F3;
+	/*height:100%; Stops the sticky from working*/
 	scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  text-align: center;
-  font-family: 'Merriweather', serif;
-  background-color:#F2F4F3;
+.header{
+	height: calc( 100% - 48px);
 }
 
 h1 {
@@ -52,6 +54,17 @@ padding-top: 35px;
 padding-bottom: 35px;
 }
 
+.title{
+	text-align: center;
+  /*background: url(https://cdn.pixabay.com/photo/2013/02/26/05/36/metz-86226_1280.jpg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+  padding-top:30vh;
+  width: 100vw;
+  background-size: cover;
+  display: table-cell;
+  vertical-align: middle;
+}
 .coding-img{
   width:25%;
   float:left;
@@ -82,10 +95,16 @@ padding-bottom: 35px;
 }
 
 .section-1 {
+	background-image:url("images/cover.png");
   background-color: #343434;
   position:relative;
-  padding-top:10%;
-  padding-bottom:17.5%;
+  height:94vh;
+  background-size: cover;
+	z-index: 100;
+	background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .section-2{
@@ -101,18 +120,25 @@ padding-bottom: 35px;
   margin-top: 0px;
   margin-bottom: 0px;
   overflow: hidden;
-  background-color: #333;
+  background-color: black;
   position: sticky; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
+	position: -webkit-sticky;
+	top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
   z-index: 99999;
+	text-align: center;
+	font-weight: bolder;
+
+
 
 }
 
+.link{
+	color: #E6B31E;
+}
+
 .navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
+  display: inline-block;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -150,8 +176,13 @@ padding-bottom: 35px;
 }
 
 .about-us{
-  background-image: url(https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);
-  height: 1000px;
+	background-image: url("images/about.png");
+	background-size:cover;
+  height:94vh;
+	background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .info{
   max-width: auto;
@@ -160,6 +191,25 @@ padding-bottom: 35px;
   margin: auto;
   text-align: center;
   width: 65%;
+}
+
+.about-info{
+  color: #f2f2f2;
+  font-family: 'Montserrat', sans-serif;
+	text-align: right;
+}
+
+.about-us-box{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 42%;
+	padding: 136px 60px;
+	float: right;
+	height: 56.25vh;
+	background-color: rgba(0,0,0,0.6) !important;
+	font-size: 17px;
+	line-height: 27px;
 }
 
 .slogan{
@@ -171,12 +221,31 @@ padding-bottom: 35px;
 }
 
 .price-row{
-  width: 50%;
-  margin:100px auto;
-  text-align: left;
+  width: 70%;
   line-height: 2;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Montserrat', sans-serif;
 }
 
+.table{
+	border-width: 5px;
+	font-family: 'Montserrat', sans-serif;
+	margin-bottom: 60px;
+	margin-left:auto;
+  margin-right:auto;
+}
+
+td, th {
+  /*border: 1px solid #dddddd;*/
+  padding: 8px;
+	line-height: 1.1em;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 
 .top-cloud{
   position: absolute;
@@ -186,7 +255,10 @@ padding-bottom: 35px;
 
 .now-showing{
   background-image: url(https://images.unsplash.com/photo-1532621623813-d37d9cd1d992?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);
-  background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .grid{
@@ -214,7 +286,7 @@ padding-bottom: 35px;
 .movie{
   border-style:solid;
   border-color:#343434;
-  background-color: #343434;
+  background-color: black;
   border-width:1px;
   opacity:0.8;
   border-radius: 25px;
@@ -234,7 +306,7 @@ padding-bottom: 35px;
   color:#E6B31E;
   font-size: 17px;
   font-weight: 400px;
-  font-family: 'Meriweather', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   line-height: 2.3;
 }
 
@@ -253,9 +325,8 @@ padding-bottom: 35px;
 }
 
 .synopsis-display p{
-	font-family: 'Meriweather', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	color:#F2F4F3;
-	font-size: 18px;
 }
 
 .synopsis-display iframe{
@@ -276,7 +347,7 @@ padding-bottom: 35px;
  	cursor:pointer;
 	float:left;
 	font-weight:bold;
-	font-family: 'Meriweather', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	color: #343434;
 	border-radius: 10px;
 	margin: 1px;

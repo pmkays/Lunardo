@@ -13,9 +13,9 @@
   </head>
 
   <body>
-    <header>
+    <header class = "header">
       <section class="section-1">
-        <h1>Lunar Cinema</h1>
+        <h1 class = "title">Lunardo Theatre</h1>
         <p class="slogan">
           Est. 1987</p>
       </section>
@@ -23,46 +23,83 @@
 
     <nav class = "navbar" >
       <section class="section-2">
-        <div class="navbar" style="padding-left: 38%";>
-          <a href="#about">About Us</a>
-          <a href="#prices">Prices</a>
-          <a href="#showing">Now Showing</a>
+        <div class="navbar";>
+          <a class="link" href="#about">About Us</a>
+          <a class="link" href="#prices">Prices</a>
+          <a class="link" href="#showing">Now Showing</a>
+          <a class="link" href="#contact">Contact Us</a>
         </div>
       </section>
     </nav>
 
     <main>
       <section class="section-3" id = about>
-        <div class="about-us">
-          <h2 class = "section-title">About Us</h2>
-          <div class = "info">After serving Seymour for many years, we, Lunardo Cinema,
-            are proud to present our newly refurbished and improved state-of-the-art
-            cinema for all your entertainment needs. A few of our many changes include
-            more luxurious standard seats and recliner seats for those who opt for
-            the first-class option. Our theatres are now also equipped with 3D Dolby
-            Vision projection and Dolby Atmos sound to provide you with the best
-            visual and auditory experience possible. <br> Come in today to see
-            (and hear!) the difference!
+        <div class = "about-us">
+          <div class="about-us-box">
+            <h2 class = "section-title">About Us</h2>
+            <div class = "about-info">After serving Seymour for many years, we, Lunardo Cinema,
+              are proud to present our newly refurbished and improved state-of-the-art
+              cinema for all your entertainment needs. A few of our many changes include
+              more luxurious standard seats and recliner seats for those who opt for
+              the first-class option. Our theatres are now also equipped with 3D Dolby
+              Vision projection and Dolby Atmos sound to provide you with the best
+              visual and auditory experience possible. <br><br> Come in today to see
+              (and hear!) the difference!
+            </div>
+            <!-- <img src="http://www.profurn.com.au/wp-content/uploads/2016/09/538.jpg" alt="normal seats"  />
+            <img src="http://www.profurn.com.au/wp-content/uploads/2016/07/Verona-Twin.png" alt="first-class seats"/> -->
           </div>
-          <!-- <img src="http://www.profurn.com.au/wp-content/uploads/2016/09/538.jpg" alt="normal seats"  />
-          <img src="http://www.profurn.com.au/wp-content/uploads/2016/07/Verona-Twin.png" alt="first-class seats"/> -->
         </div>
         <hr>
         <div class="prices" id = prices>
-          <h2>Prices</h2>
+          <h2 class= "section-title">Prices</h2>
           <div class="price-row">
-            <img class="coding-img" src="images/coding.png" alt="coding-img">
-            <h3>Children</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in eros euismod nisl pulvinar luctus. Cras tempus odio sit amet sagittis tempus.
-              Vivamus neque odio, tincidunt et nisi efficitur, euismod tempor dolor. Pellentesque vitae semper turpis. Donec congue porta leo, in convallis erat. </p>
+            <p>The Cinema offers discounted pricing weekday afternoons (ie weekday matinée sessions) and all day on Mondays and Wednesdays. </p>
+            <table class = "table">
+              <thead>
+                <th>Seat Type</th>
+                <th>Seat Code</th>
+                <th>All day Monday and Wednesday <br>AND 12pm on Weekdays</th>
+                <th>All other times</th>
+              </thead>
+              <tr>
+                <td>Standard Adult</td>
+                <td>STA</td>
+                <td>$14.00</td>
+                <td>$19.80</td>
+              </tr>
+              <tr>
+                <td>Standard Concession</td>
+                <td>STP</td>
+                <td>$12.50</td>
+                <td>$17.50</td>
+              </tr>
+              <tr>
+                <td>Standard Child</td>
+                <td>STC</td>
+                <td>$11.00</td>
+                <td>$15.30</td>
+              </tr>
+              <tr>
+                <td>First Class Adult</td>
+                <td>FCA</td>
+                <td>$24.00</td>
+                <td>$30.80</td>
+              </tr>
+              <tr>
+                <td>First Class Concession</td>
+                <td>FCP</td>
+                <td>$22.50</td>
+                <td>$27.00</td>
+              </tr>
+              <tr>
+                <td>Firt Class Child</td>
+                <td>FCC</td>
+                <td>$21.00</td>
+                <td>$24.80</td>
+              </tr>
+            </table>
           </div>
-        </div>
-        <hr>
-        <div class="price-row">
-          <img class="design-img" src="images/ux.png" alt="design-img">
-          <h3>Adults</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in eros euismod nisl pulvinar luctus. Cras tempus odio sit amet sagittis tempus.
-            Vivamus neque odio, tincidunt et nisi efficitur, euismod tempor dolor. Pellentesque vitae semper turpis. Donec congue porta leo, in convallis erat. </p>
         </div>
         <hr>
         <div class="now-showing" id = showing>
@@ -144,7 +181,7 @@
     </main>
 
     <footer>
-      <section class="section-5">
+      <section class="section-5" id = "contact">
         <h3 class ="contact-details">Contact details </h3>
         <address>Email: lunardocinema@gmail.com<br>
           Phone: 8675 4672<br>
