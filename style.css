@@ -215,7 +215,6 @@ padding-bottom: 35px;
   border-color:#343434;
   background-color: #343434;
   border-width:1px;
-  background-color:#343434;
   opacity:0.8;
   border-radius: 25px;
   max-height:350px;
@@ -236,6 +235,47 @@ padding-bottom: 35px;
   font-weight: 400px;
   font-family: 'Meriweather', sans-serif;
   line-height: 2.3;
+}
+
+.synopsis-display{
+	max-width:1000px;
+	max-height:1000px;
+  padding: 10px;
+  margin: auto;
+	border-color:#343434;
+  background-color: #343434;
+  border-width:1px;
+  border-radius: 25px;
+}
+
+.trailer{
+	float: right;
+	margin: 0px 30px 30px 30px;
+}
+
+.booking{
+	margin: 40px;
+
+}
+
+.booking button{
+	display: grid;
+	background-color: #E6B31E;
+ 	border: 1px solid #a17d12;
+	border-width:1px;
+ 	padding: 10px 20px 10px 20px;
+ 	cursor: pointer;
+	float:left;
+}
+
+.booking button:hover{
+	background-color: #a17d12;
+}
+
+.booking:after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 
