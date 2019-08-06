@@ -88,13 +88,18 @@ padding-bottom: 35px;
   background-color: #66717E;
 }
 
+.section-title{
+    margin-top: 0px;
+    padding-top: 50px;
+}
+
 .navbar{
   margin-top: 0px;
   margin-bottom: 0px;
   overflow: hidden;
   background-color: #333;
-  position: fixed; /* Set the navbar to fixed position */
-  bottom: 0; /* Position the navbar at the top of the page */
+  position: sticky; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
 
@@ -140,17 +145,15 @@ padding-bottom: 35px;
 
 .about-us{
   background-image: url(https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);
-  max-width:auto;
-  max-height:auto;
+  height: 1000px;
 }
 .info{
-  height: 1000px;
   max-width: auto;
   color: #E6B31E;
-  font-size: 24px;
   font-family: 'Montserrat', sans-serif;
   margin: auto;
   text-align: center;
+  width: 65%;
 }
 
 .slogan{
@@ -173,11 +176,6 @@ padding-bottom: 35px;
   position: absolute;
   right: 25%;
   top:10%;
-}
-
-.title{
-  font-family: 'Montserrat', sans-serif;
-
 }
 
 .now-showing{
