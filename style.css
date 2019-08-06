@@ -200,6 +200,7 @@ padding-bottom: 35px;
   grid-auto-flow: row;
   padding: 30px 30px 30px 30px;
   overflow: auto;
+	margin-bottom: 0px;
 }
 
 .movie-title{
@@ -237,6 +238,9 @@ padding-bottom: 35px;
   line-height: 2.3;
 }
 
+.synopsis{
+	margin-bottom:100px;
+}
 .synopsis-display{
 	max-width:1000px;
 	max-height:1000px;
@@ -248,24 +252,34 @@ padding-bottom: 35px;
   border-radius: 25px;
 }
 
-.trailer{
+.synopsis-display p{
+	font-family: 'Meriweather', sans-serif;
+	color:#F2F4F3;
+	font-size: 18px;
+}
+
+.synopsis-display iframe{
 	float: right;
 	margin: 0px 30px 30px 30px;
 }
 
 .booking{
-	margin: 40px;
-
+	margin:30px;
 }
 
 .booking button{
-	display: grid;
+	display:grid;
 	background-color: #E6B31E;
- 	border: 1px solid #a17d12;
+ 	border:1px solid #a17d12;
 	border-width:1px;
- 	padding: 10px 20px 10px 20px;
- 	cursor: pointer;
+ 	padding:10px 20px 10px 20px;
+ 	cursor:pointer;
 	float:left;
+	font-weight:bold;
+	font-family: 'Meriweather', sans-serif;
+	color: #343434;
+	border-radius: 10px;
+	margin: 1px;
 }
 
 .booking button:hover{
