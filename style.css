@@ -289,7 +289,7 @@ tr:nth-child(even) {
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size:cover;
 }
 
 .grid{
@@ -300,15 +300,14 @@ tr:nth-child(even) {
   justify-content: center;
   align-items: stretch;
   align-content: center;
-  grid-auto-flow: row;
+  grid-auto-flow: column;
   padding: 30px 30px 30px 30px;
-  overflow: auto;
 	margin-bottom: 0px;
 }
 
 .movie-title{
   color: #E6B31E;
-  font-size: 20px;
+  font-size: 1.25em;
   font-family: 'Montserrat', sans-serif;
   font-weight:bolder;
   position: left;
@@ -335,7 +334,7 @@ tr:nth-child(even) {
 
 .description{
   color:#E6B31E;
-  font-size: 17px;
+  font-size: 1.125em;
   font-weight: 400px;
   font-family: 'Montserrat', sans-serif;
   line-height: 2.3;
@@ -394,8 +393,8 @@ tr:nth-child(even) {
 }
 
 .booking:after {
-  content: "";
   clear: both;
+  content: "",
   display: table;
 }
 
