@@ -7,14 +7,6 @@ body, html  {
 	scroll-behavior: smooth;
 }
 
-p {
-  font-size: 1vw;
-}
-
-.header{
-	height: calc( 100% - 48px);
-}
-
 h1 {
   color:#E6B31E;
   margin: 50px auto 0 auto;
@@ -39,256 +31,8 @@ hr{
   margin-top: 0px;
 }
 
-.bottom-cloud{
-  position: absolute;
-  left: 25%;
-  bottom: 55%;
-}
-
-.section-5 {
-background-color: black;
-color:#eaf6f6;
-font-family: 'Montserrat', sans-serif;
-margin:0;
-padding-top: 35px;
-padding-bottom: 35px;
-}
-
-.icon{
-  height:30px;
-  display:inline;
-}
-.title{
-	text-align: center;
-  /*background: url(https://cdn.pixabay.com/photo/2013/02/26/05/36/metz-86226_1280.jpg);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
-  padding-top:30vh;
-  width: 100vw;
-  background-size: cover;
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 7vw;
-}
-.coding-img{
-  width:25%;
-  float:left;
-  margin-right: 30px;
-}
-
-.copyright{
-  margin-top:40px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  font-family: serif;
-}
-
-.credit{
-  font-size: 0.8rem;
-  text-decoration: none;
-}
-
-.design-img{
-  width:25%;
-  float:right;
-  margin-left: 30px;
-}
-
-.final-text{
-  margin-bottom: 50px;
-  font-size:1rem;
-}
-
-.section-1 {
-	background-image:url("images/cover.png");
-  background-color: #343434;
-  position:relative;
-  height:94vh;
-  background-size: cover;
-	z-index: 100;
-	background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.section-2{
-  background-color: #66717E;
-}
-
-.section-title{
-    margin-top: 0px;
-    padding-top: 70px;
-}
-
-.navbar{
-  margin-top: 0px;
-  margin-bottom: 0px;
-  overflow: hidden;
-  background-color: black;
-  position: sticky; /* Set the navbar to fixed position */
-	position: -webkit-sticky;
-	top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  z-index: 99999;
-	text-align: center;
-	font-weight: bolder;
-
-
-
-}
-
-.link{
-	color: #E6B31E;
-}
-
-.anchor{
-  padding-top: 50px;
-  visibility: hidden;
-}
-
-.navbar a {
-  display: inline-block;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.navbar a:hover {
-  background: #ddd;
-  color: black;
-}
-
-.footer-link{
-  color:#11999E;
-  font-weight: bold;
-  margin:30px;
-  text-decoration: none;
-}
-
-.footer-link:hover{
-  color:#EAF6F6;
-  }
-
-.info{
-  margin-bottom: 60px;
-  line-height: 2;
-}
-
-.prices {
-  height:100vh;
-  background-image:url("images/ticket.png");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.news-box{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 40%;
-  padding: 135px 60px;
-  float: left;
-  height: 56.6vh;
-  background-color: rgba(0,0,0,0.6);
+p {
   font-size: 1vw;
-  line-height: 27px;
-  max-height: -webkit-fill-available;
-  }
-
-.prices-box{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 42%;
-  padding: 135px 60px;
-  float: right;
-  height: 62.6vh;
-  background-color: rgba(0,0,0,0.6);
-	font-size: 1rem;
-	line-height: 27px;
-  max-height: -webkit-fill-available;
-}
-
-.profile-img{
-  width:200px;
-  border-radius: 100%;
-  margin-top: 75px;
-}
-
-.about-us{
-	background-image: url("images/about.png");
-	background-size:cover;
-  height:94vh;
-	background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.news{
-	background-image: url("images/news.png");
-	background-size:cover;
-  height:94vh;
-	background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.info{
-  max-width: auto;
-  color: #E6B31E;
-  font-family: 'Montserrat', sans-serif;
-  margin: auto;
-  text-align: center;
-  width: 65%;
-}
-
-.about-info{
-  color: #f2f2f2;
-  font-size: 1vw;
-  font-family: 'Montserrat', sans-serif;
-	text-align: right;
-}
-
-.about-us-box{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 42%;
-	padding: 135px 60px;
-	float: right;
-	height: 56.6vh;
-	background-color: rgba(0,0,0,0.6);
-	font-size: 1rem;
-	line-height: 27px;
-  max-height: -webkit-fill-available;
-}
-
-.slogan{
-  color:#F2F4F3;
-  font-weight:normal;
-  font-size: 2.5rem;
-  margin-top:0;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.price-row{
-  line-height: 2;
-	font-family: 'Montserrat', sans-serif;
-  color: white;
-}
-
-.table{
-	border-width: 5px;
-	font-family: 'Montserrat', sans-serif;
-  font-size: 1vw;
-	margin-bottom: 60px;
-	margin-left:auto;
-  margin-right:auto;
 }
 
 td {
@@ -310,100 +54,40 @@ tr:nth-child(even) {
   background-color: #303030;
 }
 
-.top-cloud{
-  position: absolute;
-  right: 25%;
-  top:10%;
+.about-info{
+  color: #f2f2f2;
+  font-size: 1vw;
+  font-family: 'Montserrat', sans-serif;
+	text-align: right;
 }
 
-.now-showing{
-  background-image: url("images/seat.png");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
+.about-us{
+	background-image: url("images/about.png");
 	background-size:cover;
+  height:94vh;
+	background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.grid{
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, 600px);
-  grid-template-rows: repeat(2, 350px);
-  grid-gap: 10px;
-  justify-content: center;
-  align-items: stretch;
-  align-content: center;
-  grid-auto-flow: row;
-  padding: 30px 30px 30px 30px;
-	margin-bottom: 0px; */
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.movie-title{
-  color: #E6B31E;
-  font-size: 1.25em;
-  font-family: 'Montserrat', sans-serif;
-  font-weight:bolder;
-  position: left;
-
-}
-.movie{
-  border-style:solid;
-  border-color:#343434;
-  background-color: black;
-  border-width:1px;
-  opacity:0.8;
-  border-radius: 25px;
-  max-height:350px;
-  max-width:600px;
-  resize: both;
-  width: 600px;
-  margin:5px;
-}
-
-.poster{
-  width:200px;
-  length:400px;
-  float: left;
-  margin: 30px 5px 30px 30px;
-}
-
-.description{
-  color:#E6B31E;
-  font-size: 1em;
-  font-weight: 400px;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 2.3;
-}
-
-.synopsis{
-  height:100vh;
-  background-image: url("images/synop1.png");
-  background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-.synopsis-display{
-	max-width:1000px;
-	max-height:1000px;
-  padding: 10px;
-  margin: auto;
-	border-color:#343434;
-  background-color: rgba(0,0,0,0.8);
-  border-width:1px;
-  border-radius: 25px;
-}
-
-.synopsis-display p{
-	font-family: 'Montserrat', sans-serif;
-	color:#F2F4F3;
-}
-
-.synopsis-display iframe{
+.about-us-box{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 42%;
+	padding: 135px 60px;
 	float: right;
-	margin: 0px 30px 30px 30px;
+	height: 56.6vh;
+	background-color: rgba(0,0,0,0.6);
+	font-size: 1rem;
+	line-height: 27px;
+  max-height: -webkit-fill-available;
+}
+
+.anchor{
+  padding-top: 50px;
+  visibility: hidden;
 }
 
 .booking{
@@ -436,10 +120,118 @@ tr:nth-child(even) {
   display: table;
 }
 
+
+.bottom-cloud{
+  position: absolute;
+  left: 25%;
+  bottom: 55%;
+}
+
+.coding-img{
+  width:25%;
+  float:left;
+  margin-right: 30px;
+}
+
 .contact-details{
   color:#F2F4F3;
 }
 
+.copyright{
+  margin-top:40px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: serif;
+}
+
+.credit{
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.description{
+  color:#E6B31E;
+  font-size: 1em;
+  font-weight: 400px;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 2.3;
+}
+
+.design-img{
+  width:25%;
+  float:right;
+  margin-left: 30px;
+}
+
+.final-text{
+  margin-bottom: 50px;
+  font-size:1rem;
+}
+
+.grid{
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, 600px);
+  grid-template-rows: repeat(2, 350px);
+  grid-gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  grid-auto-flow: row;
+  padding: 30px 30px 30px 30px;
+	margin-bottom: 0px; */
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header{
+	height: calc( 100% - 48px);
+}
+
+.icon{
+  height:30px;
+  display:inline;
+}
+
+.info{
+  max-width: auto;
+  color: #E6B31E;
+  font-family: 'Montserrat', sans-serif;
+  margin: auto;
+  text-align: center;
+  width: 65%;
+  margin-bottom: 60px;
+  line-height: 2;
+}
+
+.link{
+	color: #E6B31E;
+}
+
+.movie{
+  border-style:solid;
+  border-color:#343434;
+  background-color: black;
+  border-width:1px;
+  opacity:0.8;
+  border-radius: 25px;
+  max-height:350px;
+  max-width:600px;
+  resize: both;
+  width: 600px;
+  margin:5px;
+}
+
+.movie-title{
+  color: #E6B31E;
+  font-size: 1.25em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:bolder;
+  position: left;
+
+}
+
+/* Button created with https://www.bestcssbuttongenerator.com/ */
 .myButton {
 	-moz-box-shadow: 0px 1px 0px 0px #fff6af;
 	-webkit-box-shadow: 0px 1px 0px 0px #fff6af;
@@ -466,6 +258,7 @@ tr:nth-child(even) {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffee66;
 }
+
 .myButton:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
 	background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
@@ -476,11 +269,219 @@ tr:nth-child(even) {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
 	background-color:#ffab23;
 }
+
 .myButton:active {
 	position:relative;
 	top:1px;
 }
 
+.navbar{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  background-color: black;
+  position: sticky; 
+	position: -webkit-sticky;
+	top: 0;
+  width: 100%;
+  z-index: 99999;
+	text-align: center;
+	font-weight: bolder;
+}
+
+.navbar a {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.news{
+	background-image: url("images/news.png");
+	background-size:cover;
+  height:94vh;
+	background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.news-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  padding: 135px 60px;
+  float: left;
+  height: 56.6vh;
+  background-color: rgba(0,0,0,0.6);
+  font-size: 1vw;
+  line-height: 27px;
+  max-height: -webkit-fill-available;
+  }
+
+.now-showing{
+  background-image: url("images/seat.png");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+.poster{
+  width:200px;
+  length:400px;
+  float: left;
+  margin: 30px 5px 30px 30px;
+}
+
+.prices {
+  height:100vh;
+  background-image:url("images/ticket.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.prices-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 42%;
+  padding: 135px 60px;
+  float: right;
+  height: 62.6vh;
+  background-color: rgba(0,0,0,0.6);
+	font-size: 1rem;
+	line-height: 27px;
+  max-height: -webkit-fill-available;
+}
+
+.price-row{
+  line-height: 2;
+	font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.profile-img{
+  width:200px;
+  border-radius: 100%;
+  margin-top: 75px;
+}
+
+.section-title{
+    margin-top: 0px;
+    padding-top: 70px;
+}
+
+.section-1 {
+	background-image:url("images/cover.png");
+  background-color: #343434;
+  position:relative;
+  height:94vh;
+  background-size: cover;
+	z-index: 100;
+	background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-2{
+  background-color: #66717E;
+}
+
+.section-5 {
+background-color: black;
+color:#eaf6f6;
+font-family: 'Montserrat', sans-serif;
+margin:0;
+padding-top: 35px;
+padding-bottom: 35px;
+}
+
+.title{
+	text-align: center;
+  /*background: url(https://cdn.pixabay.com/photo/2013/02/26/05/36/metz-86226_1280.jpg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+  padding-top:30vh;
+  width: 100vw;
+  background-size: cover;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 7vw;
+}
+
+.slogan{
+  color:#F2F4F3;
+  font-weight:normal;
+  font-size: 2.5rem;
+  margin-top:0;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .student-info{
   font-size: .8vw;
 }
+
+.synopsis{
+  height:100vh;
+  background-image: url("images/synop1.png");
+  background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.synopsis-display{
+	max-width:1000px;
+	max-height:1000px;
+  padding: 10px;
+  margin: auto;
+	border-color:#343434;
+  background-color: rgba(0,0,0,0.8);
+  border-width:1px;
+  border-radius: 25px;
+}
+
+.synopsis-display p{
+	font-family: 'Montserrat', sans-serif;
+	color:#F2F4F3;
+}
+
+.synopsis-display iframe{
+	float: right;
+	margin: 0px 30px 30px 30px;
+}
+
+.table{
+	border-width: 5px;
+	font-family: 'Montserrat', sans-serif;
+  font-size: 1vw;
+	margin-bottom: 60px;
+	margin-left:auto;
+  margin-right:auto;
+}
+
+.top-cloud{
+  position: absolute;
+  right: 25%;
+  top:10%;
+}
+
+/* .footer-link{
+  color:#11999E;
+  font-weight: bold;
+  margin:30px;
+  text-decoration: none;
+}
+
+.footer-link:hover{
+  color:#EAF6F6;
+  } */
