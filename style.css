@@ -280,7 +280,7 @@ tr:nth-child(even) {
   margin-bottom: 0px;
   overflow: hidden;
   background-color: black;
-  position: sticky; 
+  position: sticky;
 	position: -webkit-sticky;
 	top: 0;
   width: 100%;
@@ -302,6 +302,7 @@ tr:nth-child(even) {
 }
 
 .news{
+  /* Image from https://www.dolby.com/us/en/platforms/dolby-cinema.html */
 	background-image: url("images/news.png");
 	background-size:cover;
   height:94vh;
