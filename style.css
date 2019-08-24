@@ -1,9 +1,10 @@
+/*all items are listed in alphabetical order*/
+
 body, html  {
   margin: 0;
   text-align: center;
   font-family: 'Merriweather', sans-serif;
   background-color:#F2F4F3;
-	/*height:100%; Stops the sticky from working*/
 	scroll-behavior: smooth;
 }
 
@@ -36,14 +37,12 @@ p {
 }
 
 td {
-  /*border: 1px solid #dddddd;*/
   padding: 8px;
 	line-height: 1.1em;
   text-align: center;
 }
 
 th{
-  /*border: 1px solid #dddddd;*/
   padding: 8px;
 	line-height: 1.1em;
   text-align: center;
@@ -85,11 +84,12 @@ tr:nth-child(even) {
   max-height: -webkit-fill-available;
 }
 
-.anchor{
+.news-anchor{
   padding-top: 50px;
   visibility: hidden;
 }
 
+/*synopsis booking items*/
 .booking{
 	margin:30px;
 }
@@ -120,35 +120,12 @@ tr:nth-child(even) {
   display: table;
 }
 
-
-.bottom-cloud{
-  position: absolute;
-  left: 25%;
-  bottom: 55%;
-}
-
-.coding-img{
-  width:25%;
-  float:left;
-  margin-right: 30px;
-}
-
+/*footer*/
 .contact-details{
   color:#F2F4F3;
 }
 
-.copyright{
-  margin-top:40px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  font-family: serif;
-}
-
-.credit{
-  font-size: 0.8rem;
-  text-decoration: none;
-}
-
+/*movie descriptions*/
 .description{
   color:#E6B31E;
   font-size: 1em;
@@ -157,28 +134,8 @@ tr:nth-child(even) {
   line-height: 2.3;
 }
 
-.design-img{
-  width:25%;
-  float:right;
-  margin-left: 30px;
-}
-
-.final-text{
-  margin-bottom: 50px;
-  font-size:1rem;
-}
-
-.grid{
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, 600px);
-  grid-template-rows: repeat(2, 350px);
-  grid-gap: 10px;
-  justify-content: center;
-  align-items: stretch;
-  align-content: center;
-  grid-auto-flow: row;
-  padding: 30px 30px 30px 30px;
-	margin-bottom: 0px; */
+/*movies display*/
+.flexbox{
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -188,26 +145,18 @@ tr:nth-child(even) {
 	height: calc( 100% - 48px);
 }
 
+/*contact details*/
 .icon{
   height:30px;
   display:inline;
 }
 
-.info{
-  max-width: auto;
-  color: #E6B31E;
-  font-family: 'Montserrat', sans-serif;
-  margin: auto;
-  text-align: center;
-  width: 65%;
-  margin-bottom: 60px;
-  line-height: 2;
-}
-
+/*about us nav*/
 .link{
 	color: #E6B31E;
 }
 
+/*individual movie display*/
 .movie{
   border-style:solid;
   border-color:#343434;
@@ -231,7 +180,7 @@ tr:nth-child(even) {
 
 }
 
-/* Button created with https://www.bestcssbuttongenerator.com/ */
+/* myButton class codes created with https://www.bestcssbuttongenerator.com/ */
 .myButton {
 	-moz-box-shadow: 0px 1px 0px 0px #fff6af;
 	-webkit-box-shadow: 0px 1px 0px 0px #fff6af;
@@ -284,7 +233,7 @@ tr:nth-child(even) {
 	position: -webkit-sticky;
 	top: 0;
   width: 100%;
-  z-index: 99999;
+  z-index: 99999; /*ensures navbar is in front always*/
 	text-align: center;
 	font-weight: bolder;
 }
@@ -302,7 +251,6 @@ tr:nth-child(even) {
 }
 
 .news{
-  /* Image from https://www.dolby.com/us/en/platforms/dolby-cinema.html */
 	background-image: url("images/news.png");
 	background-size:cover;
   height:94vh;
@@ -334,6 +282,7 @@ tr:nth-child(even) {
 	background-size:cover;
 }
 
+/*individual movie posters*/
 .poster{
   width:200px;
   length:400px;
@@ -399,19 +348,17 @@ tr:nth-child(even) {
 }
 
 .section-5 {
-background-color: black;
-color:#eaf6f6;
-font-family: 'Montserrat', sans-serif;
-margin:0;
-padding-top: 35px;
-padding-bottom: 35px;
+  background-color: black;
+  color:#eaf6f6;
+  font-family: 'Montserrat', sans-serif;
+  margin:0;
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 
+/*Lunardo title*/
 .title{
 	text-align: center;
-  /*background: url(https://cdn.pixabay.com/photo/2013/02/26/05/36/metz-86226_1280.jpg);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
   padding-top:30vh;
   width: 100vw;
   background-size: cover;
@@ -420,6 +367,7 @@ padding-bottom: 35px;
   font-size: 7vw;
 }
 
+/*establishment date*/
 .slogan{
   color:#F2F4F3;
   font-weight:normal;
@@ -428,6 +376,7 @@ padding-bottom: 35px;
   font-family: 'Montserrat', sans-serif;
 }
 
+/*footer details*/
 .student-info{
   font-size: .8vw;
 }
@@ -461,6 +410,7 @@ padding-bottom: 35px;
 	margin: 0px 30px 30px 30px;
 }
 
+/*price table*/
 .table{
 	border-width: 5px;
 	font-family: 'Montserrat', sans-serif;
@@ -469,20 +419,3 @@ padding-bottom: 35px;
 	margin-left:auto;
   margin-right:auto;
 }
-
-.top-cloud{
-  position: absolute;
-  right: 25%;
-  top:10%;
-}
-
-/* .footer-link{
-  color:#11999E;
-  font-weight: bold;
-  margin:30px;
-  text-decoration: none;
-}
-
-.footer-link:hover{
-  color:#EAF6F6;
-  } */
