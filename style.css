@@ -77,21 +77,23 @@ tr:nth-child(even) {
 	width: 42%;
 	padding: 135px 60px;
 	float: right;
-	height: 56.6vh;
+	height: 100%;
+
 	background-color: rgba(0,0,0,0.6);
 	font-size: 1rem;
 	line-height: 27px;
   max-height: -webkit-fill-available;
 }
 
-.news-anchor{
+.anchor{
   padding-top: 50px;
   visibility: hidden;
 }
 
 /*synopsis booking items*/
 .booking{
-	margin:30px;
+	margin:0px 30px 30px 30px;
+  max-width: 90%;
 }
 
 .booking button{
@@ -106,8 +108,9 @@ tr:nth-child(even) {
 	font-family: 'Montserrat', sans-serif;
   font-size:1vw;
 	color: #343434;
-	border-radius: 10px;
+	border-radius: 4px;
 	margin: 1px;
+  width: 22%;
 }
 
 .booking button:hover{
@@ -139,6 +142,7 @@ tr:nth-child(even) {
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 50px;
 }
 
 .header{
@@ -163,21 +167,28 @@ tr:nth-child(even) {
   background-color: black;
   border-width:1px;
   opacity:0.8;
-  border-radius: 25px;
-  max-height:350px;
+  border-radius: 2px;
+  max-height:400px;
   max-width:600px;
-  resize: both;
   width: 600px;
+  resize: both;
   margin:5px;
 }
 
 .movie-title{
   color: #E6B31E;
+  font-size: 1.6em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:bolder;
+  position: left;
+}
+
+.movie-information{
+  color: #E6B31E;
   font-size: 1.25em;
   font-family: 'Montserrat', sans-serif;
   font-weight:bolder;
   position: left;
-
 }
 
 /* myButton class codes created with https://www.bestcssbuttongenerator.com/ */
@@ -267,7 +278,7 @@ tr:nth-child(even) {
   width: 40%;
   padding: 135px 60px;
   float: left;
-  height: 56.6vh;
+  height: 100%;
   background-color: rgba(0,0,0,0.6);
   font-size: 1vw;
   line-height: 27px;
@@ -306,7 +317,7 @@ tr:nth-child(even) {
   width: 42%;
   padding: 135px 60px;
   float: right;
-  height: 62.6vh;
+  height: 100%;
   background-color: rgba(0,0,0,0.6);
 	font-size: 1rem;
 	line-height: 27px;
@@ -397,7 +408,7 @@ tr:nth-child(even) {
 	border-color:#343434;
   background-color: rgba(0,0,0,0.8);
   border-width:1px;
-  border-radius: 25px;
+  border-radius: 2px;
 }
 
 .synopsis-display p{
@@ -407,7 +418,7 @@ tr:nth-child(even) {
 
 .synopsis-display iframe{
 	float: right;
-	margin: 0px 30px 30px 30px;
+	margin: 0px 30px 0px 30px;
 }
 
 /*price table*/
