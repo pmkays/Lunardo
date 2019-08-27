@@ -93,7 +93,7 @@ tr:nth-child(even) {
 /*synopsis booking items*/
 .booking{
 	margin:0px 30px 30px 30px;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .booking button{
@@ -101,7 +101,7 @@ tr:nth-child(even) {
 	background-color: #E6B31E;
  	border:1px solid #a17d12;
 	border-width:1px;
- 	padding:10px 20px 10px 20px;
+ 	padding:10px 10px 10px 20px;
  	cursor:pointer;
 	float:left;
 	font-weight:bold;
@@ -109,8 +109,8 @@ tr:nth-child(even) {
   font-size:1vw;
 	color: #343434;
 	border-radius: 4px;
-	margin: 1px;
-  width: 22%;
+	margin: 2px;
+  width: 20%;
 }
 
 .booking button:hover{
@@ -403,7 +403,7 @@ tr:nth-child(even) {
 .synopsis-display{
 	max-width:1000px;
 	max-height:1000px;
-  padding: 10px;
+  padding: 40px;
   margin: auto;
 	border-color:#343434;
   background-color: rgba(0,0,0,0.8);
@@ -414,6 +414,7 @@ tr:nth-child(even) {
 .synopsis-display p{
 	font-family: 'Montserrat', sans-serif;
 	color:#F2F4F3;
+  padding-left: 30px;
 }
 
 .synopsis-display iframe{
