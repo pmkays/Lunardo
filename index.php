@@ -13,8 +13,8 @@
     <script src='../wireframe.js'></script>
   </head>
 
-  <body>
-    <header class = "header">
+  <body id = "body">
+    <header class = "header" id = "head">
       <section class="section-1">
         <h1 class = "title">Lunardo Theatre</h1>
         <p class="slogan">
@@ -25,12 +25,12 @@
     <nav class = "navbar">
       <section class="section-2">
         <div class="navbar";>
-          <a class="link" href="#about">About Us</a>
-          <a class="link" href="#news">News</a>
-          <a class="link" href="#prices">Prices</a>
-          <a class="link" href="#showing">Now Showing</a>
-          <a class="link" href="#synopsis">Synopsis</a>
-          <a class="link" href="#contact">Contact Us</a>
+          <a class="link" href="#about" id = "about-btn">About Us</a>
+          <a class="link" href="#news" id = "news-btn">News</a>
+          <a class="link" href="#prices" id = "prices-btn">Prices</a>
+          <a class="link" href="#showing" id = "showing-btn">Now Showing</a>
+          <a class="link" href="#synopsis" id = "synopsis-btn">Synopsis</a>
+          <a class="link" href="#contact" id = "contact-btn">Contact Us</a>
         </div>
       </section>
     </nav>
@@ -38,7 +38,7 @@
     <main>
       <section class="section-3">
         <div class = "about-us">
-          <a class = "anchor" name="about">.</a>
+          <a class = "anchor" name="about" id = "about">.</a>
           <div class="about-us-box">
             <h2 class = "section-title">About Us</h2>
             <div class = "about-info">After serving Seymour for many years, we, Lunardo Cinema,
@@ -56,7 +56,7 @@
         </div>
         <hr>
         <div class = "news">
-          <a class = "anchor" name="news">.</a>
+          <a class = "anchor" name="news" id= "news">.</a>
           <div class="news-box">
             <h2 class = "section-title">News</h2>
             <div class = "about-info">
@@ -82,43 +82,36 @@
               <table class = "table">
                 <thead>
                   <th>Seat Type</th>
-                  <th>Seat Code</th>
-                  <th>All day Monday and Wednesday <br>AND 12pm on Weekdays</th>
+                  <th>Discount Times</th>
                   <th>All other times</th>
                 </thead>
                 <tr>
                   <td>Standard Adult</td>
-                  <td>STA</td>
                   <td>$14.00</td>
                   <td>$19.80</td>
                 </tr>
                 <tr>
                   <td>Standard Concession</td>
-                  <td>STP</td>
                   <td>$12.50</td>
                   <td>$17.50</td>
                 </tr>
                 <tr>
                   <td>Standard Child</td>
-                  <td>STC</td>
                   <td>$11.00</td>
                   <td>$15.30</td>
                 </tr>
                 <tr>
                   <td>First Class Adult</td>
-                  <td>FCA</td>
                   <td>$24.00</td>
                   <td>$30.80</td>
                 </tr>
                 <tr>
                   <td>First Class Concession</td>
-                  <td>FCP</td>
                   <td>$22.50</td>
                   <td>$27.00</td>
                 </tr>
                 <tr>
                   <td>Firt Class Child</td>
-                  <td>FCC</td>
                   <td>$21.00</td>
                   <td>$24.80</td>
                 </tr>
@@ -130,7 +123,7 @@
         <div class="now-showing" id = showing>
           <h2 class="section-title">Now Showing</h2>
           <div class ="flexbox">
-            <div class="movie 1">
+            <div class="movie 1" id = "movePanelACT">
               <img class="poster" src="https://images-na.ssl-images-amazon.com/images/I/71niXI3lxlL._SY606_.jpg" alt="the avengers:endgame poster"/>
               <h3 class="movie-title">The Avengers: Endgame <br> M</h3>
               <p class="description">
@@ -142,7 +135,7 @@
               </p>
             </div>
 
-            <div class="movie 2">
+            <div class="movie 2" id = "movePanelRMC">
               <img class="poster" src="https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/3e/1057b1941fd7267062a7a6608bd63629_500x735.jpg?t=1556774279" alt="Top End Wedding poster"/>
               <h3 class="movie-title">Top End Wedding <br> M</h3>
               <p class="description">
@@ -153,7 +146,7 @@
               </p>
             </div>
 
-            <div class="movie 3">
+            <div class="movie 3" id = "movePanelANM">
               <img class="poster" src ="https://images-na.ssl-images-amazon.com/images/I/71jOztWX9YL._SL1259_.jpg" alt="Dumbo poster"/>
               <h3 class="movie-title">Dumbo <br> PG</h2>
               <p class="description">
@@ -167,7 +160,7 @@
               </p>
             </div>
 
-            <div class="movie 4">
+            <div class="movie 4" id = "movePanelAHF">
               <img class="poster" src="https://m.media-amazon.com/images/M/MV5BODVjZThlMzMtZjQwNy00YjRlLWE5ZTMtMWVlMWUwM2U1NjRkXkEyXkFqcGdeQXVyODcyODY1Mzg@._V1_.jpg" alt="The Happy Prince poster" />
               <h3 class="movie-title">The Happy Prince <br> MA15+</h3>
               <p class="description">
@@ -184,8 +177,68 @@
       <hr>
       <section class="synopsis" id = synopsis>
         <h2 class = "section-title">Synopsis</h2>
-        <div class="synopsis-display">
+        <div class="synopsis-display" id = "synopsisACT">
           <h3 class="movie-title">The Avengers: Endgame &emsp; &emsp; M</h3>
+          <iframe width="30%" height="20%" src="https://www.youtube.com/embed/TcMBFSGVi1c"
+          frameborder="0" allowfullscreen></iframe>
+          <h3 class="movie-information"><br>Plot Description</h3>
+            <p>
+              The grave course of events set in motion by Thanos that wiped out half
+              the universe and fractured the Avengers ranks compels the remaining Avengers
+              to take one final stand in Marvel Studios’ grand conclusion to twenty-two films,
+              Avengers: Endgame.
+            </p>
+          <h3 class="movie-information"><br>Make a Booking</h3>
+          <div class="booking">
+            <button>Wednesday - 21:00</button>
+            <button>Thursday - 21:00</button>
+            <button>Friday - 21:00</button>
+            <button>Saturday - 18:00</button>
+            <button>Sunday - 18:00</button>
+          </div>
+        </div>
+        <div class="synopsis-display" id = "synopsisRMC">
+          <h3 class="movie-title">Top End Wedding &emsp; &emsp; M</h3>
+          <iframe width="30%" height="20%" src="https://www.youtube.com/embed/TcMBFSGVi1c"
+          frameborder="0" allowfullscreen></iframe>
+          <h3 class="movie-information"><br>Plot Description</h3>
+            <p>
+              The grave course of events set in motion by Thanos that wiped out half
+              the universe and fractured the Avengers ranks compels the remaining Avengers
+              to take one final stand in Marvel Studios’ grand conclusion to twenty-two films,
+              Avengers: Endgame.
+            </p>
+          <h3 class="movie-information"><br>Make a Booking</h3>
+          <div class="booking">
+            <button>Wednesday - 21:00</button>
+            <button>Thursday - 21:00</button>
+            <button>Friday - 21:00</button>
+            <button>Saturday - 18:00</button>
+            <button>Sunday - 18:00</button>
+          </div>
+        </div>
+        <div class="synopsis-display" id = "synopsisANM">
+          <h3 class="movie-title">Dumbo &emsp; &emsp; M</h3>
+          <iframe width="30%" height="20%" src="https://www.youtube.com/embed/TcMBFSGVi1c"
+          frameborder="0" allowfullscreen></iframe>
+          <h3 class="movie-information"><br>Plot Description</h3>
+            <p>
+              The grave course of events set in motion by Thanos that wiped out half
+              the universe and fractured the Avengers ranks compels the remaining Avengers
+              to take one final stand in Marvel Studios’ grand conclusion to twenty-two films,
+              Avengers: Endgame.
+            </p>
+          <h3 class="movie-information"><br>Make a Booking</h3>
+          <div class="booking">
+            <button>Wednesday - 21:00</button>
+            <button>Thursday - 21:00</button>
+            <button>Friday - 21:00</button>
+            <button>Saturday - 18:00</button>
+            <button>Sunday - 18:00</button>
+          </div>
+        </div>
+        <div class="synopsis-display" id = "synopsisAHF">
+          <h3 class="movie-title">The Happy Prince &emsp; &emsp; M</h3>
           <iframe width="30%" height="20%" src="https://www.youtube.com/embed/TcMBFSGVi1c"
           frameborder="0" allowfullscreen></iframe>
           <h3 class="movie-information"><br>Plot Description</h3>
@@ -235,6 +288,8 @@
           <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
         </p>
       </section>
+      <script src="tools.js"></script>
+      <script src="movieFunctions.js"></script>
     </footer>
   </body>
 </html>

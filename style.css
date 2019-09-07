@@ -53,6 +53,21 @@ tr:nth-child(even) {
   background-color: #303030;
 }
 
+#synopsisACT{
+}
+
+#synopsisRMC{
+  display: none;
+}
+
+#synopsisANM{
+  display: none;
+}
+
+#synopsisAHF{
+  display: none;
+}
+
 .about-info{
   color: #f2f2f2;
   font-size: 1vw;
