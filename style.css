@@ -49,8 +49,23 @@ th{
   color:#E6B31E;
 }
 
-tr:nth-child(even) {
+.table tr:nth-child(even) {
   background-color: #303030;
+}
+
+#synopsisACT{
+}
+
+#synopsisRMC{
+  display: none;
+}
+
+#synopsisANM{
+  display: none;
+}
+
+#synopsisAHF{
+  display: none;
 }
 
 .about-info{
@@ -145,6 +160,23 @@ tr:nth-child(even) {
   padding-bottom: 50px;
 }
 
+.field{
+  border: 1px black solid;
+  height: 30vh;
+}
+
+.first-class-box{
+  display:inline-block;
+  background-color: none;
+}
+
+.form{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
 .header{
 	height: calc( 100% - 48px);
 }
@@ -153,6 +185,11 @@ tr:nth-child(even) {
 .icon{
   height:30px;
   display:inline;
+}
+
+.legend{
+  border: 1px black solid;
+  margin-left: 1em; padding: 0.2em 0.8em;
 }
 
 /*about us nav*/
@@ -293,6 +330,11 @@ tr:nth-child(even) {
 	background-size:cover;
 }
 
+.personal{
+  width:50vh;
+  height: 65vh;
+}
+
 /*individual movie posters*/
 .poster{
   width:200px;
@@ -336,6 +378,10 @@ tr:nth-child(even) {
   margin-top: 75px;
 }
 
+.seats{
+  width:40vh;
+}
+
 .section-title{
     margin-top: 0px;
     padding-top: 70px;
@@ -365,6 +411,10 @@ tr:nth-child(even) {
   margin:0;
   padding-top: 35px;
   padding-bottom: 35px;
+}
+
+.standard-box{
+  display:inline-block;
 }
 
 /*Lunardo title*/
