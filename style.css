@@ -108,7 +108,7 @@ th{
 /*synopsis booking items*/
 .booking{
 	margin:0px 30px 30px 30px;
-  max-width: 100%;
+  width: 100%;
 }
 
 .booking button{
@@ -451,7 +451,7 @@ th{
 	background-size: cover;
 }
 .synopsis-display{
-	max-width:1000px;
+  max-width:1000px;
 	max-height:1000px;
   padding: 40px;
   margin: auto;
