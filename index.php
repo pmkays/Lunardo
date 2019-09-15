@@ -190,11 +190,11 @@
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
           <div class="booking">
-            <button>Wednesday - 21:00</button>
-            <button>Thursday - 21:00</button>
-            <button>Friday - 21:00</button>
-            <button>Saturday - 18:00</button>
-            <button>Sunday - 18:00</button>
+            <button id = 'WedT21' onclick = 'checkDiscount(this.id)'>Wednesday - 21:00</button>
+            <button id = 'ThuT21' onclick = 'checkDiscount(this.id)'>Thursday - 21:00</button>
+            <button id = 'FriT21' onclick = 'checkDiscount(this.id)'>Friday - 21:00</button>
+            <button id = 'SatT18' onclick = 'checkDiscount(this.id)'>Saturday - 18:00</button>
+            <button id = 'SunT18' onclick = 'checkDiscount(this.id)'>Sunday - 18:00</button>
           </div>
         </div>
         <div class="synopsis-display" id = "synopsisRMC">
@@ -209,10 +209,10 @@
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
           <div class="booking">
-            <button>Monday - 18:00</button>
-            <button>Tuesday - 18:00</button>
-            <button>Saturday - 15:00</button>
-            <button>Sunday - 15:00</button>
+            <button id = 'MonT18' onclick = 'checkDiscount(this.id)'>Monday - 18:00</button>
+            <button id = 'TueT18' onclick = 'checkDiscount(this.id)'>Tuesday - 18:00</button>
+            <button id = 'SatT15' onclick = 'checkDiscount(this.id)'>Saturday - 15:00</button>
+            <button id = 'SunT15' onclick = 'checkDiscount(this.id)'>Sunday - 15:00</button>
           </div>
         </div>
         <div class="synopsis-display" id = "synopsisANM">
@@ -229,13 +229,13 @@
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
           <div class="booking">
-            <button>Monday - 12:00</button>
-            <button>Tuesday - 12:00</button>
-            <button>Wednesday - 18:00</button>
-            <button>Thursday - 18:00</button>
-            <button>Friday - 18:00</button>
-            <button>Saturday - 12:00</button>
-            <button>Sunday - 12:00</button>
+            <button id = 'MonT12' onclick = 'checkDiscount(this.id)' = >Monday - 12:00</button>
+            <button id = 'TueT12' onclick = 'checkDiscount(this.id)'>Tuesday - 12:00</button>
+            <button id = 'WedT18' onclick = 'checkDiscount(this.id)'>Wednesday - 18:00</button>
+            <button id = 'ThuT18' onclick = 'checkDiscount(this.id)'>Thursday - 18:00</button>
+            <button id = 'FriT18' onclick = 'checkDiscount(this.id)'>Friday - 18:00</button>
+            <button id = 'SatT12' onclick = 'checkDiscount(this.id)'>Saturday - 12:00</button>
+            <button id = 'SunT12' onclick = 'checkDiscount(this.id)'>Sunday - 12:00</button>
           </div>
         </div>
         <div class="synopsis-display" id = "synopsisAHF">
@@ -250,17 +250,17 @@
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
           <div class="booking">
-            <button>Wednesday - 12:00</button>
-            <button>Thursday - 12:00</button>
-            <button>Friday - 12:00</button>
-            <button>Saturday - 21:00</button>
-            <button>Sunday - 21:00</button>
+            <button id ='WedT12' onclick = 'checkDiscount(this.id)'>Wednesday - 12:00</button>
+            <button id = 'ThuT12' onclick = 'checkDiscount(this.id)'>Thursday - 12:00</button>
+            <button id = 'FriT12' onclick = 'checkDiscount(this.id)'>Friday - 12:00</button>
+            <button id = 'SatT21' onclick = 'checkDiscount(this.id)'>Saturday - 21:00</button>
+            <button id = 'SunT21' onclick = 'checkDiscount(this.id)'>Sunday - 21:00</button>
           </div>
         </div>
       </section>
       <hr>
       <div class = form>
-        <form method="post" target="_blank" action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate();">
+        <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate();">
           <table>
           <tr>
           <td>
@@ -271,7 +271,7 @@
               <legend class = "legends">Standard</legend>
 
             <p>Adult:<br />
-              <select name='seats[STA]'>
+              <select name='seats[STA]' id ='adult-seats' onchange = 'calculateStandardPrice(this.id)'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -287,7 +287,7 @@
             </p>
 
             <p>Concession:<br />
-              <select name='seats[STP]'>
+              <select name='seats[STP]' id='concession-seats' onchange = 'calculateStandardPrice(this.id)'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -303,7 +303,7 @@
             </p>
 
             <p>Children:<br />
-              <select name='seats[STC]'>
+              <select name='seats[STC]' id = 'child-seats' onchange = 'calculateStandardPrice(this.id)'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -326,23 +326,27 @@
             <fieldset class = "personal field">
 
               <legend class = "legends">Personal Info</legend>
-            <p>Name:<br>
-              <input type="text" id="cust-name" name="cust[name]">
-              <span class="error" id="nameError"></span></p>
+              <p>Name:<br>
+              <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' required><br>
+              <span class="error" id="name-error"></span></p>
               <p>Email:<br>
-                <input type="email" id="cust-email" name="cust[email]">
-                <span class="error" id="emailError"></span></p>
+                <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' required </p><br>
               <p>Mobile:<br>
-                <input type="tel" id="cust-mobile" name="cust[mobile]">
-                <span class="error" id="nameError"></span></p>
+                <input type="tel" id="cust-mobile" name="cust[mobile]" oninput = 'checkMobile(this)' placeholder = 'Australian number' required><br>
+                <span class="error" id="mobile-error"></span></p>
               <p>Credit Card:<br>
-                <input type="text" id="cust-card" name="cust[card]">
-                <span class="error" id="nameError"></span></p>
+                <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard' required><br>
+                <span class="error" id="card-error"></span></p>
               <p>Expiry:<br>
-                <input type="month" id="cust-expiry" name="cust[expiry]">
-                <span class="error" id="nameError"></span></p>
+                <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' required><br>
+                <span class="error" id="expiry-error"></span></p>
+            <p><input type="submit" value="Submit" onclick = 'formValidate()'></p>
 
-            <p><input type="submit" value="Submit"></p>
+            <p>
+                <br><br>Total: <br>
+                <input value="$0.00" readonly="readonly" type="text" id="total"/>
+            </p>
+
             </fieldset>
           </div>
         </td>
@@ -350,13 +354,13 @@
         <tr>
           <td>
 
-          <div class = 'first-class-box'>
+          <div class = 'first-class-box' id = 'first-class-selection'>
             <fieldset class = "seats field">
 
               <legend class = "legends">First Class</legend>
 
             <p>Adult:<br />
-              <select name='seats[FCA]'>
+              <select name='seats[FCA]' id = 'adult-seats' onchange = 'calculateFirstClassPrice(this.id)'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -372,7 +376,7 @@
             </p>
 
             <p>Concession:<br />
-              <select name='seats[FCP]'>
+              <select name='seats[FCP]' id = 'concession-seats' onchange = 'calculateFirstClassPrice(this.id)'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -388,7 +392,7 @@
             </p>
 
             <p>Children:<br />
-              <select name='seats[FCC]'>
+              <select name='seats[FCC]' id = 'child-seats' onchange = 'calculateFirstClassPrice(this.id)'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>

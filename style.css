@@ -152,6 +152,11 @@ th{
   line-height: 2.3;
 }
 
+.error{
+  color: red;
+  font-size: 0.7em;
+}
+
 /*movies display*/
 .flexbox{
   display:flex;
@@ -333,6 +338,12 @@ th{
 .personal{
   width:50vh;
   height: 65vh;
+}
+
+.personal input:focus:invalid{
+  border-width: 3px;
+  background-color:#fee;
+  border-color: red;
 }
 
 /*individual movie posters*/
