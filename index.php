@@ -189,12 +189,21 @@
               Avengers: Endgame.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
+<<<<<<< HEAD
           <div class="booking">
             <button id = 'WedT21' onclick = 'checkDiscount(this.id)'>Wednesday - 21:00</button>
             <button id = 'ThuT21' onclick = 'checkDiscount(this.id)'>Thursday - 21:00</button>
             <button id = 'FriT21' onclick = 'checkDiscount(this.id)'>Friday - 21:00</button>
             <button id = 'SatT18' onclick = 'checkDiscount(this.id)'>Saturday - 18:00</button>
             <button id = 'SunT18' onclick = 'checkDiscount(this.id)'>Sunday - 18:00</button>
+=======
+          <div class="booking flexbox">
+            <button>Wednesday - 21:00</button>
+            <button>Thursday - 21:00</button>
+            <button>Friday - 21:00</button>
+            <button>Saturday - 18:00</button>
+            <button>Sunday - 18:00</button>
+>>>>>>> 25d185bc9ca33610dd8706953221bd7bfd5fabb5
           </div>
         </div>
         <div class="synopsis-display" id = "synopsisRMC">
@@ -208,11 +217,19 @@
               her parents and pull off their dream wedding.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
+<<<<<<< HEAD
           <div class="booking">
             <button id = 'MonT18' onclick = 'checkDiscount(this.id)'>Monday - 18:00</button>
             <button id = 'TueT18' onclick = 'checkDiscount(this.id)'>Tuesday - 18:00</button>
             <button id = 'SatT15' onclick = 'checkDiscount(this.id)'>Saturday - 15:00</button>
             <button id = 'SunT15' onclick = 'checkDiscount(this.id)'>Sunday - 15:00</button>
+=======
+          <div class="booking flexbox">
+            <button>Monday - 18:00</button>
+            <button>Tuesday - 18:00</button>
+            <button>Saturday - 15:00</button>
+            <button>Sunday - 15:00</button>
+>>>>>>> 25d185bc9ca33610dd8706953221bd7bfd5fabb5
           </div>
         </div>
         <div class="synopsis-display" id = "synopsisANM">
@@ -228,6 +245,7 @@
               revitalizing the run-down circus.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
+<<<<<<< HEAD
           <div class="booking">
             <button id = 'MonT12' onclick = 'checkDiscount(this.id)' = >Monday - 12:00</button>
             <button id = 'TueT12' onclick = 'checkDiscount(this.id)'>Tuesday - 12:00</button>
@@ -236,6 +254,16 @@
             <button id = 'FriT18' onclick = 'checkDiscount(this.id)'>Friday - 18:00</button>
             <button id = 'SatT12' onclick = 'checkDiscount(this.id)'>Saturday - 12:00</button>
             <button id = 'SunT12' onclick = 'checkDiscount(this.id)'>Sunday - 12:00</button>
+=======
+          <div class="booking flexbox">
+            <button>Monday - 12:00</button>
+            <button>Tuesday - 12:00</button>
+            <button>Wednesday - 18:00</button>
+            <button>Thursday - 18:00</button>
+            <button>Friday - 18:00</button>
+            <button>Saturday - 12:00</button>
+            <button>Sunday - 12:00</button>
+>>>>>>> 25d185bc9ca33610dd8706953221bd7bfd5fabb5
           </div>
         </div>
         <div class="synopsis-display" id = "synopsisAHF">
@@ -249,12 +277,21 @@
               ironic detachment, humour, and the wit that defined his life.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
+<<<<<<< HEAD
           <div class="booking">
             <button id ='WedT12' onclick = 'checkDiscount(this.id)'>Wednesday - 12:00</button>
             <button id = 'ThuT12' onclick = 'checkDiscount(this.id)'>Thursday - 12:00</button>
             <button id = 'FriT12' onclick = 'checkDiscount(this.id)'>Friday - 12:00</button>
             <button id = 'SatT21' onclick = 'checkDiscount(this.id)'>Saturday - 21:00</button>
             <button id = 'SunT21' onclick = 'checkDiscount(this.id)'>Sunday - 21:00</button>
+=======
+          <div class="booking flexbox">
+            <button>Wednesday - 12:00</button>
+            <button>Thursday - 12:00</button>
+            <button>Friday - 12:00</button>
+            <button>Saturday - 21:00</button>
+            <button>Sunday - 21:00</button>
+>>>>>>> 25d185bc9ca33610dd8706953221bd7bfd5fabb5
           </div>
         </div>
       </section>
