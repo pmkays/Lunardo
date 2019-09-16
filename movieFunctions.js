@@ -211,6 +211,7 @@ function calculateEachTicket()
 
 function formValidate()
 {
+
   if(nameChecked && mobileChecked && cardChecked && expiryChecked)
   {
     return true;
