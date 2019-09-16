@@ -233,7 +233,7 @@
           <h3 class="movie-information"><br>Make a Booking</h3>
 
           <div class="booking flexbox">
-            <button id = 'MonT12' onclick = 'checkDiscount(this.id)' = >Monday - 12:00</button>
+            <button id = 'MonT12' onclick = 'checkDiscount(this.id)'>Monday - 12:00</button>
             <button id = 'TueT12' onclick = 'checkDiscount(this.id)'>Tuesday - 12:00</button>
             <button id = 'WedT18' onclick = 'checkDiscount(this.id)'>Wednesday - 18:00</button>
             <button id = 'ThuT18' onclick = 'checkDiscount(this.id)'>Thursday - 18:00</button>
@@ -267,7 +267,7 @@
       </section>
       <hr>
       <div class = form>
-        <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate();">
+        <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate()">
           <table>
           <tr>
           <td>
@@ -278,7 +278,7 @@
               <legend class = "legends">Standard</legend>
 
             <p>Adult:<br />
-              <select name='seats[STA]' id ='adult-seats' onchange = 'calculateStandardPrice(this.id)'>
+              <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -294,7 +294,7 @@
             </p>
 
             <p>Concession:<br />
-              <select name='seats[STP]' id='concession-seats' onchange = 'calculateStandardPrice(this.id)'>
+              <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -310,7 +310,7 @@
             </p>
 
             <p>Children:<br />
-              <select name='seats[STC]' id = 'child-seats' onchange = 'calculateStandardPrice(this.id)'>
+              <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -347,7 +347,7 @@
               <p>Expiry:<br>
                 <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' required><br>
                 <span class="error" id="expiry-error"></span></p>
-            <p><input type="submit" value="Submit" onclick = 'formValidate()'></p>
+            <p><input type="submit" id = "submit-button" value="Submit"></p>
 
             <p>
                 <br><br>Total: <br>
@@ -367,7 +367,7 @@
               <legend class = "legends">First Class</legend>
 
             <p>Adult:<br />
-              <select name='seats[FCA]' id = 'adult-seats' onchange = 'calculateFirstClassPrice(this.id)'>
+              <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -383,7 +383,7 @@
             </p>
 
             <p>Concession:<br />
-              <select name='seats[FCP]' id = 'concession-seats' onchange = 'calculateFirstClassPrice(this.id)'>
+              <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -399,7 +399,7 @@
             </p>
 
             <p>Children:<br />
-              <select name='seats[FCC]' id = 'child-seats' onchange = 'calculateFirstClassPrice(this.id)'>
+              <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()'>
                 <option value='' selected>Please Select</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>

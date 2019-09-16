@@ -103,6 +103,10 @@ var adult;
 var concession;
 var child;
 
+var fcAdult;
+var fcConcession;
+var fcChild;
+
 //global variable to be used when calculating ticket prices
 var discounted;
 
@@ -123,7 +127,7 @@ function checkDiscount(id)
   alert(discounted.toString());
 }
 
-function calculateStandardPrice(id)
+function calculatePrice()
 {
   if(discounted)
   {
@@ -131,6 +135,11 @@ function calculateStandardPrice(id)
     adult = 14.00;
     concession = 12.50;
     child = 11.00;
+
+    //price of first class discounted tickets as determined by assignment specs
+    fcAdult = 24.00;
+    fcConcession = 22.50;
+    fcChild = 21.00;
   }
   else
   {
@@ -138,73 +147,66 @@ function calculateStandardPrice(id)
     adult = 19.80;
     concession = 17.50;
     child = 15.30;
-  }
-  calculateEachTicket(id);
-}
 
-function calculateFirstClassPrice(id)
-{
-  if(discounted)
-  {
-    //price of first class discounted tickets as determined by assignment specs
-    adult = 24.00;
-    concession = 22.50;
-    child = 21.00;
-  }
-  else
-  {
     //price of first class non-discounted tickets as determined by assignment specs
-    adult = 30.80;
-    concession = 27.00;
-    child = 24.80;
+    fcAdult = 30.80;
+    fcConcession = 27.00;
+    fcChild = 24.80;
   }
-  calculateEachTicket(id);
+  calculateEachTicket();
 }
 
 var total = 0;
-function calculateEachTicket(id)
+function calculateEachTicket()
 {
-  var element = getElement(id);
+  total = 0;
+  var adultElement = getElement("seats-sta");
+  var concessionElement = getElement("seats-stp");
+  var childElement = getElement("seats-stc");
+  var fcAdultElement = getElement("seats-fca");
+  var fcConcessionElement = getElement("seats-fcp");
+  var fcChildElement = getElement("seats-fcc");
 
   //updates the value of the element with its actual numerical value
-  element.value = element.options[element.selectedIndex].value;
+  adultElement.value = adultElement.options[adultElement.selectedIndex].value;
+  concessionElement.value = concessionElement.options[concessionElement.selectedIndex].value;
+  childElement.value = childElement.options[childElement.selectedIndex].value;
+  fcAdultElement.value = fcAdultElement.options[fcAdultElement.selectedIndex].value;
+  fcConcessionElement.value = fcConcessionElement.options[fcConcessionElement.selectedIndex].value;
+  fcChildElement.value = fcChildElement.options[fcChildElement.selectedIndex].value;
 
   //retrieves the actual value of each type of ticket
-  var temp = element.options[element.selectedIndex].value;
+  var temp;
 
   //ensures there are no changes to calculation and price is not NaN
-  if(temp === '')
-  {
-    temp = 0;
-  }
+  // if(temp === '')
+  // {
+  //   temp = 0;
+  // }
 
-  if(id.includes('adult-seats'))
-  {
-    total += temp * adult;
-    alert('calculation complete');
-    getElement("total").value = "$" + total.toFixed(2);
-    alert('total updated ' + adult);
-    total = 0;
-  }
+  temp = adultElement.options[adultElement.selectedIndex].value;
+  total += temp * adult;
+  getElement("total").value = "$" + total.toFixed(2);
 
-  if(id.includes('concession-seats'))
-  {
-    total += temp * concession;
-    alert('calculation complete');
-    getElement("total").value = "$" + total.toFixed(2);
-    alert('total updated ' + concession);
-    total = 0;
-  }
+  temp = concessionElement.options[concessionElement.selectedIndex].value;
+  total += temp * concession;
+  getElement("total").value = "$" + total.toFixed(2);
 
-  if(id.includes('child-seats'))
-  {
-    total += temp * child;
-    alert('calculation complete');
-    getElement("total").value = "$" + total.toFixed(2);
-    alert('total updated ' + child);
-    total = 0;
-  }
+  temp = childElement.options[childElement.selectedIndex].value;
+  total += temp * child;
+  getElement("total").value = "$" + total.toFixed(2);
 
+  temp = fcAdultElement.options[fcAdultElement.selectedIndex].value;
+  total += temp * fcAdult;
+  getElement("total").value = "$" + total.toFixed(2);
+
+  temp = fcConcessionElement.options[fcConcessionElement.selectedIndex].value;
+  total += temp * fcConcession;
+  getElement("total").value = "$" + total.toFixed(2);
+
+  temp = fcChildElement.options[childElement.selectedIndex].value;
+  total += temp * fcChild;
+  getElement("total").value = "$" + total.toFixed(2);
 
   // switch(id)
   // {
@@ -234,9 +236,20 @@ function calculateEachTicket(id)
 
 function formValidate()
 {
+  if(checkMobile)
+  {
+    alert("boo");
+    return true;
+  }
+  else
+  {
+    // getElementById("booking-form").addEventListener("click", function(event)
+    // {
+    //   event.preventDefault();
+    // });
+    return false;
+  }
 }
-
-//boolean value to keep track of ready to submit status
 
 function checkName(thisP)
 {
@@ -244,41 +257,52 @@ function checkName(thisP)
   if (!patt.test(thisP.value))
   {
     getElement('name-error').innerHTML='Please enter a Western name';
+    return false;
   }
   else
   {
     getElement('name-error').innerHTML='';
+    return true;
   }
 }
 
 function checkMobile(thisP)
 {
+  var mobileChecked;
   var patt = /^(\(04\)|04|\+614)([ ]?\d){8}$/;
   if (!patt.test(thisP.value))
   {
     getElement('mobile-error').innerHTML='Please enter a valid Australian mobile';
+    return false;
   }
   else
   {
     getElement('mobile-error').innerHTML='';
+    return true;
   }
 }
 
 function checkCard(thisP)
 {
+  var cardChecked;
   var patt = /^(([45]\d{3})|(35\d{2}))-? ?\d{4}-? ?\d{4}-? ?\d{4}/;
   if (!patt.test(thisP.value))
   {
     getElement('card-error').innerHTML='Please enter a Visa, Mastercard or American Express credit card';
+    cardChecked = false;
   }
   else
   {
     getElement('card-error').innerHTML='';
+    cardChecked = true;
   }
+  return cardChecked;
 }
 
 function checkExpiry(thisP)
 {
+  var expiryChecked;
+
   //convert today's year and month into integers
   var currentYear = parseInt(new Date().toISOString().slice(0, 4));
   var currentMonth = parseInt(new Date().toISOString().slice(5, 7));
@@ -291,9 +315,12 @@ function checkExpiry(thisP)
   if((formMonth > currentMonth && currentYear === formYear) || formYear > currentYear)
   {
     getElement('expiry-error').innerHTML='';
+    expiryChecked = true;
   }
   else
   {
     getElement('expiry-error').innerHTML='Please enter a date in the future';
+    expiryChecked = false;
   }
+  return expiryChecked;
 }
