@@ -166,8 +166,9 @@ th{
 }
 
 .field{
-  border: 1px black solid;
+  border: 1px white solid;
   height: 30vh;
+  color: white;
 }
 
 .first-class-box{
@@ -176,10 +177,14 @@ th{
 }
 
 .form{
-  display:flex;
-  flex-wrap: wrap;
+  display:block;
+  /* flex-wrap: wrap; */
   justify-content: center;
   padding-bottom: 50px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 40px;
+  max-width: 1000px;
+  max-height: 1000px;
 }
 
 .header{
@@ -193,7 +198,7 @@ th{
 }
 
 .legend{
-  border: 1px black solid;
+  border: 1px white solid;
   margin-left: 1em; padding: 0.2em 0.8em;
 }
 
@@ -454,7 +459,7 @@ th{
 }
 
 .synopsis{
-  height:100vh;
+  height:200vh;
   background-image: url("images/synop1.png");
   background-attachment: fixed;
 	background-position: center;

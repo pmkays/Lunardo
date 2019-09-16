@@ -264,165 +264,166 @@
 
           </div>
         </div>
+        <div class = synopsis-display>
+          <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate()">
+            <table>
+            <tr>
+            <td>
+
+            <div class = 'standard-box'>
+              <fieldset class = "seats field">
+
+                <legend class = "legends">Standard</legend>
+
+              <p>Adult:<br />
+                <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()'>
+                  <option value='' selected>Please Select</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='8'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+              </p>
+
+              <p>Concession:<br />
+                <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()'>
+                  <option value='' selected>Please Select</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='8'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+              </p>
+
+              <p>Children:<br />
+                <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()'>
+                  <option value='' selected>Please Select</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='8'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+              </p>
+              </fieldset>
+
+            </div>
+          </td>
+          <td rowspan="2">
+            <div class = 'personal-box'>
+              <fieldset class = "personal field">
+
+                <legend class = "legends">Personal Info</legend>
+                <p>Name:<br>
+                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' required><br>
+                <span class="error" id="name-error"></span></p>
+                <p>Email:<br>
+                  <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' required </p><br>
+                <p>Mobile:<br>
+                  <input type="tel" id="cust-mobile" name="cust[mobile]" oninput = 'checkMobile(this)' placeholder = 'Australian number' required><br>
+                  <span class="error" id="mobile-error"></span></p>
+                <p>Credit Card:<br>
+                  <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard' required><br>
+                  <span class="error" id="card-error"></span></p>
+                <p>Expiry:<br>
+                  <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' required><br>
+                  <span class="error" id="expiry-error"></span></p>
+              <p><input type="submit" id = "submit-button" value="Submit"></p>
+
+              <p>
+                  <br><br>Total: <br>
+                  <input value="$0.00" readonly="readonly" type="text" id="total"/>
+              </p>
+
+              </fieldset>
+            </div>
+          </td>
+          </tr>
+          <tr>
+            <td>
+
+            <div class = 'first-class-box' id = 'first-class-selection'>
+              <fieldset class = "seats field">
+
+                <legend class = "legends">First Class</legend>
+
+              <p>Adult:<br />
+                <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()'>
+                  <option value='' selected>Please Select</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='8'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+              </p>
+
+              <p>Concession:<br />
+                <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()'>
+                  <option value='' selected>Please Select</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='8'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+              </p>
+
+              <p>Children:<br />
+                <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()'>
+                  <option value='' selected>Please Select</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='8'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+              </p>
+              </fieldset>
+
+            </div>
+
+          </td>
+          </tr>
+
+          </table>
+          </form>
+        </div>
       </section>
       <hr>
-      <div class = form>
-        <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate()">
-          <table>
-          <tr>
-          <td>
 
-          <div class = 'standard-box'>
-            <fieldset class = "seats field">
-
-              <legend class = "legends">Standard</legend>
-
-            <p>Adult:<br />
-              <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()'>
-                <option value='' selected>Please Select</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-              </select>
-            </p>
-
-            <p>Concession:<br />
-              <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()'>
-                <option value='' selected>Please Select</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-              </select>
-            </p>
-
-            <p>Children:<br />
-              <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()'>
-                <option value='' selected>Please Select</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-              </select>
-            </p>
-            </fieldset>
-
-          </div>
-        </td>
-        <td rowspan="2">
-          <div class = 'personal-box'>
-            <fieldset class = "personal field">
-
-              <legend class = "legends">Personal Info</legend>
-              <p>Name:<br>
-              <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' required><br>
-              <span class="error" id="name-error"></span></p>
-              <p>Email:<br>
-                <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' required </p><br>
-              <p>Mobile:<br>
-                <input type="tel" id="cust-mobile" name="cust[mobile]" oninput = 'checkMobile(this)' placeholder = 'Australian number' required><br>
-                <span class="error" id="mobile-error"></span></p>
-              <p>Credit Card:<br>
-                <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard' required><br>
-                <span class="error" id="card-error"></span></p>
-              <p>Expiry:<br>
-                <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' required><br>
-                <span class="error" id="expiry-error"></span></p>
-            <p><input type="submit" id = "submit-button" value="Submit"></p>
-
-            <p>
-                <br><br>Total: <br>
-                <input value="$0.00" readonly="readonly" type="text" id="total"/>
-            </p>
-
-            </fieldset>
-          </div>
-        </td>
-        </tr>
-        <tr>
-          <td>
-
-          <div class = 'first-class-box' id = 'first-class-selection'>
-            <fieldset class = "seats field">
-
-              <legend class = "legends">First Class</legend>
-
-            <p>Adult:<br />
-              <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()'>
-                <option value='' selected>Please Select</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-              </select>
-            </p>
-
-            <p>Concession:<br />
-              <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()'>
-                <option value='' selected>Please Select</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-              </select>
-            </p>
-
-            <p>Children:<br />
-              <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()'>
-                <option value='' selected>Please Select</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-              </select>
-            </p>
-            </fieldset>
-
-          </div>
-
-        </td>
-        </tr>
-
-        </table>
-        </form>
-      </div>
     </main>
 
     <footer>
