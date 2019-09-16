@@ -264,7 +264,10 @@
 
           </div>
         </div>
-        <div class = "synopsis-display">
+
+        <div class = "form">
+          <h2 class = "booking-title">Booking for:</h2>
+          <h3 id = "selected-Movie">Booking for:</h3>
           <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate()">
             <table class = "form-table">
             <tr>

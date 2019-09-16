@@ -1,6 +1,7 @@
 
-var movies = ["movePanelACT","movePanelRMC","movePanelANM","movePanelAHF"];
+var movies = ["#movePanelACT","#movePanelRMC","#movePanelANM","#movePanelAHF"];
 var synopsis = ["synopsisACT","synopsisRMC","synopsisANM","synopsisAHF"];
+var movieSelect = { "act": false, "rmc": false, "anm": false, "ahf": false };
 
 getElement("movePanelACT").onclick = clickedACT;
 getElement("movePanelRMC").onclick = clickedRMC;
@@ -15,60 +16,77 @@ function getElement(id){
 // Choosing movie functions
 
 function clickedACT(){
-  if(movieClicked("movePanelACT")){
-    return true;
-  }
-  return false;
+  movieClicked("#movePanelACT");
+  selectSynopsis('movePanelACT');
+  movieSelect["act"] = true;
+  chosenMovie();
 }
 
 function clickedRMC(){
-  if(movieClicked("movePanelRMC")){
-    return true;
-  }
-  return false;
+    movieClicked("#movePanelRMC");
+    selectSynopsis('movePanelRMC');
+    movieSelect["rmc"] = true;
+    chosenMovie();
 }
 
 function clickedANM(){
-  if(movieClicked("movePanelANM")){
-    return true;
-  }
-  return false;
+  movieClicked("#movePanelANM");
+  selectSynopsis('movePanelANM');
+  movieSelect["anm"] = true;
+  chosenMovie();
 }
 
 function clickedAHF(){
-  if(movieClicked("movePanelAHF")){
-    return true;
-  }
-  return false;
+  movieClicked("#movePanelAHF");
+  selectSynopsis('movePanelAHF');
+  movieSelect["ahf"] = true;
+  chosenMovie();
 }
 
 function movieClicked(id){
   clearAllMovies();
-  if(getElement(id).style.borderStyle != 'solid'){
-  getElement(id).style.borderStyle = 'solid';
-  getElement(id).style.borderWidth = '5px';
-  getElement(id).style.borderColor = '#E6B31E';
-  selectSynopsis(id);
-  return true;
-}
-else{
-  getElement(id).style.borderStyle = '';
-  getElement(id).style.borderWidth = '';
-  getElement(id).style.borderColor = '';
-  return false;
-}
+  document.querySelector(id).classList.toggle("movie-select");
 }
 
 function clearAllMovies(){
   for(var i = 0 ; i<movies.length; i++){
     clearMovie(movies[i]);
   }
+  for(var movie in movieSelect){
+    movieSelect[movie] = false;
+  }
 }
 
 function clearMovie(id){
-  getElement(id).style.borderStyle = '';
-  getElement(id).style.borderWidth = '';
-  getElement(id).style.borderColor = '';
+  if(document.querySelector(id).classList != null){
+  document.querySelector(id).classList.remove("movie-select");
+  }
+}
+
+function chosenMovie(){
+  var movieName = '';
+  for(var movie in movieSelect){
+    if (movieSelect[movie] == true){
+      movieName = movie;
+    }
+  }
+
+  switch(movieName){
+    case "act":
+      document.querySelector("#selected-Movie").textContent = "Avengers";
+      break;
+    case "rmc":
+      document.querySelector("#selected-Movie").textContent = "Top End Wedding";
+      break;
+    case "anm":
+      document.querySelector("#selected-Movie").textContent = "Dumbo";
+      break;
+    case "ahf":
+      document.querySelector("#selected-Movie").textContent = "The Happy Prince";
+      break;
+
+  }
+
 }
 
 function selectSynopsis(id){
