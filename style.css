@@ -53,6 +53,10 @@ th{
   background-color: #303030;
 }
 
+#booking-form{
+  margin: 0 auto;
+}
+
 #synopsisACT{
 }
 
@@ -166,8 +170,9 @@ th{
 }
 
 .field{
-  border: 1px black solid;
+  border: 1px white solid;
   height: 30vh;
+  color: white;
 }
 
 .first-class-box{
@@ -176,10 +181,27 @@ th{
 }
 
 .form{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* flex-wrap: wrap; */
+  /* justify-content: center;
   padding-bottom: 50px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 40px;
+  max-width: 1000px;
+  max-height: 1000px;
+  max-width: 1000px; */
+    max-height: 1000px;
+    padding: 40px;
+    margin: auto;
+    border-color: #343434;
+    background-color: rgba(0,0,0,0.8);
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+.form-table{
+  margin: 0 auto;
 }
 
 .header{
@@ -193,7 +215,7 @@ th{
 }
 
 .legend{
-  border: 1px black solid;
+  border: 1px white solid;
   margin-left: 1em; padding: 0.2em 0.8em;
 }
 
@@ -454,7 +476,7 @@ th{
 }
 
 .synopsis{
-  height:100vh;
+  height:200vh;
   background-image: url("images/synop1.png");
   background-attachment: fixed;
 	background-position: center;
@@ -470,6 +492,7 @@ th{
   background-color: rgba(0,0,0,0.8);
   border-width:1px;
   border-radius: 2px;
+  width:100%;
 }
 
 .synopsis-display p{

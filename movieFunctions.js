@@ -207,84 +207,55 @@ function calculateEachTicket()
   temp = fcChildElement.options[childElement.selectedIndex].value;
   total += temp * fcChild;
   getElement("total").value = "$" + total.toFixed(2);
-
-  // switch(id)
-  // {
-  //   case 'adult-seats':
-  //   total += temp * adult;
-  //   alert('calculation complete');
-  //   getElement("total").value = "$" + total.toFixed(2);
-  //   alert('total updated ' + adult);
-  //   break;
-  //
-  //   case 'concession-seats':
-  //   total += temp * concession;
-  //   alert('calculation complete');
-  //   getElement("total").value = "$" + total.toFixed(2);
-  //   alert('total updated ' + concession);
-  //   break;
-  //
-  //   case 'child-seats':
-  //   total += temp * child;
-  //   alert('calculation complete');
-  //   getElement("total").value = "$" + total.toFixed(2);
-  //   alert('total updated ' + child);
-  //   break;
-  // }
-  //if previously used value is less than current dropdown value, +- rather than ++
 }
 
 function formValidate()
 {
-  if(checkMobile)
+  if(nameChecked && mobileChecked && cardChecked && expiryChecked)
   {
-    alert("boo");
     return true;
   }
   else
   {
-    // getElementById("booking-form").addEventListener("click", function(event)
-    // {
-    //   event.preventDefault();
-    // });
     return false;
   }
 }
 
+var nameChecked;
 function checkName(thisP)
 {
   var patt = /^[a-zA-Z' -.]{1,}$/;
   if (!patt.test(thisP.value))
   {
     getElement('name-error').innerHTML='Please enter a Western name';
-    return false;
+    nameChecked = false;
   }
   else
   {
     getElement('name-error').innerHTML='';
-    return true;
+    nameChecked = true;
   }
 }
 
+var mobileChecked;
 function checkMobile(thisP)
 {
-  var mobileChecked;
   var patt = /^(\(04\)|04|\+614)([ ]?\d){8}$/;
   if (!patt.test(thisP.value))
   {
     getElement('mobile-error').innerHTML='Please enter a valid Australian mobile';
-    return false;
+    mobileChecked = false;
   }
   else
   {
     getElement('mobile-error').innerHTML='';
-    return true;
+    mobileChecked = true;
   }
 }
 
+var cardChecked;
 function checkCard(thisP)
 {
-  var cardChecked;
   var patt = /^(([45]\d{3})|(35\d{2}))-? ?\d{4}-? ?\d{4}-? ?\d{4}/;
   if (!patt.test(thisP.value))
   {
@@ -296,13 +267,11 @@ function checkCard(thisP)
     getElement('card-error').innerHTML='';
     cardChecked = true;
   }
-  return cardChecked;
 }
 
+var expiryChecked;
 function checkExpiry(thisP)
 {
-  var expiryChecked;
-
   //convert today's year and month into integers
   var currentYear = parseInt(new Date().toISOString().slice(0, 4));
   var currentMonth = parseInt(new Date().toISOString().slice(5, 7));
@@ -322,5 +291,4 @@ function checkExpiry(thisP)
     getElement('expiry-error').innerHTML='Please enter a date in the future';
     expiryChecked = false;
   }
-  return expiryChecked;
 }
