@@ -71,22 +71,22 @@ function chosenMovie(){
     }
   }
 
+  var defaultTime = "No time selected";
+
   switch(movieName){
     case "act":
-      document.querySelector("#selected-Movie").textContent = "Avengers";
+      document.querySelector("#selected-Movie").textContent = "Avengers - " + defaultTime;
       break;
     case "rmc":
-      document.querySelector("#selected-Movie").textContent = "Top End Wedding";
+      document.querySelector("#selected-Movie").textContent = "Top End Wedding - " + defaultTime;
       break;
     case "anm":
-      document.querySelector("#selected-Movie").textContent = "Dumbo";
+      document.querySelector("#selected-Movie").textContent = "Dumbo - " + defaultTime;
       break;
     case "ahf":
-      document.querySelector("#selected-Movie").textContent = "The Happy Prince";
+      document.querySelector("#selected-Movie").textContent = "The Happy Prince - " + defaultTime;
       break;
-
   }
-
 }
 
 function selectSynopsis(id){
@@ -142,7 +142,29 @@ function checkDiscount(id)
       discounted = false;
     }
   }
-  alert(discounted.toString());
+  displayDetails(id);
+}
+
+function displayDetails(id)
+{
+  //gets the day and time as shown in button pressed
+  var time = getElement(id).innerHTML;
+  if(id.includes("ACT"))
+  {
+    getElement("selected-Movie").innerHTML = "The Avengers: EndGame - " + time;
+  }
+  else if(id.includes("RMC"))
+  {
+    getElement("selected-Movie").innerHTML = "Top End Wedding - " + time;
+  }
+  else if(id.includes("ANM"))
+  {
+    getElement("selected-Movie").innerHTML = "Dumbo - " + time;
+  }
+  else if(id.includes("AHF"))
+  {
+    getElement("selected-Movie").innerHTML = "The Happy Prince - " + time;
+  }
 }
 
 function calculatePrice()
@@ -174,7 +196,7 @@ function calculatePrice()
   calculateEachTicket();
 }
 
-var total = 0;
+var total;
 function calculateEachTicket()
 {
   total = 0;
@@ -185,51 +207,59 @@ function calculateEachTicket()
   var fcConcessionElement = getElement("seats-fcp");
   var fcChildElement = getElement("seats-fcc");
 
+  var adultIndexValue = adultElement.options[adultElement.selectedIndex].value;
+  var concessionIndexValue = concessionElement.options[concessionElement.selectedIndex].value;
+  var childIndexValue = childElement.options[childElement.selectedIndex].value;
+  var fcAdultIndexValue = fcAdultElement.options[fcAdultElement.selectedIndex].value;
+  var fcConcessionIndexValue = fcConcessionElement.options[fcConcessionElement.selectedIndex].value;
+  var fcChildIndexValue =fcChildElement.options[fcChildElement.selectedIndex].value;
+
   //updates the value of the element with its actual numerical value
-  adultElement.value = adultElement.options[adultElement.selectedIndex].value;
-  concessionElement.value = concessionElement.options[concessionElement.selectedIndex].value;
-  childElement.value = childElement.options[childElement.selectedIndex].value;
-  fcAdultElement.value = fcAdultElement.options[fcAdultElement.selectedIndex].value;
-  fcConcessionElement.value = fcConcessionElement.options[fcConcessionElement.selectedIndex].value;
-  fcChildElement.value = fcChildElement.options[fcChildElement.selectedIndex].value;
+  adultElement.value = adultIndexValue;
+  concessionElement.value = concessionIndexValue;
+  childElement.value = childIndexValue;
+  fcAdultElement.value = fcAdultIndexValue;
+  fcConcessionElement.value = fcConcessionIndexValue;
+  fcChildElement.value = fcChildIndexValue;
 
   //retrieves the actual value of each type of ticket
   var temp;
 
-  //ensures there are no changes to calculation and price is not NaN
-  // if(temp === '')
-  // {
-  //   temp = 0;
-  // }
-
-  temp = adultElement.options[adultElement.selectedIndex].value;
+  temp = adultIndexValue;
   total += temp * adult;
-  getElement("total").value = "$" + total.toFixed(2);
+  getElement("total").innerHTML = "$" + total.toFixed(2);
 
-  temp = concessionElement.options[concessionElement.selectedIndex].value;
+  temp = concessionIndexValue;
   total += temp * concession;
-  getElement("total").value = "$" + total.toFixed(2);
+  getElement("total").innerHTML = "$" + total.toFixed(2);
 
-  temp = childElement.options[childElement.selectedIndex].value;
+  temp = childIndexValue;
   total += temp * child;
-  getElement("total").value = "$" + total.toFixed(2);
+  getElement("total").innerHTML = "$" + total.toFixed(2);
 
-  temp = fcAdultElement.options[fcAdultElement.selectedIndex].value;
+  temp = fcAdultIndexValue;
   total += temp * fcAdult;
-  getElement("total").value = "$" + total.toFixed(2);
+  getElement("total").innerHTML = "$" + total.toFixed(2);
 
-  temp = fcConcessionElement.options[fcConcessionElement.selectedIndex].value;
+  temp = fcConcessionIndexValue;
   total += temp * fcConcession;
-  getElement("total").value = "$" + total.toFixed(2);
+  getElement("total").innerHTML = "$" + total.toFixed(2);
 
-  temp = fcChildElement.options[childElement.selectedIndex].value;
+  temp = fcChildIndexValue;
   total += temp * fcChild;
-  getElement("total").value = "$" + total.toFixed(2);
+  getElement("total").innerHTML = "$" + total.toFixed(2);
 }
 
 function formValidate()
 {
-  if(nameChecked && mobileChecked && cardChecked && expiryChecked)
+  //checks if at least one of any type of ticket is chosen
+  var atLeastOneTicket = getElement("total").innerHTML != "$0.00";
+
+  //checks that a movie is selected in the first place and if there is a time selected
+  var movieIsSelected = getElement("selected-Movie").innerHTML != "" &&
+  !(getElement("selected-Movie").innerHTML.includes("No time selected"));
+
+  if(nameChecked && mobileChecked && cardChecked && expiryChecked && atLeastOneTicket && movieIsSelected)
   {
     return true;
   }
@@ -242,6 +272,7 @@ function formValidate()
 var nameChecked;
 function checkName(thisP)
 {
+  //takes only western names (i.e. names with western characters)
   var patt = /^[a-zA-Z' -.]{1,}$/;
   if (!patt.test(thisP.value))
   {
@@ -258,6 +289,7 @@ function checkName(thisP)
 var mobileChecked;
 function checkMobile(thisP)
 {
+  //takes only australian numbers, spaces are okay
   var patt = /^(\(04\)|04|\+614)([ ]?\d){8}$/;
   if (!patt.test(thisP.value))
   {
@@ -274,6 +306,8 @@ function checkMobile(thisP)
 var cardChecked;
 function checkCard(thisP)
 {
+  /*checks if card starts with either 4 or 5 (mastercard or visa) or 35 (amex) before
+  making sure there are 16 numbers total*/
   var patt = /^(([45]\d{3})|(35\d{2}))-? ?\d{4}-? ?\d{4}-? ?\d{4}/;
   if (!patt.test(thisP.value))
   {
