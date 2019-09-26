@@ -65,9 +65,12 @@ function clearMovie(id){
 
 function chosenMovie(){
   var movieName = '';
+  var movieIdField = getElement("movie-ID");
   for(var movie in movieSelect){
     if (movieSelect[movie] == true){
       movieName = movie;
+      movieIdField.value = movie;
+
     }
   }
 
@@ -149,6 +152,7 @@ function displayDetails(id)
 {
   //gets the day and time as shown in button pressed
   var time = getElement(id).innerHTML;
+  setBookingDayAndTime(time);
   if(id.includes("ACT"))
   {
     getElement("selected-Movie").innerHTML = "The Avengers: EndGame - " + time;
@@ -164,6 +168,53 @@ function displayDetails(id)
   else if(id.includes("AHF"))
   {
     getElement("selected-Movie").innerHTML = "The Happy Prince - " + time;
+  }
+}
+
+function setBookingDayAndTime(time){
+  var timeString = time;
+
+  var timeSplit = time.split(" - ");
+  switch(timeSplit[0].toLowerCase()){
+    case "monday":
+      getElement("movie-day").value = "MON";
+      break;
+    case "tuesday":
+      getElement("movie-day").value = "TUE";
+      break;
+    case "wednesday":
+      getElement("movie-day").value = "WED";
+      break;
+    case "thursday":
+      getElement("movie-day").value = "THU";
+      break;
+    case "friday":
+      getElement("movie-day").value = "FRI";
+      break;
+    case "saturday":
+      getElement("movie-day").value = "SAT";
+      break;
+    case "sunday":
+      getElement("movie-day").value = "SUN";
+      break;
+  }
+
+  switch(timeSplit[1]){
+    case "12:00":
+      getElement("movie-hour").value = "T12";
+      break;
+    case "15:00":
+      getElement("movie-hour").value = "T15";
+      break;
+    case "15:00":
+      getElement("movie-hour").value = "T15";
+      break;
+    case "18:00":
+      getElement("movie-hour").value = "T15";
+      break;
+    case "21:00":
+      getElement("movie-hour").value = "T21";
+      break;
   }
 }
 

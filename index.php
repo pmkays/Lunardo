@@ -348,13 +348,18 @@
                 <p>Expiry:<br>
                   <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' required><br>
                   <span class="error" id="expiry-error"></span></p>
-              <p><input type="submit" id = "submit-button" value="Submit"></p>
-
-              <p>
-                  <br><br>Total: <br> <br />
+                <p>
+                  <input type="hidden" id="movie-ID" name="movie[id]" value="">
+                  <input type="hidden" id="movie-day" name="movie[day]" value="">
+                  <input type="hidden" id="movie-hour" name="movie[hour]" value="">
+                </p>
+                <p>
+                  <br>Total: <br>
                   <!-- <input value="$0.00" readonly="readonly" type="text" id="total"/> -->
                   <span id = total>$0.00</span>
-              </p>
+                </p>
+
+                <p><br><br><input type="submit" id = "submit-button" value="Order"></p>
 
               </fieldset>
             </div>
