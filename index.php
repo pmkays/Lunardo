@@ -334,18 +334,18 @@
               <fieldset class = "personal field">
 
                 <legend class = "legends">Personal Info</legend>
-                <p>Name:<br>
+                <p><label for="cust-name">Name:</label><br>
                 <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' required><br>
                 <span class="error" id="name-error"></span></p>
-                <p>Email:<br>
+                <p><label for="cust-email">Email:</label><br>
                   <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' required </p><br>
-                <p>Mobile:<br>
+                <p><label for="cust-mobile">Mobile:</label><br>
                   <input type="tel" id="cust-mobile" name="cust[mobile]" oninput = 'checkMobile(this)' placeholder = 'Australian number' required><br>
                   <span class="error" id="mobile-error"></span></p>
-                <p>Credit Card:<br>
+                <p><label for="cust-card">Credit Card:</label><br>
                   <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard' required><br>
                   <span class="error" id="card-error"></span></p>
-                <p>Expiry:<br>
+                <p><label for="cust-expiry">Expiry Date:</label><br>
                   <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' required><br>
                   <span class="error" id="expiry-error"></span></p>
                 <p>
@@ -359,7 +359,7 @@
                   <span id = total>$0.00</span>
                 </p>
 
-                <p><br><br><input type="submit" id = "submit-button" value="Order"></p>
+                <p><br><br><input type="submit" class = "submitButton" id = "submit-button" value="Order"></p>
 
               </fieldset>
             </div>
