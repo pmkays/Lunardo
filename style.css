@@ -20,7 +20,7 @@ h2{
   font-family: 'Montserrat', sans-serif;
 }
 
-h3{
+h3, h4{
   color:#343434;
   font-size: 1.17rem;
   font-family: 'Montserrat', sans-serif;
@@ -53,8 +53,16 @@ th{
   background-color: #303030;
 }
 
+#book-error{
+  color: red;
+}
+
 #booking-form{
   margin: 0 auto;
+}
+
+#selected-Movie{
+  color: white;
 }
 
 #synopsisACT{
@@ -70,6 +78,12 @@ th{
 
 #synopsisAHF{
   display: none;
+}
+
+#ticket-error{
+  color:red;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .about-info{
@@ -115,24 +129,24 @@ th{
   width: 100%;
 }
 
-.booking button{
-	display:inline-block;
-	background-color: #E6B31E;
- 	border:1px solid #a17d12;
-	border-width:1px;
- 	padding:10px 10px 10px 20px;
- 	cursor:pointer;
-	font-weight:bold;
-	font-family: 'Montserrat', sans-serif;
+.booking-btn{
+  display:inline-block;
+  background-color: #E6B31E;
+  border:1px solid #a17d12;
+  border-width:1px;
+  padding:10px 10px 10px 20px;
+  cursor:pointer;
+  font-weight:bold;
+  font-family: 'Montserrat', sans-serif;
   font-size:15px;
-	color: #343434;
-	border-radius: 4px;
-	margin: 2px;
+  color: #343434;
+  border-radius: 4px;
+  margin: 2px;
   width: 200px;
   min-width: 100px;
 }
 
-.booking button:hover{
+.booking-btn:hover{
 	background-color: #a17d12;
 }
 
@@ -358,6 +372,10 @@ th{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size:cover;
+}
+
+.now-showing-description{
+  color:white;
 }
 
 .personal{

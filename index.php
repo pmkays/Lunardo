@@ -122,6 +122,7 @@
         <hr>
         <div class="now-showing" id = showing>
           <h2 class="section-title">Now Showing</h2>
+          <h4 class = "now-showing-description">Choose a movie to book.</h4>
           <div class ="flexbox">
             <div class="movie 1" id = "movePanelACT">
               <img class="poster" src="https://images-na.ssl-images-amazon.com/images/I/71niXI3lxlL._SY606_.jpg" alt="the avengers:endgame poster"/>
@@ -175,7 +176,7 @@
         </div>
       </section>
       <hr>
-      <section class="synopsis" id = synopsis>
+      <section class="synopsis" id = "synopsis">
         <h2 class = "section-title">Synopsis</h2>
         <div class="synopsis-display" id = "synopsisACT">
           <h3 class="movie-title">The Avengers: Endgame &emsp; &emsp; M</h3>
@@ -189,12 +190,13 @@
               Avengers: Endgame.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
+          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
-            <button id = 'WedT21ACT' onclick = 'checkDiscount(this.id)'>Wednesday - 21:00</button>
-            <button id = 'ThuT21ACT' onclick = 'checkDiscount(this.id)'>Thursday - 21:00</button>
-            <button id = 'FriT21ACT' onclick = 'checkDiscount(this.id)'>Friday - 21:00</button>
-            <button id = 'SatT18ACT' onclick = 'checkDiscount(this.id)'>Saturday - 18:00</button>
-            <button id = 'SunT18ACT' onclick = 'checkDiscount(this.id)'>Sunday - 18:00</button>
+            <button class = "booking-btn"  id = 'WedT21ACT' onclick = 'checkDiscount(this.id)'>Wednesday - 21:00</button>
+            <button class = "booking-btn"  id = 'ThuT21ACT' onclick = 'checkDiscount(this.id)'>Thursday - 21:00</button>
+            <button class = "booking-btn"  id = 'FriT21ACT' onclick = 'checkDiscount(this.id)'>Friday - 21:00</button>
+            <button class = "booking-btn"  id = 'SatT18ACT' onclick = 'checkDiscount(this.id)'>Saturday - 18:00</button>
+            <button class = "booking-btn"  id = 'SunT18ACT' onclick = 'checkDiscount(this.id)'>Sunday - 18:00</button>
 
           </div>
         </div>
@@ -209,12 +211,12 @@
               her parents and pull off their dream wedding.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
-
+          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
-            <button id = 'MonT18RMC' onclick = 'checkDiscount(this.id)'>Monday - 18:00</button>
-            <button id = 'TueT18RMC' onclick = 'checkDiscount(this.id)'>Tuesday - 18:00</button>
-            <button id = 'SatT15RMC' onclick = 'checkDiscount(this.id)'>Saturday - 15:00</button>
-            <button id = 'SunT15RMC' onclick = 'checkDiscount(this.id)'>Sunday - 15:00</button>
+            <button class = "booking-btn"  id = 'MonT18RMC' onclick = 'checkDiscount(this.id)'>Monday - 18:00</button>
+            <button class = "booking-btn"  id = 'TueT18RMC' onclick = 'checkDiscount(this.id)'>Tuesday - 18:00</button>
+            <button class = "booking-btn"  id = 'SatT15RMC' onclick = 'checkDiscount(this.id)'>Saturday - 15:00</button>
+            <button class = "booking-btn"  id = 'SunT15RMC' onclick = 'checkDiscount(this.id)'>Sunday - 15:00</button>
 
           </div>
         </div>
@@ -231,15 +233,15 @@
               revitalizing the run-down circus.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
-
+          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
-            <button id = 'MonT12ANM' onclick = 'checkDiscount(this.id)'>Monday - 12:00</button>
-            <button id = 'TueT12ANM' onclick = 'checkDiscount(this.id)'>Tuesday - 12:00</button>
-            <button id = 'WedT18ANM' onclick = 'checkDiscount(this.id)'>Wednesday - 18:00</button>
-            <button id = 'ThuT18ANM' onclick = 'checkDiscount(this.id)'>Thursday - 18:00</button>
-            <button id = 'FriT18ANM' onclick = 'checkDiscount(this.id)'>Friday - 18:00</button>
-            <button id = 'SatT12ANM' onclick = 'checkDiscount(this.id)'>Saturday - 12:00</button>
-            <button id = 'SunT12ANM' onclick = 'checkDiscount(this.id)'>Sunday - 12:00</button>
+            <button class = "booking-btn"  id = 'MonT12ANM' onclick = 'checkDiscount(this.id)'>Monday - 12:00</button>
+            <button class = "booking-btn"  id = 'TueT12ANM' onclick = 'checkDiscount(this.id)'>Tuesday - 12:00</button>
+            <button class = "booking-btn"  id = 'WedT18ANM' onclick = 'checkDiscount(this.id)'>Wednesday - 18:00</button>
+            <button class = "booking-btn"  id = 'ThuT18ANM' onclick = 'checkDiscount(this.id)'>Thursday - 18:00</button>
+            <button class = "booking-btn"  id = 'FriT18ANM' onclick = 'checkDiscount(this.id)'>Friday - 18:00</button>
+            <button class = "booking-btn"  id = 'SatT12ANM' onclick = 'checkDiscount(this.id)'>Saturday - 12:00</button>
+            <button class = "booking-btn"  id = 'SunT12ANM' onclick = 'checkDiscount(this.id)'>Sunday - 12:00</button>
 
           </div>
         </div>
@@ -254,19 +256,19 @@
               ironic detachment, humour, and the wit that defined his life.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
-
+          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
-            <button id ='WedT12AHF' onclick = 'checkDiscount(this.id)'>Wednesday - 12:00</button>
-            <button id = 'ThuT12AHF' onclick = 'checkDiscount(this.id)'>Thursday - 12:00</button>
-            <button id = 'FriT12AHF' onclick = 'checkDiscount(this.id)'>Friday - 12:00</button>
-            <button id = 'SatT21AHF' onclick = 'checkDiscount(this.id)'>Saturday - 21:00</button>
-            <button id = 'SunT21AHF' onclick = 'checkDiscount(this.id)'>Sunday - 21:00</button>
+            <button class = "booking-btn" id ='WedT12AHF' onclick = 'checkDiscount(this.id)'>Wednesday - 12:00</button>
+            <button class = "booking-btn"  id = 'ThuT12AHF' onclick = 'checkDiscount(this.id)'>Thursday - 12:00</button>
+            <button class = "booking-btn"  id = 'FriT12AHF' onclick = 'checkDiscount(this.id)'>Friday - 12:00</button>
+            <button class = "booking-btn"  id = 'SatT21AHF' onclick = 'checkDiscount(this.id)'>Saturday - 21:00</button>
+            <button class = "booking-btn"  id = 'SunT21AHF' onclick = 'checkDiscount(this.id)'>Sunday - 21:00</button>
           </div>
         </div>
 
         <div class = "form">
           <h2 class = "booking-title">Booking for:</h2>
-          <h3 id = "selected-Movie" class = "movie-title"></h3>
+          <h3 id = "selected-Movie" class = "movie-title">The Avengers: End Game - No time selected</h3>
 
           <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate()">
             <table class = "form-table">
@@ -358,8 +360,8 @@
                   <!-- <input value="$0.00" readonly="readonly" type="text" id="total"/> -->
                   <span id = total>$0.00</span>
                 </p>
-
-                <p><br><br><input type="submit" class = "submitButton" id = "submit-button" value="Order"></p>
+                <h4 id = "ticket-error"><br></h4>
+                <p><br><input type="submit" class = "submitButton" id = "submit-button" value="Order"></p>
 
               </fieldset>
             </div>

@@ -1,13 +1,15 @@
 
 var movies = ["#movePanelACT","#movePanelRMC","#movePanelANM","#movePanelAHF"];
 var synopsis = ["synopsisACT","synopsisRMC","synopsisANM","synopsisAHF"];
-var movieSelect = { "act": false, "rmc": false, "anm": false, "ahf": false };
+var movieSelect = { "act": true, "rmc": false, "anm": false, "ahf": false };
 
 getElement("movePanelACT").onclick = clickedACT;
 getElement("movePanelRMC").onclick = clickedRMC;
 getElement("movePanelANM").onclick = clickedANM;
 getElement("movePanelAHF").onclick = clickedAHF;
 
+document.querySelector("#movePanelACT").classList.add("movie-select");
+getElement("movie-ID").value = "ACT";
 
 function getElement(id){
   return document.getElementById(id);
@@ -69,7 +71,7 @@ function chosenMovie(){
   for(var movie in movieSelect){
     if (movieSelect[movie] == true){
       movieName = movie;
-      movieIdField.value = movie;
+      movieIdField.value = movie.toUpperCase();
 
     }
   }
@@ -133,6 +135,10 @@ var discounted;
 
 function checkDiscount(id)
 {
+
+  if(getElement("book-error").innerHTML != ""){
+    getElement("book-error").innerHTML = "";
+  }
   for(var i = 0; i < discount.length; i++)
   {
     if(id.includes(discount[i]))
@@ -155,7 +161,7 @@ function displayDetails(id)
   setBookingDayAndTime(time);
   if(id.includes("ACT"))
   {
-    getElement("selected-Movie").innerHTML = "The Avengers: EndGame - " + time;
+    getElement("selected-Movie").innerHTML = "The Avengers: End Game - " + time;
   }
   else if(id.includes("RMC"))
   {
@@ -244,6 +250,8 @@ function calculatePrice()
     fcConcession = 27.00;
     fcChild = 24.80;
   }
+
+  getElement("ticket-error").innerHTML = "<br>";
   calculateEachTicket();
 }
 
@@ -303,20 +311,32 @@ function calculateEachTicket()
 
 function formValidate()
 {
-  //checks if at least one of any type of ticket is chosen
-  var atLeastOneTicket = getElement("total").innerHTML != "$0.00";
 
-  //checks that a movie is selected in the first place and if there is a time selected
-  var movieIsSelected = getElement("selected-Movie").innerHTML != "" &&
-  !(getElement("selected-Movie").innerHTML.includes("No time selected"));
+  if(nameChecked && mobileChecked && cardChecked && expiryChecked && atLeastOneTicket() && movieIsSelected())  {
+    return true;  }
+  else  {
+    return false;
+  }
+}
 
-  if(nameChecked && mobileChecked && cardChecked && expiryChecked && atLeastOneTicket && movieIsSelected)
-  {
+function atLeastOneTicket(){
+  if(getElement("total").innerHTML != "$0.00"){
     return true;
   }
-  else
-  {
+  else{
+    getElement("ticket-error").innerHTML = "No tickets have been chosen.";
     return false;
+  }
+}
+
+
+function movieIsSelected(){
+  if(getElement("movie-ID").value != "" &&
+  getElement("movie-day").value != ""){
+    return true;
+  }else{
+    getElement("synopsis").scrollIntoView();
+    getElement("book-error").innerHTML = "Please choose a time";
   }
 }
 
@@ -365,8 +385,7 @@ function checkCard(thisP)
     getElement('card-error').innerHTML='Please enter a Visa, Mastercard or American Express credit card';
     cardChecked = false;
   }
-  else
-  {
+  else  {
     getElement('card-error').innerHTML='';
     cardChecked = true;
   }
