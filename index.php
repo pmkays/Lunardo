@@ -190,7 +190,6 @@
               Avengers: Endgame.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
-          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
             <button class = "booking-btn"  id = 'WedT21ACT' onclick = 'checkDiscount(this.id)'>Wednesday - 21:00</button>
             <button class = "booking-btn"  id = 'ThuT21ACT' onclick = 'checkDiscount(this.id)'>Thursday - 21:00</button>
@@ -211,7 +210,6 @@
               her parents and pull off their dream wedding.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
-          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
             <button class = "booking-btn"  id = 'MonT18RMC' onclick = 'checkDiscount(this.id)'>Monday - 18:00</button>
             <button class = "booking-btn"  id = 'TueT18RMC' onclick = 'checkDiscount(this.id)'>Tuesday - 18:00</button>
@@ -233,7 +231,6 @@
               revitalizing the run-down circus.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
-          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
             <button class = "booking-btn"  id = 'MonT12ANM' onclick = 'checkDiscount(this.id)'>Monday - 12:00</button>
             <button class = "booking-btn"  id = 'TueT12ANM' onclick = 'checkDiscount(this.id)'>Tuesday - 12:00</button>
@@ -256,7 +253,6 @@
               ironic detachment, humour, and the wit that defined his life.
             </p>
           <h3 class="movie-information"><br>Make a Booking</h3>
-          <h3 id ="book-error"></h3>
           <div class="booking flexbox">
             <button class = "booking-btn" id ='WedT12AHF' onclick = 'checkDiscount(this.id)'>Wednesday - 12:00</button>
             <button class = "booking-btn"  id = 'ThuT12AHF' onclick = 'checkDiscount(this.id)'>Thursday - 12:00</button>
@@ -360,7 +356,8 @@
                   <!-- <input value="$0.00" readonly="readonly" type="text" id="total"/> -->
                   <span id = total>$0.00</span>
                 </p>
-                <h4 id = "ticket-error"><br></h4>
+                <h4 id ="book-error"></h3>
+                <h4 id = "ticket-error"></h4>
                 <p><br><input type="submit" class = "submitButton" id = "submit-button" value="Order"></p>
 
               </fieldset>

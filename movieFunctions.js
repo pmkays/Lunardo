@@ -47,7 +47,13 @@ function clickedAHF(){
 
 function movieClicked(id){
   clearAllMovies();
+  clearDayTime();
   document.querySelector(id).classList.toggle("movie-select");
+}
+
+function clearDayTime(){
+  getElement("movie-day").value = "";
+  getElement("movie-hour").value = "";
 }
 
 function clearAllMovies(){
@@ -251,7 +257,7 @@ function calculatePrice()
     fcChild = 24.80;
   }
 
-  getElement("ticket-error").innerHTML = "<br>";
+  getElement("ticket-error").innerHTML = "";
   calculateEachTicket();
 }
 
@@ -335,8 +341,7 @@ function movieIsSelected(){
   getElement("movie-day").value != ""){
     return true;
   }else{
-    getElement("synopsis").scrollIntoView();
-    getElement("book-error").innerHTML = "Please choose a time";
+    getElement("book-error").innerHTML = "Please choose a time above.";
   }
 }
 
