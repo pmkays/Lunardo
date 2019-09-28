@@ -1,17 +1,75 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lunardo Cinema</title>
-    <link rel="icon" href="favicon.ico">
+<?php
+session_start();
+require 'tools.php';
 
-    <!-- Keep wireframe.css for debugging, add your css to style.css -->
-    <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
-    <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" type="text/css" rel="stylesheet">
-    <script src='../wireframe.js'></script>
-  </head>
+$nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
+$custName = $custEmail = $custMobile = $custCard = $custExpiry = $movieID = $movieDay = $movieHour = "";
+
+$allOK = true;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//    verifyPostData($_POST);
+//}
+    if (empty($_POST['cust']['name'])) {
+        $nameErr = "Name is required";
+        $allOK = false;
+    } else {
+        $custName = testInput($_POST['cust']['name']);
+    }
+
+    if (empty($_POST['cust']['email'])) {
+        $emailErr = "Email is required";
+        $allOK = false;
+    } else {
+        $custEmail = testInput($_POST['cust']['email']);
+    }
+
+    if (empty($_POST['cust']['mobile'])) {
+        $mobileErr = "Mobile number is required";
+        $allOK = false;
+    } else {
+        $custMobile = testInput($_POST['cust']['mobile']);
+    }
+
+    if (empty($_POST['cust']['card'])) {
+        $creditCardErr = "Credit card is required";
+        $allOK = false;
+    } else {
+        $custCard = testInput($_POST['cust']['card']);
+    }
+
+    if (empty($_POST['cust']['expiry'])) {
+        $expiryErr = "Expiry is required";
+        $allOK = false;
+    } else {
+        $custExpiry = testInput($_POST['cust']['expiry']);
+    }
+    if (empty($_POST['movie']['id'])) {
+        $allOK = false;
+    } else {
+        $movieID = testInput($_POST['movie']['ID']);
+    }
+
+    if (empty($_POST['movie']['day'])) {
+        $allOK = false;
+    } else {
+        $movieDay = testInput($_POST['movie']['day']);
+    }
+
+    if (empty($_POST['movie']['hour'])) {
+        $allOK = false;
+    } else {
+        $movieHour = testInput($_POST['movie']['hour']);
+    }
+
+    if($allOK == true){
+        $_SESSION['cart'] = $_POST;
+        header("Location: receipt.php");
+    }
+}
+
+topModule();
+?>
 
   <body id = "body">
     <header class = "header" id = "head">
@@ -41,7 +99,7 @@
           <a class = "anchor" name="about" id = "about">.</a>
           <div class="about-us-box">
             <h2 class = "section-title">About Us</h2>
-            <div class = "about-info">After serving Seymour for many years, we, Lunardo Cinema,
+            <div class = "about-info"><?= preShow($_POST) ?>After serving Seymour for many years, we, Lunardo Cinema,
               are proud to present our newly refurbished and improved state-of-the-art
               cinema for all your entertainment needs. A few of our many changes include
               more luxurious standard seats and recliner seats for those who opt for
@@ -149,7 +207,7 @@
 
             <div class="movie 3" id = "movePanelANM">
               <img class="poster" src ="https://images-na.ssl-images-amazon.com/images/I/71jOztWX9YL._SL1259_.jpg" alt="Dumbo poster"/>
-              <h3 class="movie-title">Dumbo <br> PG</h2>
+              <h3 class="movie-title">Dumbo <br> PG</h3>
               <p class="description">
                 Monday - 12:00<br>
                 Tuesday - 12:00<br>
@@ -266,7 +324,7 @@
           <h2 class = "booking-title">Booking for:</h2>
           <h3 id = "selected-Movie" class = "movie-title">The Avengers: End Game - No time selected</h3>
 
-          <form method="post" target="_blank" id ='booking-form' action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" onsubmit="return formValidate()">
+          <form method="post" target = "_blank" id ='booking-form' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return formValidate()">
             <table class = "form-table">
             <tr>
             <td>
@@ -334,29 +392,30 @@
                 <legend class = "legends">Personal Info</legend>
                 <p><label for="cust-name">Name:</label><br>
                 <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' required><br>
-                <span class="error" id="name-error"></span></p>
+                <span class="error" id="name-error"><?php echo $nameErr;?></span></p>
                 <p><label for="cust-email">Email:</label><br>
-                  <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' required </p><br>
+                  <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' value = "<?= $custEmail ?>" required </p><br>
+                  <span class="error"> <?php echo $emailErr;?></span>
                 <p><label for="cust-mobile">Mobile:</label><br>
-                  <input type="tel" id="cust-mobile" name="cust[mobile]" oninput = 'checkMobile(this)' placeholder = 'Australian number' required><br>
-                  <span class="error" id="mobile-error"></span></p>
+                  <input type="tel" id="cust-mobile" name="cust[mobile]" oninput = 'checkMobile(this)' placeholder = 'Australian number' value = "<?= $custMobile ?>" required><br>
+                    <span class="error" id="mobile-error"><?php echo $mobileErr;?></span></p>
                 <p><label for="cust-card">Credit Card:</label><br>
-                  <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard' required><br>
-                  <span class="error" id="card-error"></span></p>
+                  <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard'  value = "<?= $custCard ?>" required><br>
+                    <span class="error" id="card-error"><?php echo $creditCardErr;?></span></p>
                 <p><label for="cust-expiry">Expiry Date:</label><br>
-                  <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' required><br>
-                  <span class="error" id="expiry-error"></span></p>
+                  <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' value = "<?= $custExpiry ?>" required><br>
+                    <span class="error" id="expiry-error"><?php echo $expiryErr;?></span></p>
                 <p>
-                  <input type="hidden" id="movie-ID" name="movie[id]" value="">
-                  <input type="hidden" id="movie-day" name="movie[day]" value="">
-                  <input type="hidden" id="movie-hour" name="movie[hour]" value="">
+                  <input type="hidden" id="movie-ID" name="movie[id]" value="<?php echo $movieID;?>">
+                  <input type="hidden" id="movie-day" name="movie[day]" value="<?php echo $movieDay;?>">
+                  <input type="hidden" id="movie-hour" name="movie[hour]" value="<?php echo $movieHour;?>">
                 </p>
                 <p>
                   <br>Total: <br>
                   <!-- <input value="$0.00" readonly="readonly" type="text" id="total"/> -->
                   <span id = total>$0.00</span>
                 </p>
-                <h4 id ="book-error"></h3>
+                <h4 id ="book-error"></h4>
                 <h4 id = "ticket-error"></h4>
                 <p><br><input type="submit" class = "submitButton" id = "submit-button" value="Order"></p>
 
