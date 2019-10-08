@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if(!preg_match($patt, $custName))
         {
           $nameErr = "Please enter a Western name";
+          $allOK = false;
         }
     }
 
@@ -49,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if(!filter_var($custEmail, FILTER_VALIDATE_EMAIL))
         {
           $emailErr = "Please enter a valid email";
+          $allOK = false;
         }
 
     }
@@ -65,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if(!(preg_match($patt, $custMobile) && filter_var($custMobile, FILTER_VALIDATE_INT)))
         {
           $mobileErr = "Please enter a valid mobile";
+          $allOK = false;
         }
     }
 
@@ -80,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if(!preg_match($patt, $custCard))
         {
           $creditCardErr = "Please enter a valid credit card number";
+          $allOK = false;
         }
     }
 
