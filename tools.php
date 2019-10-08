@@ -24,6 +24,13 @@ function php2js( $arr, $arrName ) {
     echo "</script>\n\n";
 }
 
+function advanceDate($interval)
+{
+  $date = new DateTime(date("Y-m"));
+  $oneMonth = new DateInterval($interval);
+  $date->add($oneMonth);
+  echo $date->format("Y-m");
+}
 //$nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
 //$custName = $custEmail = $custMobile = $custCard = $custExpiry = $movieID = $movieDay = $movieHour = "";
 
@@ -92,7 +99,8 @@ function php2js( $arr, $arrName ) {
 //
 //}
 
-function testInput($data){
+function testInput($data)
+{
    $data = trim($data);
    $data = stripslashes($data);
    $data = htmlspecialchars($data);

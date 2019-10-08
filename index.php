@@ -2,67 +2,125 @@
 session_start();
 require 'tools.php';
 
+
 $nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
 $custName = $custEmail = $custMobile = $custCard = $custExpiry = $movieID = $movieDay = $movieHour = "";
 
 $allOK = true;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST")
+{
+  $cust_name = $_POST['cust']['name'];
+  $cust_email = $_POST['cust']['name'];
+  $cust_mobile = $_POST['cust']['mobile'];
+  $cust_card = $_POST['cust']['card'];
+  $cust_expiry = $_POST['cust']['expiry'];
+  $movie_id = $_POST['movie']['id'];
+  $movie_day = $_POST['movie']['day'];
+  $movie_hour = $_POST['movie']['hour'];
+
 //    verifyPostData($_POST);
 //}
-    if (empty($_POST['cust']['name'])) {
+    if (empty($cust_name))
+    {
         $nameErr = "Name is required";
         $allOK = false;
-    } else {
-        $custName = testInput($_POST['cust']['name']);
+    }
+    else
+    {
+        $custName = testInput($cust_name);
+        $patt = "/^[a-zA-Z' -.]{1,}$/";
+        if(!preg_match($patt, $custName))
+        {
+          $nameErr = "Please enter a Western name";
+        }
     }
 
-    if (empty($_POST['cust']['email'])) {
+    //shouldn't need to check email bc type = email and required = true in html?
+    if (empty($cust_email))
+    {
+      //line will never pass because of html
         $emailErr = "Email is required";
         $allOK = false;
-    } else {
-        $custEmail = testInput($_POST['cust']['email']);
+    }
+    else
+    {
+        $custEmail = testInput($cust_email);
+        if(!filter_var($custEmail, FILTER_VALIDATE_EMAIL))
+        {
+          $emailErr = "Please enter a valid email";
+        }
+
     }
 
-    if (empty($_POST['cust']['mobile'])) {
+    if (empty($cust_mobile))
+    {
         $mobileErr = "Mobile number is required";
         $allOK = false;
-    } else {
-        $custMobile = testInput($_POST['cust']['mobile']);
+    }
+    else
+    {
+        $custMobile = testInput($cust_mobile);
+        $patt = "/^(\(04\)|04|\+614)([ ]?\d){8}$/";
+        if(!(preg_match($patt, $custMobile) && filter_var($custMobile, FILTER_VALIDATE_INT)))
+        {
+          $mobileErr = "Please enter a valid mobile";
+        }
     }
 
-    if (empty($_POST['cust']['card'])) {
+    if (empty($cust_card))
+    {
         $creditCardErr = "Credit card is required";
         $allOK = false;
-    } else {
-        $custCard = testInput($_POST['cust']['card']);
+    }
+    else
+    {
+        $custCard = testInput($cust_card);
+        $patt = "/^(([45]\d{3})|(35\d{2}))-? ?\d{4}-? ?\d{4}-? ?\d{4}$/";
+        if(!preg_match($patt, $custCard))
+        {
+          $creditCardErr = "Please enter a valid credit card number";
+        }
     }
 
-    if (empty($_POST['cust']['expiry'])) {
-        $expiryErr = "Expiry is required";
+    if (empty($cust_expiry))
+    {
+        $expiryErr = "Expiry date is required";
         $allOK = false;
-    } else {
-        $custExpiry = testInput($_POST['cust']['expiry']);
     }
-    if (empty($_POST['movie']['id'])) {
-        $allOK = false;
-    } else {
-        $movieID = testInput($_POST['movie']['ID']);
-    }
+    // else
+    // {
+    //     $custExpiry = testInput($cust_epiry);
+    // }
+    // if (empty($movie_id))
+    // {
+    //     $allOK = false;
+    // }
+    // else
+    // {
+    //     $movieID = testInput($movie_id);
+    // }
+    //
+    // if (empty($movie_day))
+    // {
+    //     $allOK = false;
+    // }
+    // else
+    // {
+    //     $movieDay = testInput($movie_day);
+    // }
+    //
+    // if (empty($movie_hour))
+    // {
+    //     $allOK = false;
+    // }
+    // else
+    // {
+    //     $movieHour = testInput($movie_hour);
+    // }
 
-    if (empty($_POST['movie']['day'])) {
-        $allOK = false;
-    } else {
-        $movieDay = testInput($_POST['movie']['day']);
-    }
-
-    if (empty($_POST['movie']['hour'])) {
-        $allOK = false;
-    } else {
-        $movieHour = testInput($_POST['movie']['hour']);
-    }
-
-    if($allOK == true){
+    if($allOK === true)
+    {
         $_SESSION['cart'] = $_POST;
         header("Location: receipt.php");
     }
@@ -403,7 +461,7 @@ topModule();
                   <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard'  value = "<?= $custCard ?>" required><br>
                     <span class="error" id="card-error"><?php echo $creditCardErr;?></span></p>
                 <p><label for="cust-expiry">Expiry Date:</label><br>
-                  <input type="month" id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' value = "<?= $custExpiry ?>" required><br>
+                  <input type="month" min = <?php advanceDate("P1M")?> max = <?php advanceDate("P10Y")?> id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' value = <?= $custExpiry ?> required><br>
                     <span class="error" id="expiry-error"><?php echo $expiryErr;?></span></p>
                 <p>
                   <input type="hidden" id="movie-ID" name="movie[id]" value="<?php echo $movieID;?>">
@@ -418,7 +476,6 @@ topModule();
                 <h4 id ="book-error"></h4>
                 <h4 id = "ticket-error"></h4>
                 <p><br><input type="submit" class = "submitButton" id = "submit-button" value="Order"></p>
-
               </fieldset>
             </div>
           </td>

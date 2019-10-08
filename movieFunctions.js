@@ -315,107 +315,107 @@ function calculateEachTicket()
   getElement("total").innerHTML = "$" + total.toFixed(2);
 }
 
-function formValidate()
-{
-
-  if(nameChecked && mobileChecked && cardChecked && expiryChecked && atLeastOneTicket() && movieIsSelected())  {
-    return true;  }
-  else  {
-    return false;
-  }
-}
-
-function atLeastOneTicket(){
-  if(getElement("total").innerHTML != "$0.00"){
-    return true;
-  }
-  else{
-    getElement("ticket-error").innerHTML = "No tickets have been chosen.";
-    return false;
-  }
-}
-
-
-function movieIsSelected(){
-  if(getElement("movie-ID").value != "" &&
-  getElement("movie-day").value != ""){
-    return true;
-  }else{
-    getElement("book-error").innerHTML = "Please choose a time above.";
-  }
-}
-
-var nameChecked;
-function checkName(thisP)
-{
-  //takes only western names (i.e. names with western characters)
-  var patt = /^[a-zA-Z' -.]{1,}$/;
-  if (!patt.test(thisP.value))
-  {
-    getElement('name-error').innerHTML='Please enter a Western name';
-    nameChecked = false;
-  }
-  else
-  {
-    getElement('name-error').innerHTML='';
-    nameChecked = true;
-  }
-}
-
-var mobileChecked;
-function checkMobile(thisP)
-{
-  //takes only australian numbers, spaces are okay
-  var patt = /^(\(04\)|04|\+614)([ ]?\d){8}$/;
-  if (!patt.test(thisP.value))
-  {
-    getElement('mobile-error').innerHTML='Please enter a valid Australian mobile';
-    mobileChecked = false;
-  }
-  else
-  {
-    getElement('mobile-error').innerHTML='';
-    mobileChecked = true;
-  }
-}
-
-var cardChecked;
-function checkCard(thisP)
-{
-  /*checks if card starts with either 4 or 5 (mastercard or visa) or 35 (amex) before
-  making sure there are 16 numbers total*/
-  var patt = /^(([45]\d{3})|(35\d{2}))-? ?\d{4}-? ?\d{4}-? ?\d{4}/;
-  if (!patt.test(thisP.value))
-  {
-    getElement('card-error').innerHTML='Please enter a Visa, Mastercard or American Express credit card';
-    cardChecked = false;
-  }
-  else  {
-    getElement('card-error').innerHTML='';
-    cardChecked = true;
-  }
-}
-
-var expiryChecked;
-function checkExpiry(thisP)
-{
-  //convert today's year and month into integers
-  var currentYear = parseInt(new Date().toISOString().slice(0, 4));
-  var currentMonth = parseInt(new Date().toISOString().slice(5, 7));
-
-  //convert form's year and month into integers
-  var formYear = parseInt(thisP.value.toString().slice(0,4));
-  var formMonth = parseInt(thisP.value.toString().slice(5,7));
-
-  //ensures date is in the future (i.e. month is later if in same year or year is greater)
-  if((formMonth > currentMonth && currentYear === formYear) || formYear > currentYear)
-  {
-    getElement('expiry-error').innerHTML='';
-    expiryChecked = true;
-  }
-  else
-  {
-    getElement('expiry-error').innerHTML='Please enter a date in the future';
-    expiryChecked = false;
-  }
-}
+// function formValidate()
+// {
+//
+//   if(nameChecked && mobileChecked && cardChecked && expiryChecked && atLeastOneTicket() && movieIsSelected())  {
+//     return true;  }
+//   else  {
+//     return false;
+//   }
+// }
+//
+// function atLeastOneTicket(){
+//   if(getElement("total").innerHTML != "$0.00"){
+//     return true;
+//   }
+//   else{
+//     getElement("ticket-error").innerHTML = "No tickets have been chosen.";
+//     return false;
+//   }
+// }
+//
+//
+// function movieIsSelected(){
+//   if(getElement("movie-ID").value != "" &&
+//   getElement("movie-day").value != ""){
+//     return true;
+//   }else{
+//     getElement("book-error").innerHTML = "Please choose a time above.";
+//   }
+// }
+//
+// var nameChecked;
+// function checkName(thisP)
+// {
+//   //takes only western names (i.e. names with western characters)
+//   var patt = /^[a-zA-Z' -.]{1,}$/;
+//   if (!patt.test(thisP.value))
+//   {
+//     getElement('name-error').innerHTML='Please enter a Western name';
+//     nameChecked = false;
+//   }
+//   else
+//   {
+//     getElement('name-error').innerHTML='';
+//     nameChecked = true;
+//   }
+// }
+//
+// var mobileChecked;
+// function checkMobile(thisP)
+// {
+//   //takes only australian numbers, spaces are okay
+//   var patt = /^(\(04\)|04|\+614)([ ]?\d){8}$/;
+//   if (!patt.test(thisP.value))
+//   {
+//     getElement('mobile-error').innerHTML='Please enter a valid Australian mobile';
+//     mobileChecked = false;
+//   }
+//   else
+//   {
+//     getElement('mobile-error').innerHTML='';
+//     mobileChecked = true;
+//   }
+// }
+//
+// var cardChecked;
+// function checkCard(thisP)
+// {
+//   /*checks if card starts with either 4 or 5 (mastercard or visa) or 35 (amex) before
+//   making sure there are 16 numbers total*/
+//   var patt = /^(([45]\d{3})|(35\d{2}))-? ?\d{4}-? ?\d{4}-? ?\d{4}/;
+//   if (!patt.test(thisP.value))
+//   {
+//     getElement('card-error').innerHTML='Please enter a Visa, Mastercard or American Express credit card';
+//     cardChecked = false;
+//   }
+//   else  {
+//     getElement('card-error').innerHTML='';
+//     cardChecked = true;
+//   }
+// }
+//
+// var expiryChecked;
+// function checkExpiry(thisP)
+// {
+//   //convert today's year and month into integers
+//   var currentYear = parseInt(new Date().toISOString().slice(0, 4));
+//   var currentMonth = parseInt(new Date().toISOString().slice(5, 7));
+//
+//   //convert form's year and month into integers
+//   var formYear = parseInt(thisP.value.toString().slice(0,4));
+//   var formMonth = parseInt(thisP.value.toString().slice(5,7));
+//
+//   //ensures date is in the future (i.e. month is later if in same year or year is greater)
+//   if((formMonth > currentMonth && currentYear === formYear) || formYear > currentYear)
+//   {
+//     getElement('expiry-error').innerHTML='';
+//     expiryChecked = true;
+//   }
+//   else
+//   {
+//     getElement('expiry-error').innerHTML='Please enter a date in the future';
+//     expiryChecked = false;
+//   }
+// }
