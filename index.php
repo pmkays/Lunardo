@@ -4,13 +4,16 @@ require 'tools.php';
 
 
 $nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
+
+$ticketErr = "";
+
 $custName = $custEmail = $custMobile = $custCard = $custExpiry = "";
 $movieID = $movieDay = $movieHour = "";
 $seatSTA = $seatsSTP = $seatsSTC = $seatFCA = $seatsFTP = $seatsFTC = "";
 
 $allOK = true;
 
-if ($_SERVER["REQUEST_METHOD"] === "POST")
+if ($_SERVER["REQUEST_METHOD"] = "POST")
 {
   $cust_name = $_POST['cust']['name'];
   $cust_email = $_POST['cust']['name'];
@@ -26,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
   $seatsSTP = $_POST['seats']['STP'];
   $seatsSTC = $_POST['seats']['STC'];
   $seatFCA = $_POST['seats']['FCA'];
-  $seatsFTP = $_POST['seats']['FTP'];
-  $seatsFTC =$_POST['seats']['FTC'];
+  $seatsFTP = $_POST['seats']['FCP'];
+  $seatsFTC =$_POST['seats']['FCC'];
 
 
 //    verifyPostData($_POST);
@@ -103,36 +106,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $expiryErr = "Expiry date is required";
         $allOK = false;
     }
-    // else
-    // {
-    //     $custExpiry = testInput($cust_epiry);
-    // }
-    // if (empty($movie_id))
-    // {
-    //     $allOK = false;
-    // }
-    // else
-    // {
-    //     $movieID = testInput($movie_id);
-    // }
-    //
-    // if (empty($movie_day))
-    // {
-    //     $allOK = false;
-    // }
-    // else
-    // {
-    //     $movieDay = testInput($movie_day);
-    // }
-    //
-    // if (empty($movie_hour))
-    // {
-    //     $allOK = false;
-    // }
-    // else
-    // {
-    //     $movieHour = testInput($movie_hour);
-    // }
+
+    function atLeastOneTicket()
+    {
+      foreach ($_POST['seats'] as $type => $amount)
+      {
+        if(!empty($amount))
+        {
+          return true;
+        }
+      }
+    }
+
+    if(!atLeastOneTicket())
+    {
+      $ticketErr = "Please select at least one ticket";
+      $allOK = false;
+    }
+   
+    if (empty($movie_id))
+    {
+        $allOK = false;
+    }
+    
+    if (empty($movie_day))
+    {
+        $allOK = false;
+    }
+
+    if (empty($movie_hour))
+    {
+        $allOK = false;
+    }
 
     if($allOK === true)
     {
@@ -464,7 +469,7 @@ topModule();
 
                 <legend class = "legends">Personal Info</legend>
                 <p><label for="cust-name">Name:</label><br>
-                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = <?= $custName ?> required><br>
+                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = "<?= $custName ?>"" required><br>
                 <span class="error" id="name-error"><?php echo $nameErr;?></span></p>
                 <p><label for="cust-email">Email:</label><br>
                   <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' value = "<?= $custEmail ?>" required </p><br>
@@ -487,6 +492,7 @@ topModule();
                   <br>Total: <br>
                   <!-- <input value="$0.00" readonly="readonly" type="text" id="total"/> -->
                   <span id = total>$0.00</span>
+                  <span class="error" id="ticket-error"><?php echo $ticketErr;?></span>
                 </p>
                 <h4 id ="book-error"></h4>
                 <h4 id = "ticket-error"></h4>

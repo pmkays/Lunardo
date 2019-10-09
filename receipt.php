@@ -61,9 +61,9 @@ $moviesObject =
                             'Sun' => 'T21'
                             ]
             ]
-]
+          ];
 
-$pricesObject =
+$pricesObject = 
 [
   'full' => ['STA' => 19.80,
             'STP' => 17.50,
@@ -79,17 +79,19 @@ $pricesObject =
             'FCP' => 22.50,
             'FCC' =>21.00
             ]
-]
+];
 
-function checkDiscountorFull()
+$movie = $moviesObject[$_SESSION['cart'][$movieID]];
+
+function checkDiscountOrFull()
 {
   //the day of movie chosen by form
-  $dayOfMovie = $_SESSION['cart'][$movieDay];
+  $dayOfMovie = $_SESSION['cart']['movie']['day'];
   //the time of movie chosen by form
-  $timeOfMovie = $_SESSION['cart'][$movieHour];
+  $timeOfMovie = $_SESSION['cart']['movie']['hour'];
 
   //find all the movie's possible screenings
-  $screenings = $moviesObject[$_SESSION['cart'][$movieID]]['screenings'];
+  $screenings = $moviesObject[$_SESSION['cart']['movie']['id']] ['screenings'];
 
   //the day chosen inside the moviesObject
   $day = $screenings[$dayOfMovie];
@@ -98,17 +100,17 @@ function checkDiscountorFull()
   $hour = $day[$timeOfMovie];
 
   //all movies on mondays and wednesdays are discounted;
-  if($day ==='Mon' && $day=== 'Wed'])
+  if($day ==='Mon' || $day=== 'Wed')
   {
     return 'disc';
   }
   //no movies on sunday and saturday are discounted
-  else if($day ==='Sat' && $day === 'Sun'])
+  else if($day ==='Sat' || $day === 'Sun')
   {
     return 'full';
   }
   //weekday matinee sessions not covered by the Mon/Wed discount
-  else if($day === 'Tue' && $day === 'Thu' && $day === 'Fri' && $hour === 'T12')
+  else if(($day === 'Tue' || $day === 'Thu' || $day === 'Fri') && $hour === 'T12')
   {
     return 'discount';
   }
@@ -118,8 +120,8 @@ function checkDiscountorFull()
     return 'full';
   }
 }
-$boughtSeats = array();
-$eachTicketSubTotal = array();
+$boughtSeats = [];
+$eachTicketSubTotal = [];
 
 function checkSubTotal()
 {
@@ -172,7 +174,7 @@ function checkSubTotal()
 
     <h2>Movie Details</h2>
     <p>
-      <? php $movie = $moviesObject[$_SESSION['cart'][$movieID]]?>
+      <? ?>
       <span class = category> Title:</span> <span class = information><?=$movie['title']?></span>
       <span class = category> Rating:</span> <span class = information><?= $movie['rating']?></span>
       <span class = category> Screening Session:</span> <span class = information><?= $_SESSION['cart'][$movieDay]?> at <?= $_SESSION['cart'][$movieDay][$movieHour]?></span>
@@ -182,11 +184,11 @@ function checkSubTotal()
     <h2>Order details</h2>
     <p>
     <?php
-
+    checkSubTotal();
     forEach($boughtSeats as $seats => $amount)
     {
       //should echo out a table format of sorts
-      echo '${seats} seats:  ${amount} ${eachSubTotal[$seats]}';
+      echo '<p> Seat type: ${seats} Quantity:  ${amount}  Total seat price: ${eachTicketSubTotal[$seats]}</p>';
     }
 
     //echo out the total price as well
