@@ -6,6 +6,7 @@ require 'index.php';
 if(empty($_SESSION)){
     header("Location: index.php");
 }
+$type = checkDiscountOrFull();
 
 $moviesObject =
 [
@@ -80,6 +81,66 @@ $pricesObject =
             ]
 ]
 
+function checkDiscountorFull()
+{
+  //the day of movie chosen by form
+  $dayOfMovie = $_SESSION['cart'][$movieDay];
+  //the time of movie chosen by form
+  $timeOfMovie = $_SESSION['cart'][$movieHour];
+
+  //find all the movie's possible screenings
+  $screenings = $moviesObject[$_SESSION['cart'][$movieID]]['screenings'];
+
+  //the day chosen inside the moviesObject
+  $day = $screenings[$dayOfMovie];
+
+  //the hour chosen inside the moviesObject
+  $hour = $day[$timeOfMovie];
+
+  //all movies on mondays and wednesdays are discounted;
+  if($day ==='Mon' && $day=== 'Wed'])
+  {
+    return 'disc';
+  }
+  //no movies on sunday and saturday are discounted
+  else if($day ==='Sat' && $day === 'Sun'])
+  {
+    return 'full';
+  }
+  //weekday matinee sessions not covered by the Mon/Wed discount
+  else if($day === 'Tue' && $day === 'Thu' && $day === 'Fri' && $hour === 'T12')
+  {
+    return 'discount';
+  }
+  //weekday nightly shows are not discounted
+  else
+  {
+    return 'full';
+  }
+}
+$boughtSeats = array();
+$eachTicketSubTotal = array();
+
+function checkSubTotal()
+{
+  //checks how many of each type of seat the user has booked
+  foreach($_SESSION['seats'] as $seats => $amount)
+  {
+    //if user has at least booked a type of seat add it to an array
+    if(!empty($amount))
+    {
+      //need to check if this will just replace the same element/index or if it moves forward; can't array.push an associative array
+      $boughtSeats[$seats] = $amount;
+    }
+  }
+  foreach ($boughtSeats as $seats => $amount)
+  {
+      //need to check if this will just replace the same element/index or if it moves forward; can't array.push an associative array
+      //have to traverse through pricesObject array to find the price and multiply it by how many they bought
+      $eachTicketSubTotal[$seats] = $pricesObject[$type][$seats] * $amount;
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -112,14 +173,24 @@ $pricesObject =
     <h2>Movie Details</h2>
     <p>
       <? php $movie = $moviesObject[$_SESSION['cart'][$movieID]]?>
-      <span class = category> Title:</span> <span><?=$movie['title']?></span>
-      <span class = category> Rating:</span> <span><?= $movie['rating']?></span>
-      <span class = category> Screening Session:</span> <span><?= $_SESSION['cart'][$movieDay]?> at <?= $_SESSION['cart'][$movieHour]?></span>
-      <span class = category> Description:</span> <p><?= $movie['description']?></p>
+      <span class = category> Title:</span> <span class = information><?=$movie['title']?></span>
+      <span class = category> Rating:</span> <span class = information><?= $movie['rating']?></span>
+      <span class = category> Screening Session:</span> <span class = information><?= $_SESSION['cart'][$movieDay]?> at <?= $_SESSION['cart'][$movieDay][$movieHour]?></span>
+      <span class = category> Description:</span> <p class = information> <?= $movie['description']?> </p>
     </p>
 
     <h2>Order details</h2>
     <p>
+    <?php
+
+    forEach($boughtSeats as $seats => $amount)
+    {
+      //should echo out a table format of sorts
+      echo '${seats} seats:  ${amount} ${eachSubTotal[$seats]}';
+    }
+
+    //echo out the total price as well
+    ?>
 
     </p>
 

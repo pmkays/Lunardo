@@ -4,7 +4,9 @@ require 'tools.php';
 
 
 $nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
-$custName = $custEmail = $custMobile = $custCard = $custExpiry = $movieID = $movieDay = $movieHour = "";
+$custName = $custEmail = $custMobile = $custCard = $custExpiry = "";
+$movieID = $movieDay = $movieHour = "";
+$seatSTA = $seatsSTP = $seatsSTC = $seatFCA = $seatsFTP = $seatsFTC = "";
 
 $allOK = true;
 
@@ -15,9 +17,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
   $cust_mobile = $_POST['cust']['mobile'];
   $cust_card = $_POST['cust']['card'];
   $cust_expiry = $_POST['cust']['expiry'];
-  $movie_id = $_POST['movie']['id'];
-  $movie_day = $_POST['movie']['day'];
-  $movie_hour = $_POST['movie']['hour'];
+
+  //no validation required for these
+  $movieID = $_POST['movie']['id'];
+  $movieDay = $_POST['movie']['day'];
+  $movieHour = $_POST['movie']['hour'];
+  $seatsSTA = $_POST['seats']['STA'];
+  $seatsSTP = $_POST['seats']['STP'];
+  $seatsSTC = $_POST['seats']['STC'];
+  $seatFCA = $_POST['seats']['FCA'];
+  $seatsFTP = $_POST['seats']['FTP'];
+  $seatsFTC =$_POST['seats']['FTC'];
+
 
 //    verifyPostData($_POST);
 //}
@@ -397,7 +408,7 @@ topModule();
                 <legend class = "legends">Standard</legend>
 
               <p>Adult:<br />
-                <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()'>
+                <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()' value = <?php $seatsSTA?>>
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -413,7 +424,7 @@ topModule();
               </p>
 
               <p>Concession:<br />
-                <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()'>
+                <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()' value = <?php $seatsSTP?> >
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -429,7 +440,7 @@ topModule();
               </p>
 
               <p>Children:<br />
-                <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()'>
+                <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()' value = <?php $seatsSTC?>>
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -493,7 +504,7 @@ topModule();
                 <legend class = "legends">First Class</legend>
 
               <p>Adult:<br />
-                <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()'>
+                <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()' value = <?php $seatsFCA ?>>
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -509,7 +520,7 @@ topModule();
               </p>
 
               <p>Concession:<br />
-                <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()'>
+                <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()' value = <?php $seatsFCP ?> >
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -525,7 +536,7 @@ topModule();
               </p>
 
               <p>Children:<br />
-                <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()'>
+                <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()' value = <?php $seatsFCC ?>>
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
