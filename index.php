@@ -453,7 +453,7 @@ topModule();
 
                 <legend class = "legends">Personal Info</legend>
                 <p><label for="cust-name">Name:</label><br>
-                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' required><br>
+                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = <?= $custName ?> required><br>
                 <span class="error" id="name-error"><?php echo $nameErr;?></span></p>
                 <p><label for="cust-email">Email:</label><br>
                   <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' value = "<?= $custEmail ?>" required </p><br>
