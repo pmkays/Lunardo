@@ -102,9 +102,6 @@ $seatsObject =
   //the hour chosen from the screening
   $hour = $screenings[$dayOfMovie];
 
-  //the hour chosen inside the moviesObject
-  // $hour = $day[$timeOfMovie];
-
 $type = checkDiscountOrFull($dayOfMovie, $hour);
 $movie = $moviesObject[$_SESSION['cart']['movie']['id']];
 
@@ -131,7 +128,10 @@ function checkDiscountOrFull($day, $hour)
     return 'full';
   }
 }
+//store which seat/tickets have actually been bought
 $boughtSeats = array();
+
+//stores the subtotal of each ticket that's been bought (found through $boughtSeats array)
 $eachTicketSubTotal = array();
 $totalPrice = 0;
 
@@ -150,11 +150,11 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
 
   echo "<table>
   <tr>
-    <th>Seat Type</th>
-    <th>Quantity</th>
-    <th>Unit Price</th>
-    <th>GST</th>
-    <th>Total Price</th>
+    <th>Seat Type &emsp;</th>
+    <th>Quantity &emsp;</th>
+    <th>Unit Price &emsp;</th>
+    <th>GST &emsp;</th>
+    <th>Total Price &emsp;</th>
   </tr>";
 
   foreach ($boughtSeats as $seats => $amount)
@@ -162,7 +162,9 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       //have to traverse through pricesObject array to find the price and multiply it by how many they bought
       $eachTicketSubTotal[$seats] = number_format($pricesObject[$type][$seats] * $amount,2);
 
+      //GST is 11% of each ticket's subtotal
       $GST = number_format($eachTicketSubTotal[$seats] * 0.11,2);
+      //the price without the GST
       $unitPrice = number_format($eachTicketSubTotal[$seats] -$GST,2); 
 
       echo "<tr> 
@@ -228,8 +230,9 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
  
     foreach ($boughtSeats as $seats => $amount)
     {
-      $movieTitle = $movie['title'];
+      $movieTitle = $movie['title']. " (${movie['rating']})";
       $movieDay = $_SESSION['cart']['movie']['day'];
+      //puts the day of the week chosen + whatever today's date is
       $todayDate = $dayOfMovie . " ". date(jS." ".F." ".Y);
       $individualTicketPrice = number_format($pricesObject[$type][$seats], 2);
       for($i = 0; $i < $amount ; $i++)
@@ -237,11 +240,19 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
         echo 
         "<div class = 'ticket'>
           <div class = 'ticket-header'>
-          <img src='favicon.ico' alt='Lunardo Logo'>
-          <span class = cinema-title>Lunardo Theatre</span>
+            <img src='images/moon.png' alt='Lunardo Logo'></img>
+            <span class = cinema-title><h2>Lunardo Theatre</h2></span>
+          </div>
+          <div class = ticket-barcode>
+          <img src ='images/barcode-side.jpg' alt = 'Movie barcode'>
           </div>
           <div class = 'ticket-content'>
-            <table id='movie-table'>
+            <div class='address'> <address>Email: info@lunardo.com<br>
+            Phone: (03) 8675 4672<br>
+            56 Moonlight Way, Seymour, VIC, 3660<br><br>
+            </address>
+            </div>
+            <table id='movie-table' class = 'table'>
                 <tr>
                     <th>Film:</th>
                     <td> $movieTitle </td>
@@ -268,10 +279,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
                 </tr>
             </table>
           </div>
-          <div class = ticket-barcode>
-            <img src ='images/barcode-side.jpg' alt = 'Movie barcode'>
-          </div>
-        </div>";
+        </div> <br>";
       }
     }
     
