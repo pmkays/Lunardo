@@ -81,6 +81,16 @@ $pricesObject =
             'FCC' =>21.00
             ]
 ];
+
+$seatsObject = 
+[
+  'STA' => 'Standard Adult',
+  'STP' => 'Standard Concession',
+  'STC' => 'Standard Child',
+  'FCA' => 'First Class Adult',
+  'FCP' => 'First Class Concession',
+  'FCC' => 'First Class Child'
+];
   //the day of movie chosen by form
   $dayOfMovie = $_SESSION['cart']['movie']['day'];
   //the time of movie chosen by form
@@ -125,7 +135,7 @@ $boughtSeats = array();
 $eachTicketSubTotal = array();
 $totalPrice = 0;
 
-function checkSubTotal($pricesObject, $type, $eachTicketSubTotal, &$totalPrice)
+function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal, &$totalPrice)
 {
   //checks how many of each type of seat the user has booked
   foreach($_SESSION['cart']['seats'] as $seats => $amount)
@@ -209,10 +219,65 @@ function checkSubTotal($pricesObject, $type, $eachTicketSubTotal, &$totalPrice)
 
     <h2>Order details</h2>
     <p>
-    <?php checkSubTotal($pricesObject, $type, $eachTicketSubTotal, $totalPrice); ?>
+    <?php checkSubTotal($pricesObject, $type, $boughtSeats, $eachTicketSubTotal, $totalPrice); ?>
     Total price: $<?=number_format($totalPrice,2)?>
     </p>
   </div>
+  <div>
+    <?php 
+ 
+    foreach ($boughtSeats as $seats => $amount)
+    {
+      $movieTitle = $movie['title'];
+      $movieDay = $_SESSION['cart']['movie']['day'];
+      $todayDate = $dayOfMovie . " ". date(jS." ".F." ".Y);
+      $individualTicketPrice = number_format($pricesObject[$type][$seats], 2);
+      for($i = 0; $i < $amount ; $i++)
+      {
+        echo 
+        "<div class = 'ticket'>
+          <div class = 'ticket-header'>
+          <img src='favicon.ico' alt='Lunardo Logo'>
+          <span class = cinema-title>Lunardo Theatre</span>
+          </div>
+          <div class = 'ticket-content'>
+            <table id='movie-table'>
+                <tr>
+                    <th>Film:</th>
+                    <td> $movieTitle </td>
+                </tr>
+                <tr>
+                    <th>Date:</th>
+                    <td> $todayDate </td>
+                </tr>
+                <tr>
+                    <th>Time:</th>
+                    <td>$timeOfMovie</td>
+                </tr>
+                <tr>
+                    <th>Cinema:</th>
+                    <td>7</td>
+                </tr> 
+                <tr>
+                    <th>Seat:</th>
+                    <td>$seatsObject[$seats] - A1</td>
+                </tr>
+                <tr>
+                    <th>Price:</th>
+                    <td>$$individualTicketPrice</td>
+                </tr>
+            </table>
+          </div>
+          <div class = ticket-barcode>
+            <img src ='images/barcode-side.jpg' alt = 'Movie barcode'>
+          </div>
+        </div>";
+      }
+    }
+    
+    ?>
+  </div>
+
 
 </body>
 </html>

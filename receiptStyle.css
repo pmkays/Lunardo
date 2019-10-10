@@ -7,3 +7,16 @@
   size: A4;
   margin: 2cm;
 }
+
+.ticket
+{
+  width: 250px;
+  height: 100px;
+  border: black;
+
+}
+
+.ticket-barcode
+{
+  size: 200px;
+}
