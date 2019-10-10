@@ -1,67 +1,68 @@
 <?php
 session_start();
 require 'tools.php';
-require 'index.php';
+// require 'index.php';
 
-if(empty($_SESSION)){
+if(empty($_SESSION['cart'])){
     header("Location: index.php");
 }
-$type = checkDiscountOrFull();
 
+
+$moviesObject = $pricesObject = "";
 $moviesObject =
 [
   'ACT' => ['title' => 'The Avengers: EndGame',
             'rating' => 'M',
-            'description' => '<p>The grave course of events set in motion by Thanos that wiped out half
+            'description' => 'The grave course of events set in motion by Thanos that wiped out half
             the universe and fractured the Avengers ranks compels the remaining Avengers
-            to take one final stand in Marvel Studios’ grand conclusion to twenty-two films.</p>',
-            'screenings' => ['Wed' => 'T21',
-                            'Thu' => 'T21',
-                            'Fri' => 'T21',
-                            'Sat' => 'T18',
-                            'Sun' => 'T18'
+            to take one final stand in Marvel Studios’ grand conclusion to twenty-two films.',
+            'screenings' => ['WED' => 'T21',
+                            'THU' => 'T21',
+                            'FRI' => 'T21',
+                            'SAT' => 'T18',
+                            'SUN' => 'T18'
                             ]
             ],
   'RMC' => ['title' => 'Top End Wedding',
             'rating' => 'M',
-            'description' => '<p>Lauren and Ned have 10 days to find Laurens mother who has gone
+            'description' => 'Lauren and Ned have 10 days to find Laurens mother who has gone
             AWOL in the remote far north of Australia so that they can reunite
-            her parents and pull off their dream wedding.</p>',
-            'screenings' => ['Mon' => 'T18',
-                            'Tue' => 'T18',
-                            'Sat' => 'T15',
-                            'Sun' => 'T15'
+            her parents and pull off their dream wedding.',
+            'screenings' => ['MON' => 'T18',
+                            'TUE' => 'T18',
+                            'SAT' => 'T15',
+                            'SUN' => 'T15'
                             ]
             ],
   'ANM'=> ['title' => 'Dumbo',
-            'rating' => 'M',
-            'description' => '<p>Struggling circus owner Max Medici enlists a former star and his
+            'rating' => 'PG',
+            'description' => 'Struggling circus owner Max Medici enlists a former star and his
             two children to care for Dumbo, a baby elephant born with oversized
             ears. When the family discovers that the animal can fly, it soon
             becomes the main attraction -- bringing in huge audiences and
-            revitalizing the run-down circus.</p>',
-            'screenings' => ['Mon' => 'T12',
-                            'Tue' => 'T12',
-                            'Wed' => 'T18',
-                            'Thu' => 'T18',
-                            'Fri' => 'T18',
-                            'Sat' => 'T12',
-                            'Sun' => 'T12'
+            revitalizing the run-down circus.',
+            'screenings' => ['MON' => 'T12',
+                            'TUE' => 'T12',
+                            'WED' => 'T18',
+                            'THU' => 'T18',
+                            'FRI' => 'T18',
+                            'SAT' => 'T12',
+                            'SUN' => 'T12'
                             ]
             ],
   'AHF' => ['title' => 'The Happy Prince',
             'rating' => 'MA15+',
-            'description' => '<p>  His body ailing, Oscar Wilde lives out his last days in exile,
+            'description' => 'His body ailing, Oscar Wilde lives out his last days in exile,
             observing the difficulties and failures surrounding him with
-            ironic detachment, humour, and the wit that defined his life.</p>',
-            'screenings' => ['Wed' => 'T12',
-                            'Thu' => 'T12',
-                            'Fri' => 'T12',
-                            'Sat' => 'T21',
-                            'Sun' => 'T21'
+            ironic detachment, humour, and the wit that defined his life.',
+            'screenings' => ['WED' => 'T12',
+                            'THU' => 'T12',
+                            'FRI' => 'T12',
+                            'SAT' => 'T21',
+                            'SUN' => 'T21'
                             ]
             ]
-          ];
+];
 
 $pricesObject = 
 [
@@ -80,11 +81,6 @@ $pricesObject =
             'FCC' =>21.00
             ]
 ];
-
-$movie = $moviesObject[$_SESSION['cart'][$movieID]];
-
-function checkDiscountOrFull()
-{
   //the day of movie chosen by form
   $dayOfMovie = $_SESSION['cart']['movie']['day'];
   //the time of movie chosen by form
@@ -93,26 +89,31 @@ function checkDiscountOrFull()
   //find all the movie's possible screenings
   $screenings = $moviesObject[$_SESSION['cart']['movie']['id']] ['screenings'];
 
-  //the day chosen inside the moviesObject
-  $day = $screenings[$dayOfMovie];
+  //the hour chosen from the screening
+  $hour = $screenings[$dayOfMovie];
 
   //the hour chosen inside the moviesObject
-  $hour = $day[$timeOfMovie];
+  // $hour = $day[$timeOfMovie];
 
+$type = checkDiscountOrFull($dayOfMovie, $hour);
+$movie = $moviesObject[$_SESSION['cart']['movie']['id']];
+
+function checkDiscountOrFull($day, $hour)
+{
   //all movies on mondays and wednesdays are discounted;
-  if($day ==='Mon' || $day=== 'Wed')
+  if($day ==='MON' || $day=== 'WED')
   {
     return 'disc';
   }
   //no movies on sunday and saturday are discounted
-  else if($day ==='Sat' || $day === 'Sun')
+  else if($day ==='SAT' || $day === 'SUN')
   {
     return 'full';
   }
   //weekday matinee sessions not covered by the Mon/Wed discount
-  else if(($day === 'Tue' || $day === 'Thu' || $day === 'Fri') && $hour === 'T12')
+  else if(($day === 'TUE' || $day === 'THU' || $day === 'FRI') && $hour === 'T12')
   {
-    return 'discount';
+    return 'disc';
   }
   //weekday nightly shows are not discounted
   else
@@ -120,13 +121,14 @@ function checkDiscountOrFull()
     return 'full';
   }
 }
-$boughtSeats = [];
-$eachTicketSubTotal = [];
+$boughtSeats = array();
+$eachTicketSubTotal = array();
+$totalPrice = 0;
 
-function checkSubTotal()
+function checkSubTotal($pricesObject, $type, $eachTicketSubTotal, &$totalPrice)
 {
   //checks how many of each type of seat the user has booked
-  foreach($_SESSION['seats'] as $seats => $amount)
+  foreach($_SESSION['cart']['seats'] as $seats => $amount)
   {
     //if user has at least booked a type of seat add it to an array
     if(!empty($amount))
@@ -135,14 +137,36 @@ function checkSubTotal()
       $boughtSeats[$seats] = $amount;
     }
   }
+
+  echo "<table>
+  <tr>
+    <th>Seat Type</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>GST</th>
+    <th>Total Price</th>
+  </tr>";
+
   foreach ($boughtSeats as $seats => $amount)
   {
-      //need to check if this will just replace the same element/index or if it moves forward; can't array.push an associative array
       //have to traverse through pricesObject array to find the price and multiply it by how many they bought
-      $eachTicketSubTotal[$seats] = $pricesObject[$type][$seats] * $amount;
-  }
-}
+      $eachTicketSubTotal[$seats] = number_format($pricesObject[$type][$seats] * $amount,2);
 
+      $GST = number_format($eachTicketSubTotal[$seats] * 0.11,2);
+      $unitPrice = number_format($eachTicketSubTotal[$seats] -$GST,2); 
+
+      echo "<tr> 
+      <td>${seats}</td> 
+      <td>${amount}</td> 
+      <td>$${unitPrice}</td> 
+      <td>$${GST}</td> 
+      <td>$${eachTicketSubTotal[$seats]}</td> 
+      </tr>";
+
+      $totalPrice += $eachTicketSubTotal{$seats};
+  }
+  echo "</table>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -162,41 +186,32 @@ function checkSubTotal()
     <h2>Lunardo Cinemas</h2>
     <address>Email: info@lunardo.com<br>
       Phone: (03) 8675 4672<br>
-      56 Moonlight Way, Seymour, VIC, 3660<br><br>
+      56 Moonlight Way, Seymour, VIC, 3660<br>
+      ABN number: 00 123 456 789<br><br>
     </address>
+    
 
     <h1>Confirmation of Purchase</h1>
-    <span class = category> Name: </span> <span class = information> <?= $_SESSION['cart'][$custName]?> </span>
-    <span class = category> Email: </span> <span class = information> <?= $_SESSION['cart'][$custEmail]?> </span>
-    <span class = category> Phone Number:</span> <span class = information> <?= $_SESSION['cart'][$custMobile]?> </span>
-    <span class = category> Credit Card:</span> <span class = information> <?= $_SESSION['cart'][$custCard]?> </span>
-    <span class = category> Credit Card Expiry:</span> <span class = information> <?= $_SESSION['cart'][$custExpiry]?> </span>
+    <span class = category> Name: </span> <span class = information> <?= $_SESSION['cart']['cust']['name']?> </span><br>
+    <span class = category> Email: </span> <span class = information> <?= $_SESSION['cart']['cust']['email']?> </span><br>
+    <span class = category> Phone Number:</span> <span class = information> <?= $_SESSION['cart']['cust']['mobile']?> </span><br>
+    <span class = category> Credit Card:</span> <span class = information> <?= $_SESSION['cart']['cust']['card']?> </span><br>
+    <span class = category> Credit Card Expiry:</span> <span class = information> <?= $_SESSION['cart']['cust']['expiry']?> </span><br>
 
     <h2>Movie Details</h2>
     <p>
       <? ?>
-      <span class = category> Title:</span> <span class = information><?=$movie['title']?></span>
-      <span class = category> Rating:</span> <span class = information><?= $movie['rating']?></span>
-      <span class = category> Screening Session:</span> <span class = information><?= $_SESSION['cart'][$movieDay]?> at <?= $_SESSION['cart'][$movieDay][$movieHour]?></span>
-      <span class = category> Description:</span> <p class = information> <?= $movie['description']?> </p>
+      <span class = category> Title:</span> <span class = information><?=$movie['title']?></span><br>
+      <span class = category> Rating:</span> <span class = information><?= $movie['rating']?></span><br>
+      <span class = category> Screening Session:</span> <span class = information><?= $_SESSION['cart']['movie']['day']?> at <?= $_SESSION['cart']['movie']['hour']?></span><br>
+      <span class = category> Description:</span> <span class = information> <?= $movie['description']?> </span><br>
     </p>
 
     <h2>Order details</h2>
     <p>
-    <?php
-    checkSubTotal();
-    forEach($boughtSeats as $seats => $amount)
-    {
-      //should echo out a table format of sorts
-      echo '<p> Seat type: ${seats} Quantity:  ${amount}  Total seat price: ${eachTicketSubTotal[$seats]}</p>';
-    }
-
-    //echo out the total price as well
-    ?>
-
+    <?php checkSubTotal($pricesObject, $type, $eachTicketSubTotal, $totalPrice); ?>
+    Total price: $<?=number_format($totalPrice,2)?>
     </p>
-
-
   </div>
 
 </body>

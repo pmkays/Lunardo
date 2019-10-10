@@ -5,7 +5,7 @@ require 'tools.php';
 
 $nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
 
-$ticketErr = "";
+$ticketErr = $timeErr =  "";
 
 $custName = $custEmail = $custMobile = $custCard = $custExpiry = "";
 $movieID = $movieDay = $movieHour = "";
@@ -13,13 +13,13 @@ $seatSTA = $seatsSTP = $seatsSTC = $seatFCA = $seatsFTP = $seatsFTC = "";
 
 $allOK = true;
 
-if ($_SERVER["REQUEST_METHOD"] = "POST")
+if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
   $cust_name = $_POST['cust']['name'];
-  $cust_email = $_POST['cust']['name'];
+  $cust_email = $_POST['cust']['email'];
   $cust_mobile = $_POST['cust']['mobile'];
   $cust_card = $_POST['cust']['card'];
-  $cust_expiry = $_POST['cust']['expiry'];
+  $custExpiry = $_POST['cust']['expiry'];
 
   //no validation required for these
   $movieID = $_POST['movie']['id'];
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] = "POST")
     {
         $custMobile = testInput($cust_mobile);
         $patt = "/^(\(04\)|04|\+614)([ ]?\d){8}$/";
-        if(!(preg_match($patt, $custMobile) && filter_var($custMobile, FILTER_VALIDATE_INT)))
+        if(!preg_match($patt, $custMobile))
         {
           $mobileErr = "Please enter a valid mobile";
           $allOK = false;
@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] = "POST")
         }
     }
 
-    if (empty($cust_expiry))
+    if (empty($custExpiry))
     {
         $expiryErr = "Expiry date is required";
         $allOK = false;
@@ -124,18 +124,19 @@ if ($_SERVER["REQUEST_METHOD"] = "POST")
       $allOK = false;
     }
    
-    if (empty($movie_id))
+    if (empty($movieID))
     {
         $allOK = false;
     }
     
-    if (empty($movie_day))
+    if (empty($movieDay))
     {
         $allOK = false;
     }
 
-    if (empty($movie_hour))
+    if (empty($movieHour))
     {
+        $timeErr = "Please select a session";
         $allOK = false;
     }
 
@@ -143,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] = "POST")
     {
         $_SESSION['cart'] = $_POST;
         header("Location: receipt.php");
+        exit;
     }
 }
 
@@ -413,7 +415,7 @@ topModule();
                 <legend class = "legends">Standard</legend>
 
               <p>Adult:<br />
-                <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()' value = <?php $seatsSTA?>>
+                <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()' selected = "<?php $seatsSTA?>">
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -429,7 +431,7 @@ topModule();
               </p>
 
               <p>Concession:<br />
-                <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()' value = <?php $seatsSTP?> >
+                <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()' selected = "<?php $seatsSTP?>" >
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -445,7 +447,7 @@ topModule();
               </p>
 
               <p>Children:<br />
-                <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()' value = <?php $seatsSTC?>>
+                <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()' selected = "<?php $seatsSTC?>">
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -469,7 +471,7 @@ topModule();
 
                 <legend class = "legends">Personal Info</legend>
                 <p><label for="cust-name">Name:</label><br>
-                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = "<?= $custName ?>"" required><br>
+                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = "<?= $custName ?>" required><br>
                 <span class="error" id="name-error"><?php echo $nameErr;?></span></p>
                 <p><label for="cust-email">Email:</label><br>
                   <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' value = "<?= $custEmail ?>" required </p><br>
@@ -481,7 +483,7 @@ topModule();
                   <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard'  value = "<?= $custCard ?>" required><br>
                     <span class="error" id="card-error"><?php echo $creditCardErr;?></span></p>
                 <p><label for="cust-expiry">Expiry Date:</label><br>
-                  <input type="month" min = <?php advanceDate("P1M")?> max = <?php advanceDate("P10Y")?> id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' value = <?= $custExpiry ?> required><br>
+                  <input type="month" min = <?php advanceDate("P1M")?> max = <?php advanceDate("P10Y")?> id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' value = "<?= $custExpiry ?>" required><br>
                     <span class="error" id="expiry-error"><?php echo $expiryErr;?></span></p>
                 <p>
                   <input type="hidden" id="movie-ID" name="movie[id]" value="<?php echo $movieID;?>">
@@ -491,8 +493,9 @@ topModule();
                 <p>
                   <br>Total: <br>
                   <!-- <input value="$0.00" readonly="readonly" type="text" id="total"/> -->
-                  <span id = total>$0.00</span>
+                  <span id = total>$0.00</span><br>
                   <span class="error" id="ticket-error"><?php echo $ticketErr;?></span>
+                  <span class="error" id="time-error"><?php echo $timeErr;?></span>
                 </p>
                 <h4 id ="book-error"></h4>
                 <h4 id = "ticket-error"></h4>
@@ -510,7 +513,7 @@ topModule();
                 <legend class = "legends">First Class</legend>
 
               <p>Adult:<br />
-                <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()' value = <?php $seatsFCA ?>>
+                <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()' selected = "<?php $seatsFCA ?>">
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -526,7 +529,7 @@ topModule();
               </p>
 
               <p>Concession:<br />
-                <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()' value = <?php $seatsFCP ?> >
+                <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()' selected = "<?php $seatsFCP ?>" >
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -542,7 +545,7 @@ topModule();
               </p>
 
               <p>Children:<br />
-                <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()' value = <?php $seatsFCC ?>>
+                <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()' selected = "<?php $seatsFCC ?>">
                   <option value='' selected>Please Select</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>

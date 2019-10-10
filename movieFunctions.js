@@ -218,11 +218,8 @@ function setBookingDayAndTime(time){
     case "15:00":
       getElement("movie-hour").value = "T15";
       break;
-    case "15:00":
-      getElement("movie-hour").value = "T15";
-      break;
     case "18:00":
-      getElement("movie-hour").value = "T15";
+      getElement("movie-hour").value = "T18";
       break;
     case "21:00":
       getElement("movie-hour").value = "T21";
