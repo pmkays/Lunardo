@@ -63,6 +63,10 @@ th{
   margin: 0 auto;
 }
 
+#debug{
+text-align: left;
+}
+
 #selected-Movie{
   color: white;
 }

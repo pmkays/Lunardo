@@ -33,8 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
   $seatsFTC =$_POST['seats']['FCC'];
 
 
-//    verifyPostData($_POST);
-//}
     if (empty($cust_name))
     {
         $nameErr = "Name is required";
@@ -179,7 +177,7 @@ topModule();
           <a class = "anchor" name="about" id = "about">.</a>
           <div class="about-us-box">
             <h2 class = "section-title">About Us</h2>
-            <div class = "about-info"><?= preShow($_POST) ?>After serving Seymour for many years, we, Lunardo Cinema,
+            <div class = "about-info">After serving Seymour for many years, we, Lunardo Cinema,
               are proud to present our newly refurbished and improved state-of-the-art
               cinema for all your entertainment needs. A few of our many changes include
               more luxurious standard seats and recliner seats for those who opt for
@@ -604,5 +602,8 @@ topModule();
       <script src="tools.js"></script>
       <script src="movieFunctions.js"></script>
     </footer>
+  <div id = 'debug'><p>
+      <?php printMyCode(); ?></p>
+  </div>
   </body>
 </html>

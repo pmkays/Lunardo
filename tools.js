@@ -48,3 +48,15 @@ function resetNavBar(){
 function getElement(id){
   return document.getElementById(id);
 }
+
+function printReceipt(){
+  getElement('ticket-page').style.display = 'none';
+  window.print();
+  getElement('ticket-page').style.display = 'block';
+}
+
+function printTickets(){
+  getElement('receipt').style.display = 'none';
+  window.print();
+  getElement('receipt').style.display = 'block';
+}

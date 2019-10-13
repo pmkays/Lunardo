@@ -33,71 +33,39 @@ function advanceDate($interval)
 }
 //$nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
 //$custName = $custEmail = $custMobile = $custCard = $custExpiry = $movieID = $movieDay = $movieHour = "";
+// Date	Name	Email	Mobile	MovieID	Day	Hour	STA Qty	STP Qty	STC Qty	FCA Qty	FCP Qty	FCC Qty	Total
 
+function writeToFile($totalPrice){
+  $order = [
+    date("d.m.y"),
+    $_SESSION['cart']['cust']['name'],
+    $_SESSION['cart']['cust']['email'],
+    $_SESSION['cart']['cust']['mobile'],
+    $_SESSION['cart']['movie']['id'],
+    $_SESSION['cart']['movie']['day'],
+    $_SESSION['cart']['movie']['hour'],
+    checkIfEmpty($_SESSION['cart']['seats']['STA']),
+    checkIfEmpty($_SESSION['cart']['seats']['STP']),
+    checkIfEmpty($_SESSION['cart']['seats']['STC']),
+    checkIfEmpty($_SESSION['cart']['seats']['FCA']),
+    checkIfEmpty($_SESSION['cart']['seats']['FCP']),
+    checkIfEmpty($_SESSION['cart']['seats']['FCC']),
+    $totalPrice
+  ];
+  $fp = fopen("bookings.txt", "a");
+  flock($fp, LOCK_EX);
+  fputcsv($fp, $order, "\t");
+  flock($fp, LOCK_UN);
+  fclose($fp);
+}
 
-
-//function verifyPostData($post){
-//    $allOK = true;
-//
-//    if (empty($_POST['cust']['name'])) {
-//        $nameErr = "Name is required";
-//        $allOK = false;
-//    } else {
-//        $custName = test_input($_POST['cust']['name']);
-//    }
-//
-//    if (empty($_POST['cust']['email'])) {
-//        $emailErr = "Email is required";
-//        $allOK = false;
-//    } else {
-//        $custEmail = test_input($_POST['cust']['email']);
-//    }
-//
-//    if (empty($_POST['cust']['mobile'])) {
-//        $mobileErr = "Mobile number is required";
-//        $allOK = false;
-//    } else {
-//        $custMobile = test_input($_POST['cust']['mobile']);
-//    }
-//
-//    if (empty($_POST['cust']['card'])) {
-//        $creditCardErr = "Credit card is required";
-//        $allOK = false;
-//    } else {
-//        $custCard = test_input($_POST['cust']['card']);
-//    }
-//
-//    if (empty($_POST['cust']['expiry'])) {
-//        $expiryErr = "Expiry is required";
-//        $allOK = false;
-//    } else {
-//        $custExpiry = test_input($_POST['cust']['expiry']);
-//    }
-//
-//    if (empty($_POST['movie']['id'])) {
-//        $allOK = false;
-//    } else {
-//        $movieID = test_input($_POST['movie']['id']);
-//    }
-//
-//    if (empty($_POST['movie']['day'])) {
-//        $allOK = false;
-//    } else {
-//        $movieDay = test_input($_POST['movie']['day']);
-//    }
-//
-//    if (empty($_POST['movie']['hour'])) {
-//        $allOK = false;
-//    } else {
-//        $movieHour = test_input($_POST['movie']['hour']);
-//    }
-//
-//    if($allOK == true){
-//        $_SESSION['cart'] = $_POST;
-//        header("Location: receipt.php");
-//    }
-//
-//}
+// returns 0 if it is empty
+function checkIfEmpty($check){
+  if(empty($check)){
+    return 0;
+  }
+  else return $check;
+}
 
 function testInput($data)
 {

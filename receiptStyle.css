@@ -1,7 +1,17 @@
+body{
+  background-color: black;
+}
+
+#debug{
+  background: white;
+}
 .page
 {
   width: 210mm;
   height: 297mm;
+  border: 2px solid black;
+  padding: 50px;
+  background-color: white;
 }
 
 @page
@@ -34,6 +44,14 @@
   width: 50px;
   float: right;
   padding: 5px;
+}
+
+#ticket-page{
+  width: 210mm;
+  min-height: 297mm;
+  border: 2px solid black;
+  padding: 50px;
+  background-color: white;
 }
 
 .table th
@@ -83,6 +101,10 @@
   color:#FAC11A;
   font-size: 14px;
   /* margin: 10px auto 0 auto; */
+}
+
+#printDoc{
+  float:right;
 }
 
 /* <img src='favicon.ico' alt='Lunardo Logo'> */

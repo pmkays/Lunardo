@@ -190,10 +190,8 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
 </head>
 <body>
 
-<?= preShow($_SESSION['cart']) ?>
-
   <div id = receipt class = page>
-
+      <button id="printDoc" onclick="printReceipt()">Print</button>
     <!--establishment details always displayed first in invoices-->
     <h2>Lunardo Cinemas</h2>
     <address>Email: info@lunardo.com<br>
@@ -201,7 +199,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       56 Moonlight Way, Seymour, VIC, 3660<br>
       ABN number: 00 123 456 789<br><br>
     </address>
-    
+    <hr>
 
     <h1>Confirmation of Purchase</h1>
     <span class = category> Name: </span> <span class = information> <?= $_SESSION['cart']['cust']['name']?> </span><br>
@@ -220,12 +218,18 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
     </p>
 
     <h2>Order details</h2>
+      <hr>
     <p>
     <?php checkSubTotal($pricesObject, $type, $boughtSeats, $eachTicketSubTotal, $totalPrice); ?>
-    Total price: $<?=number_format($totalPrice,2)?>
+
     </p>
+      <p>Total price: $<?=number_format($totalPrice,2)?></p>
   </div>
-  <div>
+  <div id = "ticket-page">
+      <button id="printDoc" onclick="printTickets()">Print</button>
+      <h1>Tickets:</h1>
+      <p>Please print and present at ticketing booth.</p>
+      <hr>
     <?php 
  
     foreach ($boughtSeats as $seats => $amount)
@@ -271,7 +275,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
                 </tr> 
                 <tr>
                     <th>Seat:</th>
-                    <td>$seatsObject[$seats] - A1</td>
+                    <td>$seatsObject[$seats] - A${i}</td>
                 </tr>
                 <tr>
                     <th>Price:</th>
@@ -279,13 +283,19 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
                 </tr>
             </table>
           </div>
-        </div> <br>";
+          
+        </div><br><hr><br>";
       }
     }
     
     ?>
+
+      <?php writeToFile($totalPrice)?>
+  </div>
+  <div id = 'debug'><p>
+          <?php printMyCode(); ?></p>
   </div>
 
-
+  <script src="tools.js"></script>
 </body>
 </html>
