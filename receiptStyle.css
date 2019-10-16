@@ -1,5 +1,18 @@
+h1, h2, h3
+{
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+header
+{
+  text-align: center;
+}
+
+
 body{
   background-color: black;
+  font-family: 'Merriweather', sans-serif;
 }
 
 #debug{
@@ -22,9 +35,10 @@ body{
 
 .ticket
 {
-  width: 520px;
+  width: 580px;
   height: 200px;
   padding: 10px;
+  margin-bottom: 40px;
 
 }
 
@@ -35,12 +49,12 @@ body{
   border-color:  rgba(0,0,0,0.6);
   position: relative;
   float: right;
-  height: 150px;
+  height: 180px;
 }
 
 .ticket-barcode img
 {
-  height: 130px;
+  height: 160px;
   width: 50px;
   float: right;
   padding: 5px;
@@ -54,18 +68,46 @@ body{
   background-color: white;
 }
 
+.purchase-table
+{
+  border: solid; 
+  border-collapse: collapse; 
+  width: 100%;
+  text-align: left;
+}
+
+.purchase-table, .purchase-table td, .purchase-table th 
+{
+  border: 1px solid black;
+}
+
+.purchase-table th
+{
+  text-align: center;
+  background-color: #2A2A25;
+  color: #E6B31E;
+}
+
+.purchase-table td, .purchase-table th 
+{
+  padding: 10px;
+}
+
 .table th
 {
   text-align: left;
+  
 }
 
 .ticket-content
 {
-  border-style: solid;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-bottom-style: solid;
   border-color:  rgba(0,0,0,0.6);
   border-bottom-left-radius: 10px;
-  height: 130px;
-  width: 435px;
+  height: 160px;
+  width: 495px;
   padding: 10px;
 }
 
@@ -73,6 +115,11 @@ body{
 {
   float: right;
   font-size: 10px;
+}
+
+.category
+{
+  font-weight: bold; 
 }
 
 .ticket-header
@@ -100,11 +147,16 @@ body{
   position: relative;
   color:#FAC11A;
   font-size: 14px;
+  float: left;
   /* margin: 10px auto 0 auto; */
 }
 
-#printDoc{
+#printDoc, .total-price
+{
   float:right;
 }
 
-/* <img src='favicon.ico' alt='Lunardo Logo'> */
+.total-price
+{
+  padding-right: 150px;
+}

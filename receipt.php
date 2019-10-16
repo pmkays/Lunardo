@@ -148,13 +148,13 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
     }
   }
 
-  echo "<table>
+  echo "<table class = 'purchase-table'>
   <tr>
     <th>Seat Type &emsp;</th>
     <th>Quantity &emsp;</th>
     <th>Unit Price &emsp;</th>
     <th>GST &emsp;</th>
-    <th>Total Price &emsp;</th>
+    <th>Total Seat Price &emsp;</th>
   </tr>";
 
   foreach ($boughtSeats as $seats => $amount)
@@ -165,7 +165,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       //GST is 11% of each ticket's subtotal
       $GST = number_format($eachTicketSubTotal[$seats] * 0.11,2);
       //the price without the GST
-      $unitPrice = number_format($eachTicketSubTotal[$seats] -$GST,2); 
+      $unitPrice = number_format($eachTicketSubTotal[$seats] - $GST,2); 
 
       echo "<tr> 
       <td>${seats}</td> 
@@ -187,34 +187,43 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
     <meta charset="UTF-8">
     <title>Receipt</title>
     <link id='receiptStylecss' type="text/css" rel="stylesheet" href="receiptStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-  <div id = receipt class = page>
+  <div id = 'receipt' class = 'page'>
       <button id="printDoc" onclick="printReceipt()">Print</button>
+      <br>
     <!--establishment details always displayed first in invoices-->
-    <h2>Lunardo Cinemas</h2>
-    <address>Email: info@lunardo.com<br>
-      Phone: (03) 8675 4672<br>
-      56 Moonlight Way, Seymour, VIC, 3660<br>
-      ABN number: 00 123 456 789<br><br>
-    </address>
+    <header>
+      <h1>Lunardo Theatre</h1>
+      <address>Email: info@lunardo.com<br>
+        Phone: (03) 8675 4672<br>
+        56 Moonlight Way, Seymour, VIC, 3660<br>
+        ABN number: 00 123 456 789<br><br>
+      </address>
+    </header>
     <hr>
 
     <h1>Confirmation of Purchase</h1>
-    <span class = category> Name: </span> <span class = information> <?= $_SESSION['cart']['cust']['name']?> </span><br>
-    <span class = category> Email: </span> <span class = information> <?= $_SESSION['cart']['cust']['email']?> </span><br>
-    <span class = category> Phone Number:</span> <span class = information> <?= $_SESSION['cart']['cust']['mobile']?> </span><br>
-    <span class = category> Credit Card:</span> <span class = information> <?= $_SESSION['cart']['cust']['card']?> </span><br>
-    <span class = category> Credit Card Expiry:</span> <span class = information> <?= $_SESSION['cart']['cust']['expiry']?> </span><br>
+    <h2>Customer Details</h2>
+    <?php 
+    $creditCard = $_SESSION['cart']['cust']['card'];
+    $hiddenCard = substr_replace($creditCard, str_repeat("*", strlen($creditCard)-2), 0, strlen($creditCard)-4);
+    ?>
+    <span class = 'category'> Name: </span> <span class = 'information'> <?= $_SESSION['cart']['cust']['name']?> </span><br>
+    <span class = 'category'> Email: </span> <span class = 'information'> <?= $_SESSION['cart']['cust']['email']?> </span><br>
+    <span class = 'category'> Phone Number:</span> <span class = 'information'> <?= $_SESSION['cart']['cust']['mobile']?> </span><br>
+    <span class = 'category'> Credit Card:</span> <span class = 'information'> <?= $hiddenCard?> </span><br>
+    <span class = 'category'> Credit Card Expiry:</span> <span class = 'information'> <?= $_SESSION['cart']['cust']['expiry']?> </span><br>
 
     <h2>Movie Details</h2>
     <p>
       <? ?>
-      <span class = category> Title:</span> <span class = information><?=$movie['title']?></span><br>
-      <span class = category> Rating:</span> <span class = information><?= $movie['rating']?></span><br>
-      <span class = category> Screening Session:</span> <span class = information><?= $_SESSION['cart']['movie']['day']?> at <?= $_SESSION['cart']['movie']['hour']?></span><br>
-      <span class = category> Description:</span> <span class = information> <?= $movie['description']?> </span><br>
+      <span class = 'category'> Title:</span> <span class = 'information'><?=$movie['title']?></span><br>
+      <span class = 'category'> Rating:</span> <span class = 'information'><?= $movie['rating']?></span><br>
+      <span class = 'category'> Screening Session:</span> <span class = 'information'><?= $_SESSION['cart']['movie']['day']?> at <?= $_SESSION['cart']['movie']['hour']?></span><br>
+      <span class = 'category'> Description:</span> <span class = 'information'> <?= $movie['description']?> </span><br>
     </p>
 
     <h2>Order details</h2>
@@ -223,7 +232,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
     <?php checkSubTotal($pricesObject, $type, $boughtSeats, $eachTicketSubTotal, $totalPrice); ?>
 
     </p>
-      <p>Total price: $<?=number_format($totalPrice,2)?></p>
+      <p class = 'category total-price'>Total: &emsp; $<?=number_format($totalPrice,2)?></p>
   </div>
   <div id = "ticket-page">
       <button id="printDoc" onclick="printTickets()">Print</button>
@@ -248,7 +257,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
             <span class = cinema-title><h2>Lunardo Theatre</h2></span>
           </div>
           <div class = ticket-barcode>
-          <img src ='images/barcode-side.jpg' alt = 'Movie barcode'>
+            <img src ='images/barcode-side.jpg' alt = 'Movie barcode'>
           </div>
           <div class = 'ticket-content'>
             <div class='address'> <address>Email: info@lunardo.com<br>
