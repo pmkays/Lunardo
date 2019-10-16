@@ -84,3 +84,11 @@ Date	Name	Email	Mobile	MovieID	Day	Hour	STA Qty	STP Qty	STC Qty	FCA Qty	FCP Qty	
 16.10.19	"Paula Kurniawan"	paula.kurn@gmail.com	0449998488	ANM	SAT	T12	2	5	0	9	0	0	404.3
 16.10.19	"Paula Kurniawan"	paula.kurn@gmail.com	0449998488	ANM	SAT	T12	2	5	0	9	0	0	404.3
 16.10.19	"Paula Kurniawan"	paula.kurn@gmail.com	0449998488	ANM	SAT	T12	2	5	0	9	0	0	404.3
+16.10.19	asd	a@a.com	0449998488	AHF	THU	T12	2	0	0	0	0	0	28
+16.10.19	a	a@a.com	0449998488	RMC	SAT	T15	3	0	0	0	0	0	59.4
+16.10.19	a	a@a.com	0449998488	ACT	FRI	T21	3	0	0	0	0	0	59.4
+16.10.19	a	a@a.com	0449998488	ACT	FRI	T21	3	0	0	0	0	0	59.4
+16.10.19	a	a@a.com	0449998488	ACT	THU	T21	3	0	0	0	0	0	59.4
+16.10.19	asd	a@a.com	0449998488	ACT	THU	T21	3	0	0	0	0	0	59.4
+16.10.19	asd	a@a.com	0449998488	ACT	THU	T21	3	0	0	0	0	0	59.4
+16.10.19	asd	a@a.com	0449998488	ACT	THU	T21	3	0	0	0	0	0	59.4

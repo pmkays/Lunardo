@@ -2,6 +2,9 @@
 session_start();
 require 'tools.php';
 
+$movieIDArray = array("ACT", "RMC", "ANM", "AHF");
+$days = array("MON","TUE","WED","THU","FRI","SAT","SUN");
+$times = array("T12","T15","T18","T21");
 
 $nameErr = $emailErr = $mobileErr = $creditCardErr = $expiryErr = "";
 
@@ -121,21 +124,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
       $ticketErr = "Please select at least one ticket";
       $allOK = false;
     }
-   
+
     if (empty($movieID))
     {
         $allOK = false;
     }
-    
+    else{
+      if(!in_array($movieID,$movieIDArray)){
+        $allOK = false;
+      }
+    }
+
     if (empty($movieDay))
     {
         $allOK = false;
     }
-
+    else{
+      if(!in_array($movieDay,$days)){
+        $allOK = false;
+      }
+    }
     if (empty($movieHour))
     {
         $timeErr = "Please select a session";
         $allOK = false;
+    }
+    else{
+      if(!in_array($movieHour,$times)){
+        $allOK = false;
+      }
     }
 
     if($allOK === true)
@@ -402,7 +419,7 @@ topModule();
           <h2 class = "booking-title">Booking for:</h2>
           <h3 id = "selected-Movie" class = "movie-title">The Avengers: End Game - No time selected</h3>
 
-          <form method="post" target = "_blank" id ='booking-form' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return formValidate()">
+          <form method="post" id ='booking-form' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return formValidate()">
             <table class = "form-table">
             <tr>
             <td>
@@ -469,7 +486,7 @@ topModule();
 
                 <legend class = "legends">Personal Info</legend>
                 <p><label for="cust-name">Name:</label><br>
-                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = "<?= $custName ?>" required><br>
+                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = "<?= $custName ?>"><br>
                 <span class="error" id="name-error"><?php echo $nameErr;?></span></p>
                 <p><label for="cust-email">Email:</label><br>
                   <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' value = "<?= $custEmail ?>" required </p><br>
@@ -603,7 +620,15 @@ topModule();
       <script src="movieFunctions.js"></script>
     </footer>
   <div id = 'debug'><p>
-      <?php printMyCode(); ?></p>
+      <h3>Post Data:</h1>
+      <p>
+        <?= preShow($_POST) ?>
+      </p>
+      <h3>Page Code:</h1>
+      <p>
+        <?php printMyCode(); ?></p>
+      </p>
+
   </div>
   </body>
 </html>

@@ -1,15 +1,19 @@
 
 var movies = ["#movePanelACT","#movePanelRMC","#movePanelANM","#movePanelAHF"];
 var synopsis = ["synopsisACT","synopsisRMC","synopsisANM","synopsisAHF"];
-var movieSelect = { "act": true, "rmc": false, "anm": false, "ahf": false };
+var movieSelect = { "act": false, "rmc": false, "anm": false, "ahf": false };
+
+var previousTimeDaySet = false;
+if(getElement("movie-day").value != ""){
+  previousTimeDaySet = true;
+}
+var dayIfSet = getElement("movie-day").value;
+var timeIfSet = getElement("movie-hour").value;
 
 getElement("movePanelACT").onclick = clickedACT;
 getElement("movePanelRMC").onclick = clickedRMC;
 getElement("movePanelANM").onclick = clickedANM;
 getElement("movePanelAHF").onclick = clickedAHF;
-
-document.querySelector("#movePanelACT").classList.add("movie-select");
-getElement("movie-ID").value = "ACT";
 
 function getElement(id){
   return document.getElementById(id);
@@ -311,6 +315,109 @@ function calculateEachTicket()
   total += temp * fcChild;
   getElement("total").innerHTML = "$" + total.toFixed(2);
 }
+
+function showCorrectSynopsis(){
+
+  if(getElement("movie-ID").value == ""){
+    getElement("movie-ID").value = "ACT";
+    document.querySelector("#movePanelACT").classList.add("movie-select");
+    clickedACT();
+    movieSelect["act"] = true;
+  }
+  if(getElement("movie-ID").value == "ACT"){
+    clickedACT();
+  }
+  if(getElement("movie-ID").value == "RMC"){
+    clickedRMC();
+  }
+  if(getElement("movie-ID").value == "ANM"){
+    clickedANM();
+  }
+  if(getElement("movie-ID").value == "AHF"){
+    clickedAHF();
+  }
+}
+
+function showCorrectTime(){
+  if(previousTimeDaySet){
+    var timeDay = "TimeDate: " + dayIfSet + timeIfSet + getElement("movie-ID").value;
+    displayBookingTime(timeDay);
+  }
+}
+
+function displayBookingTime(id)
+{
+  //gets the day and time as shown in button pressed
+  var time = displayCorrectTimeDay();
+
+  if(id.includes("ACT"))
+  {
+    getElement("selected-Movie").innerHTML = "The Avengers: End Game - " + time;
+  }
+  else if(id.includes("RMC"))
+  {
+    getElement("selected-Movie").innerHTML = "Top End Wedding - " + time;
+  }
+  else if(id.includes("ANM"))
+  {
+    getElement("selected-Movie").innerHTML = "Dumbo - " + time;
+  }
+  else if(id.includes("AHF"))
+  {
+    getElement("selected-Movie").innerHTML = "The Happy Prince - " + time;
+  }
+}
+
+function displayCorrectTimeDay(){
+  var time = "";
+
+  switch(dayIfSet){
+    case "MON":
+      time += "Monday - ";
+      break;
+    case "TUE":
+      time += "Tuesday - ";
+      break;
+    case "WED":
+      time += "Wednesday - ";
+      break;
+    case "THU":
+      time += "Thursday - ";
+      break;
+    case "FRI":
+      time += "Friday - ";
+      break;
+    case "SAT":
+      time += "Saturday - ";
+      break;
+    case "Sunday":
+      time += "Sunday - ";
+      break;
+  }
+
+  switch(timeIfSet){
+    case "T12":
+      time += "12:00";
+      break;
+    case "T15":
+      time += "15:00";
+      break;
+    case "T18":
+      time += "18:00";
+      break;
+    case "T21":
+      time += "21:00";
+      break;
+  }
+
+  getElement("movie-hour").value = timeIfSet;
+  getElement("movie-day").value = dayIfSet;
+
+  return time;
+}
+
+showCorrectSynopsis();
+showCorrectTime();
 
 // function formValidate()
 // {

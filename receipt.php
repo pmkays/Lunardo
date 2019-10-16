@@ -64,7 +64,7 @@ $moviesObject =
             ]
 ];
 
-$pricesObject = 
+$pricesObject =
 [
   'full' => ['STA' => 19.80,
             'STP' => 17.50,
@@ -82,7 +82,7 @@ $pricesObject =
             ]
 ];
 
-$seatsObject = 
+$seatsObject =
 [
   'STA' => 'Standard Adult',
   'STP' => 'Standard Concession',
@@ -165,14 +165,14 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       //GST is 11% of each ticket's subtotal
       $GST = number_format($eachTicketSubTotal[$seats] * 0.11,2);
       //the price without the GST
-      $unitPrice = number_format($eachTicketSubTotal[$seats] - $GST,2); 
+      $unitPrice = number_format($eachTicketSubTotal[$seats] - $GST,2);
 
-      echo "<tr> 
-      <td>${seats}</td> 
-      <td>${amount}</td> 
-      <td>$${unitPrice}</td> 
-      <td>$${GST}</td> 
-      <td>$${eachTicketSubTotal[$seats]}</td> 
+      echo "<tr>
+      <td>${seats}</td>
+      <td>${amount}</td>
+      <td>$${unitPrice}</td>
+      <td>$${GST}</td>
+      <td>$${eachTicketSubTotal[$seats]}</td>
       </tr>";
 
       $totalPrice += $eachTicketSubTotal{$seats};
@@ -192,6 +192,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
 <body>
 
   <div id = 'receipt' class = 'page'>
+      <INPUT Type="BUTTON" Value="Homepage" Onclick="window.location.href='index.php'">
       <button id="printDoc" onclick="printReceipt()">Print</button>
       <br>
     <!--establishment details always displayed first in invoices-->
@@ -207,7 +208,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
 
     <h1>Confirmation of Purchase</h1>
     <h2>Customer Details</h2>
-    <?php 
+    <?php
     $creditCard = $_SESSION['cart']['cust']['card'];
     $hiddenCard = substr_replace($creditCard, str_repeat("*", strlen($creditCard)-2), 0, strlen($creditCard)-4);
     ?>
@@ -235,12 +236,13 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       <p class = 'category total-price'>Total: &emsp; $<?=number_format($totalPrice,2)?></p>
   </div>
   <div id = "ticket-page">
+    <INPUT Type="BUTTON" Value="Homepage" Onclick="window.location.href='index.php'">
       <button id="printDoc" onclick="printTickets()">Print</button>
       <h1>Tickets:</h1>
       <p>Please print and present at ticketing booth.</p>
       <hr>
-    <?php 
- 
+    <?php
+
     foreach ($boughtSeats as $seats => $amount)
     {
       $movieTitle = $movie['title']. " (${movie['rating']})";
@@ -250,7 +252,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       $individualTicketPrice = number_format($pricesObject[$type][$seats], 2);
       for($i = 0; $i < $amount ; $i++)
       {
-        echo 
+        echo
         "<div class = 'ticket'>
           <div class = 'ticket-header'>
             <img src='images/moon.png' alt='Lunardo Logo'></img>
@@ -281,7 +283,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
                 <tr>
                     <th>Cinema:</th>
                     <td>7</td>
-                </tr> 
+                </tr>
                 <tr>
                     <th>Seat:</th>
                     <td>$seatsObject[$seats] - A${i}</td>
@@ -292,17 +294,24 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
                 </tr>
             </table>
           </div>
-          
+
         </div><br><hr><br>";
       }
     }
-    
+
     ?>
 
       <?php writeToFile($totalPrice)?>
   </div>
   <div id = 'debug'><p>
-          <?php printMyCode(); ?></p>
+    <h3>Session Data:</h1>
+    <p>
+      <?= preShow($_SESSION) ?>
+    </p>
+    <h3>Page Code:</h1>
+    <p>
+      <?php printMyCode(); ?></p>
+    </p>
   </div>
 
   <script src="tools.js"></script>

@@ -51,12 +51,16 @@ function getElement(id){
 
 function printReceipt(){
   getElement('ticket-page').style.display = 'none';
+  getElement('debug').style.display = 'none';
   window.print();
   getElement('ticket-page').style.display = 'block';
+  getElement('debug').style.display = 'block';
 }
 
 function printTickets(){
   getElement('receipt').style.display = 'none';
+  getElement('debug').style.display = 'none';
   window.print();
   getElement('receipt').style.display = 'block';
+  getElement('debug').style.display = 'block';
 }
