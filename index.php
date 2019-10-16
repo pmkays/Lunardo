@@ -9,7 +9,7 @@ $ticketErr = $timeErr =  "";
 
 $custName = $custEmail = $custMobile = $custCard = $custExpiry = "";
 $movieID = $movieDay = $movieHour = "";
-$seatSTA = $seatsSTP = $seatsSTC = $seatFCA = $seatsFTP = $seatsFTC = "";
+$seatSTA = $seatsSTP = $seatsSTC = $seatsFCA = $seatsFCP = $seatsFCC = "";
 
 $allOK = true;
 
@@ -28,9 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
   $seatsSTA = $_POST['seats']['STA'];
   $seatsSTP = $_POST['seats']['STP'];
   $seatsSTC = $_POST['seats']['STC'];
-  $seatFCA = $_POST['seats']['FCA'];
-  $seatsFTP = $_POST['seats']['FCP'];
-  $seatsFTC =$_POST['seats']['FCC'];
+  $seatsFCA = $_POST['seats']['FCA'];
+  $seatsFCP = $_POST['seats']['FCP'];
+  $seatsFCC =$_POST['seats']['FCC'];
 
 
     if (empty($cust_name))
@@ -412,51 +412,51 @@ topModule();
 
                 <legend class = "legends">Standard</legend>
 
-              <p>Adult:<br />
-                <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()' selected = "<?php $seatsSTA?>">
+              <p><label for='seats-sta'>Adult:</label><br />
+                <select name='seats[STA]' id ='seats-sta' onchange = 'calculatePrice()'>
                   <option value='' selected>Please Select</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
+                  <option value='1'<?= ($seatsSTA === '1') ? 'selected': '';?>>1</option>
+                  <option value='2'<?= ($seatsSTA === '2') ? 'selected': '';?>>2</option>
+                  <option value='3'<?= ($seatsSTA === '3') ? 'selected': '';?>>3</option>
+                  <option value='4'<?= ($seatsSTA === '4') ? 'selected': '';?>>4</option>
+                  <option value='5'<?= ($seatsSTA === '5') ? 'selected': '';?>>5</option>
+                  <option value='6'<?= ($seatsSTA === '6') ? 'selected': '';?>>6</option>
+                  <option value='7'<?= ($seatsSTA === '7') ? 'selected': '';?>>7</option>
+                  <option value='8'<?= ($seatsSTA === '8') ? 'selected': '';?>>8</option>
+                  <option value='9'<?= ($seatsSTA === '9') ? 'selected': '';?>>9</option>
+                  <option value='10'<?= ($seatsSTA === '10') ? 'selected': '';?>>10</option>
                 </select>
               </p>
 
-              <p>Concession:<br />
-                <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()' selected = "<?php $seatsSTP?>" >
+              <p><label for="seats-stp">Concession:</label><br />
+                <select name='seats[STP]' id='seats-stp' onchange = 'calculatePrice()'>
                   <option value='' selected>Please Select</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
+                  <option value='1' <?= ($seatsSTP === '1') ? 'selected': '';?>>1</option>
+                  <option value='2' <?= ($seatsSTP === '2') ? 'selected': ''?>>2</option>
+                  <option value='3'<?= ($seatsSTP === '3') ? 'selected': ''?>>3</option>
+                  <option value='4'<?= ($seatsSTP === '4') ? 'selected': '';?>>4</option>
+                  <option value='5'<?= ($seatsSTP === '5') ? 'selected': '';?>>5</option>
+                  <option value='6'<?= ($seatsSTP === '6') ? 'selected': '';?>>6</option>
+                  <option value='7'<?= ($seatsSTP === '7') ? 'selected': '';?>>7</option>
+                  <option value='8'<?= ($seatsSTP === '8') ? 'selected': '';?>>8</option>
+                  <option value='9'<?= ($seatsSTP === '9') ? 'selected': '';?>>9</option>
+                  <option value='10'<?= ($seatsSTP === '10') ? 'selected': '';?>>10</option>
                 </select>
               </p>
 
-              <p>Children:<br />
-                <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()' selected = "<?php $seatsSTC?>">
+              <p><label for="seats-stc">Children:</label><br />
+                <select name='seats[STC]' id = 'seats-stc' onchange = 'calculatePrice()'>
                   <option value='' selected>Please Select</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
+                  <option value='1'<?= ($seatsSTC === '1') ? 'selected': '';?>>1</option>
+                  <option value='2'<?= ($seatsSTC === '2') ? 'selected': '';?>>2</option>
+                  <option value='3'<?= ($seatsSTC === '3') ? 'selected': '';?>>3</option>
+                  <option value='4'<?= ($seatsSTC === '4') ? 'selected': '';?>>4</option>
+                  <option value='5'<?= ($seatsSTC === '5') ? 'selected': '';?>>5</option>
+                  <option value='6'<?= ($seatsSTC === '6') ? 'selected': '';?>>6</option>
+                  <option value='7'<?= ($seatsSTC === '7') ? 'selected': '';?>>7</option>
+                  <option value='8'<?= ($seatsSTC === '8') ? 'selected': '';?>>8</option>
+                  <option value='9'<?= ($seatsSTC === '9') ? 'selected': '';?>>9</option>
+                  <option value='10'<?= ($seatsSTC === '10') ? 'selected': '';?>>10</option>
                 </select>
               </p>
               </fieldset>
@@ -510,51 +510,51 @@ topModule();
 
                 <legend class = "legends">First Class</legend>
 
-              <p>Adult:<br />
-                <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()' selected = "<?php $seatsFCA ?>">
+              <p><label for="seats-fca">Adult:</label><br />
+                <select name='seats[FCA]' id = 'seats-fca' onchange = 'calculatePrice()'>
                   <option value='' selected>Please Select</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
+                  <option value='1' <?= ($seatsFCA === '1') ? 'selected': '';?>>1</option>
+                  <option value='2'<?= ($seatsFCA === '2') ? 'selected': '';?>>2</option>
+                  <option value='3'<?= ($seatsFCA === '3') ? 'selected': '';?>>3</option>
+                  <option value='4'<?= ($seatsFCA === '4') ? 'selected': '';?>>4</option>
+                  <option value='5'<?= ($seatsFCA === '5') ? 'selected': '';?>>5</option>
+                  <option value='6'<?= ($seatsFCA === '6') ? 'selected': '';?>>6</option>
+                  <option value='7'<?= ($seatsFCA === '7') ? 'selected': '';?>>7</option>
+                  <option value='8'<?= ($seatsFCA === '8') ? 'selected': '';?>>8</option>
+                  <option value='9'<?= ($seatsFCA === '9') ? 'selected': '';?>>9</option>
+                  <option value='10'<?= ($seatsFCA === '10') ? 'selected': '';?>>10</option>
                 </select>
               </p>
 
-              <p>Concession:<br />
-                <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()' selected = "<?php $seatsFCP ?>" >
+              <p><label for="seats-fcp">Concession:</label><br />
+                <select name='seats[FCP]' id = 'seats-fcp' onchange = 'calculatePrice()'>
                   <option value='' selected>Please Select</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
+                  <option value='1'<?= ($seatsFCP === '1') ? 'selected': '';?>>1</option>
+                  <option value='2'<?= ($seatsFCP === '2') ? 'selected': '';?>>2</option>
+                  <option value='3'<?= ($seatsFCP === '3') ? 'selected': '';?>>3</option>
+                  <option value='4'<?= ($seatsFCP === '4') ? 'selected': '';?>>4</option>
+                  <option value='5'<?= ($seatsFCP === '5') ? 'selected': '';?>>5</option>
+                  <option value='6'<?= ($seatsFCP === '6') ? 'selected': '';?>>6</option>
+                  <option value='7'<?= ($seatsFCP === '7') ? 'selected': '';?>>7</option>
+                  <option value='8'<?= ($seatsFCP === '8') ? 'selected': '';?>>8</option>
+                  <option value='9'<?= ($seatsFCP === '9') ? 'selected': '';?>>9</option>
+                  <option value='10'<?= ($seatsFCP === '10') ? 'selected': '';?>>10</option>
                 </select>
               </p>
 
-              <p>Children:<br />
-                <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()' selected = "<?php $seatsFCC ?>">
+              <p><label for="seats-fcc">Children:</label><br />
+                <select name='seats[FCC]' id = 'seats-fcc' onchange = 'calculatePrice()'>
                   <option value='' selected>Please Select</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
+                  <option value='1'<?= ($seatsFCC === '1') ? 'selected': '';?>>1</option>
+                  <option value='2'<?= ($seatsFCC === '2') ? 'selected': '';?>>2</option>
+                  <option value='3'<?= ($seatsFCC === '3') ? 'selected': '';?>>3</option>
+                  <option value='4'<?= ($seatsFCC === '4') ? 'selected': '';?>>4</option>
+                  <option value='5'<?= ($seatsFCC === '5') ? 'selected': '';?>>5</option>
+                  <option value='6'<?= ($seatsFCC === '6') ? 'selected': '';?>>6</option>
+                  <option value='7'<?= ($seatsFCC === '7') ? 'selected': '';?>>7</option>
+                  <option value='8'<?= ($seatsFCC === '8') ? 'selected': '';?>>8</option>
+                  <option value='9'<?= ($seatsFCC === '9') ? 'selected': '';?>>9</option>
+                  <option value='10'<?= ($seatsFCC === '10') ? 'selected': '';?>>10</option>
                 </select>
               </p>
               </fieldset>
