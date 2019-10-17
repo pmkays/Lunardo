@@ -486,7 +486,7 @@ topModule();
 
                 <legend class = "legends">Personal Info</legend>
                 <p><label for="cust-name">Name:</label><br>
-                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = "<?= $custName ?>"><br>
+                <input type="text" id="cust-name" name="cust[name]" oninput = 'checkName(this)' placeholder = 'Western Name' value = "<?= $custName ?>" required><br>
                 <span class="error" id="name-error"><?php echo $nameErr;?></span></p>
                 <p><label for="cust-email">Email:</label><br>
                   <input type="email" id="cust-email" name="cust[email]" placeholder = 'Valid email' value = "<?= $custEmail ?>" required </p><br>
@@ -498,7 +498,8 @@ topModule();
                   <input type="text" id="cust-card" name="cust[card]" oninput = 'checkCard(this)' placeholder = 'AMEX, VISA, Mastercard'  value = "<?= $custCard ?>" required><br>
                     <span class="error" id="card-error"><?php echo $creditCardErr;?></span></p>
                 <p><label for="cust-expiry">Expiry Date:</label><br>
-                  <input type="month" min = <?php advanceDate("P1M")?> max = <?php advanceDate("P10Y")?> id="cust-expiry" name="cust[expiry]" oninput = 'checkExpiry(this)' value = "<?= $custExpiry ?>" required><br>
+                  <input type="month" min = <?php advanceDate("P1M")?> max = <?php advanceDate("P10Y")?> id="cust-expiry"
+                  name="cust[expiry]" oninput = 'checkExpiry(this)' value = "<?= $custExpiry ?>" required><br>
                     <span class="error" id="expiry-error"><?php echo $expiryErr;?></span></p>
                 <p>
                   <input type="hidden" id="movie-ID" name="movie[id]" value="<?php echo $movieID;?>">
@@ -610,9 +611,12 @@ topModule();
             Ian Nguyen (S3788210) and Paula Kurniawan (S3782041).
           </div>
 
-          <div class = "student-info">Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
+          <div class = "student-info">
+            Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.
+          </div>
           <div class = "student-info">All images used are licensed free images unless indicated.</div>
-          <div class = "student-info">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+          <div class = "student-info">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+            title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
           <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
         </p>
       </section>
