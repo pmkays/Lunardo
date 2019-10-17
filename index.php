@@ -12,7 +12,7 @@ $ticketErr = $timeErr =  "";
 
 $custName = $custEmail = $custMobile = $custCard = $custExpiry = "";
 $movieID = $movieDay = $movieHour = "";
-$seatSTA = $seatsSTP = $seatsSTC = $seatsFCA = $seatsFCP = $seatsFCC = "";
+$seatsSTA = $seatsSTP = $seatsSTC = $seatsFCA = $seatsFCP = $seatsFCC = "";
 
 $allOK = true;
 
