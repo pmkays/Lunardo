@@ -390,7 +390,7 @@ function displayCorrectTimeDay(){
     case "SAT":
       time += "Saturday - ";
       break;
-    case "Sunday":
+    case "SUN":
       time += "Sunday - ";
       break;
   }
