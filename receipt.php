@@ -7,8 +7,6 @@ if(empty($_SESSION['cart'])){
     header("Location: index.php");
 }
 
-
-$moviesObject = $pricesObject = "";
 $moviesObject =
 [
   'ACT' => ['title' => 'The Avengers: EndGame',
@@ -91,16 +89,25 @@ $seatsObject =
   'FCP' => 'First Class Concession',
   'FCC' => 'First Class Child'
 ];
-  //the day of movie chosen by form
-  $dayOfMovie = $_SESSION['cart']['movie']['day'];
-  //the time of movie chosen by form
-  $timeOfMovie = $_SESSION['cart']['movie']['hour'];
 
-  //find all the movie's possible screenings
-  $screenings = $moviesObject[$_SESSION['cart']['movie']['id']] ['screenings'];
+$timesObject = 
+[
+  'T12' => '12:00',
+  'T15' => '15:00',
+  'T18' => '18:00',
+  'T21' => '21:00'
+];
 
-  //the hour chosen from the screening
-  $hour = $screenings[$dayOfMovie];
+//the day of movie chosen by form
+$dayOfMovie = $_SESSION['cart']['movie']['day'];
+//the time of movie chosen by form
+$timeOfMovie = $_SESSION['cart']['movie']['hour'];
+
+//find all the movie's possible screenings
+$screenings = $moviesObject[$_SESSION['cart']['movie']['id']] ['screenings'];
+
+//the hour chosen from the screening
+$hour = $screenings[$dayOfMovie];
 
 $type = checkDiscountOrFull($dayOfMovie, $hour);
 $movie = $moviesObject[$_SESSION['cart']['movie']['id']];
@@ -223,7 +230,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       <? ?>
       <span class = 'category'> Title:</span> <span class = 'information'><?=$movie['title']?></span><br>
       <span class = 'category'> Rating:</span> <span class = 'information'><?= $movie['rating']?></span><br>
-      <span class = 'category'> Screening Session:</span> <span class = 'information'><?= $_SESSION['cart']['movie']['day']?> at <?= $_SESSION['cart']['movie']['hour']?></span><br>
+      <span class = 'category'> Screening Session:</span> <span class = 'information'><?= $dayOfMovie?> at <?= $timesObject[$timeOfMovie]?></span><br>
       <span class = 'category'> Description:</span> <span class = 'information'> <?= $movie['description']?> </span><br>
     </p>
 
@@ -241,16 +248,16 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       <h1>Tickets:</h1>
       <p>Please print and present at ticketing booth.</p>
       <hr>
+     
     <?php
-
     foreach ($boughtSeats as $seats => $amount)
     {
-      $movieTitle = $movie['title']. " (${movie['rating']})";
+      $movieTitle = $movie['title']. "(${movie['rating']})";
       $movieDay = $_SESSION['cart']['movie']['day'];
       //puts the day of the week chosen + whatever today's date is
       $todayDate = $dayOfMovie . " ". date(jS." ".F." ".Y);
       $individualTicketPrice = number_format($pricesObject[$type][$seats], 2);
-      for($i = 0; $i < $amount ; $i++)
+      for($seatNumber = 0; $seatNumber < $amount ; $seatNumber++)
       {
         echo
         "<div class = 'ticket'>
@@ -278,7 +285,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
                 </tr>
                 <tr>
                     <th>Time:</th>
-                    <td>$timeOfMovie</td>
+                    <td>$timesObject[$timeOfMovie]</td>
                 </tr>
                 <tr>
                     <th>Cinema:</th>
@@ -286,7 +293,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
                 </tr>
                 <tr>
                     <th>Seat:</th>
-                    <td>$seatsObject[$seats] - A${i}</td>
+                    <td>$seatsObject[$seats] - A${seatNumber}</td>
                 </tr>
                 <tr>
                     <th>Price:</th>
