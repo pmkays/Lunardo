@@ -90,7 +90,7 @@ $seatsObject =
   'FCC' => 'First Class Child'
 ];
 
-$timesObject = 
+$timesObject =
 [
   'T12' => '12:00',
   'T15' => '15:00',
@@ -141,7 +141,7 @@ $boughtSeats = array();
 //stores the subtotal of each ticket that's been bought (found through $boughtSeats array)
 $eachTicketSubTotal = array();
 $totalPrice = 0;
-$totalGST = 0; 
+$totalGST = 0;
 $totalNoGST = 0;
 
 function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal, &$totalPrice, &$totalGST, &$totalNoGST)
@@ -184,7 +184,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       <td>$${eachTicketSubTotal[$seats]}</td>
       </tr>";
       $totalGST += $GST;
-      $totalNoGST += $unitPrice; 
+      $totalNoGST += $unitPrice;
       $totalPrice += $eachTicketSubTotal{$seats};
   }
   echo "</table>";
@@ -195,8 +195,9 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Receipt</title>
+    <title>Lunardo Receipt</title>
     <link id='receiptStylecss' type="text/css" rel="stylesheet" href="receiptStyle.css">
+    <link rel="icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -255,7 +256,7 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       <h1>Tickets</h1>
       <p>Please print and present at ticketing booth.</p>
       <hr>
-     
+
     <?php
     foreach ($boughtSeats as $seats => $amount)
     {
