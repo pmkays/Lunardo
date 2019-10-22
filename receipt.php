@@ -141,8 +141,10 @@ $boughtSeats = array();
 //stores the subtotal of each ticket that's been bought (found through $boughtSeats array)
 $eachTicketSubTotal = array();
 $totalPrice = 0;
+$totalGST = 0; 
+$totalNoGST = 0;
 
-function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal, &$totalPrice)
+function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal, &$totalPrice, &$totalGST, &$totalNoGST)
 {
   //checks how many of each type of seat the user has booked
   foreach($_SESSION['cart']['seats'] as $seats => $amount)
@@ -181,7 +183,8 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       <td>$${GST}</td>
       <td>$${eachTicketSubTotal[$seats]}</td>
       </tr>";
-
+      $totalGST += $GST;
+      $totalNoGST += $unitPrice; 
       $totalPrice += $eachTicketSubTotal{$seats};
   }
   echo "</table>";
@@ -237,15 +240,19 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
     <h2>Order details</h2>
       <hr>
     <p>
-    <?php checkSubTotal($pricesObject, $type, $boughtSeats, $eachTicketSubTotal, $totalPrice); ?>
+    <?php checkSubTotal($pricesObject, $type, $boughtSeats, $eachTicketSubTotal, $totalPrice, $totalGST, $totalNoGST); ?>
 
     </p>
-      <p class = 'category total-price'>Total: &emsp; $<?=number_format($totalPrice,2)?></p>
+    <p class = 'category total-price'>
+      Price: &emsp; $<?=number_format($totalNoGST,2)?> <br>
+      GST: &emsp; &nbsp; $<?=number_format($totalGST,2)?> <br>
+      Total: &emsp; $<?=number_format($totalPrice,2)?>
+    </p>
   </div>
   <div id = "ticket-page">
     <INPUT Type="BUTTON" Value="Homepage" Onclick="window.location.href='index.php'">
       <button id="printDoc" onclick="printTickets()">Print</button>
-      <h1>Tickets:</h1>
+      <h1>Tickets</h1>
       <p>Please print and present at ticketing booth.</p>
       <hr>
      
@@ -311,11 +318,11 @@ function checkSubTotal($pricesObject, $type, &$boughtSeats, $eachTicketSubTotal,
       <?php writeToFile($totalPrice)?>
   </div>
   <div id = 'debug'><p>
-    <h3>Session Data:</h1>
+    <h3>Session Data</h1>
     <p>
       <?= preShow($_SESSION) ?>
     </p>
-    <h3>Page Code:</h1>
+    <h3>Page Code</h1>
     <p>
       <?php printMyCode(); ?></p>
     </p>
